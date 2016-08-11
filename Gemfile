@@ -7,8 +7,8 @@ gem 'puma', '~> 3.0'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
-gem 'pug-rails', '~> 1.0'
-
+gem 'haml'
+gem 'haml-rails'
 # gem 'therubyracer', platforms: :ruby
 gem 'bootstrap', '~> 4.0.0.alpha3'
 gem 'sprockets-rails'

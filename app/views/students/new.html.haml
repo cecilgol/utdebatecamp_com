@@ -1,0 +1,30 @@
+%h1 Register a New UTNIF'er!
+
+=# render 'form'
+
+= form_for @student do |f|
+  - if @student.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@student.errors.count, "error")} prohibited this student from being saved:"
+      %ul
+        - @student.errors.full_messages.each do |msg|
+          %li= msg
+
+  %h2 Welcome to the new UTNIF signup form. We're going to collect just a little bit of information about you, and we'll have you on your way very shortly!
+  %p
+    I am signing up for 
+    =f.select :camp, options_from_collection_for_select(@camps, "id", "name", "1"),{}, {class: 'c-select',id: 'csdd'}
+    :plain
+      . My name is 
+    =f.text_field @student.account.first_name, placeholder: "Whats your first name?"
+    =f.text_field @student.account.last_name, placeholder:"and your last name?"
+    Do you have a middle name you'd like us to know about?
+    =f.check_box :pronouns
+
+
+  .actions
+    = f.submit 'Save'
+
+
+
+= link_to 'Back', root_path

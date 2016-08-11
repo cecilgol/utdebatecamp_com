@@ -1,0 +1,36 @@
+= form_for @camp do |f|
+  - if @camp.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@camp.errors.count, "error")} prohibited this camp from being saved:"
+      %ul
+        - @camp.errors.full_messages.each do |msg|
+          %li= msg
+      #input
+
+  .form-group.row
+    = f.label :name, {'class'=>'col-xs-2 col-form-label'}
+    .col-xs-10
+      = f.text_field :name, {'class'=>'form-control'}
+  
+  .form-group.row
+    = f.label :info, {'class'=>'col-xs-2 col-form-label'}
+    .col-xs-10
+      = f.text_area :info, {'rows'=>'3','class'=>'form-control'}
+  
+  .form-group.row
+    = f.label :nickname, {'class'=>'col-xs-2 col-form-label'}
+    .col-xs-10
+      = f.text_field :nickname, {'class'=>'form-control'}
+
+  .form-group.row
+    = f.label :start_date, {'class'=>'col-xs-2 col-form-label'}
+    .col-xs-10
+      = f.text_field :start_date, {'type' => 'date','class'=>'form-control'}
+
+  .form-group.row
+    = f.label :end_date, {'class'=>'col-xs-2 col-form-label'}
+    .col-xs-10
+      = f.text_field :end_date, {'type' => 'date','class'=>'form-control'}
+
+  .actions
+    = f.submit 'Save', {'class'=>'btn btn-primary','type'=>'submit'}

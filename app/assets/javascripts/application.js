@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jade/runtime
+//= require bootstrap-sprockets
+//= require bootstrap
 //= require turbolinks
 //= require_tree .
