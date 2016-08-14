@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
 
+  get '/sign_up/:id', to: 'camps#sign_up'
 
   root to: 'static_pages#index'
 

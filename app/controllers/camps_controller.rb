@@ -1,5 +1,6 @@
 class CampsController < ApplicationController
-  before_action :set_camp, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
+  before_action :set_camp, only: [:show, :edit, :update, :destroy, :sign_up]
 
   # GET /camps
   # GET /camps.json
@@ -59,6 +60,16 @@ class CampsController < ApplicationController
       format.html { redirect_to camps_url, notice: 'Camp was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  # GET /sign_up/1
+  def sign_up
+    logger.warn 'camp sign_up'
+    unless current_user.account
+      redirect_to new_account_path
+      flash[:alert] = 'You must create an account first'
+    end
+
   end
 
   private

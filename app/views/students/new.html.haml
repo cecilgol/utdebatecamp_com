@@ -12,14 +12,15 @@
 
   %h2 Welcome to the new UTNIF signup form. We're going to collect just a little bit of information about you, and we'll have you on your way very shortly!
   %p
-    I am signing up for 
-    =f.select :camp, options_from_collection_for_select(@camps, "id", "name", "1"),{}, {class: 'c-select',id: 'csdd'}
-    :plain
-      . My name is 
-    =f.text_field @student.account.first_name, placeholder: "Whats your first name?"
-    =f.text_field @student.account.last_name, placeholder:"and your last name?"
-    Do you have a middle name you'd like us to know about?
-    =f.check_box :pronouns
+    .form-inline
+      Which camp are you signing up for?
+      = f.select :camp, options_from_collection_for_select(@camps, "id", "name", "1"),{}, {class: 'c-select',id: 'csdd'}
+    .form-group
+      = fields_for :account, @student.account do |ff|
+        = ff.text_field :first_name, {placeholder: 'Whats your first name?',class:'col-xs-2 form-inline',type:'text'}
+        = ff.text_field :last_name, {placeholder: 'and your last name?',class:'form-inline col-xs-2',type:'text'}
+        Do you have a middle name you'd like us to know about?
+        = ff.check_box :middle_name
 
 
   .actions
