@@ -2,6 +2,8 @@ class CampsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_camp, only: [:show, :edit, :update, :destroy, :sign_up]
 
+  respond_to :html, :js
+
   # GET /camps
   # GET /camps.json
   def index

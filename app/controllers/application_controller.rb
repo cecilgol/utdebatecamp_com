@@ -4,4 +4,6 @@ class ApplicationController < ActionController::Base
   def is_admin?
     current_user.account.accountable.is_a? SiteAdministrator
   end
+
+
 end

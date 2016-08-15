@@ -15,19 +15,18 @@
       <![endif]-->
 
   %body
-    =render 'layouts/navbar'
+    .container
+      =render 'layouts/navbar'
+    
     .container
       - flash.each do |type, message|
         .alert.alert-dismissable{ :class => twitterized_type(type) }
           = message
           %button.close{ data: { dismiss: 'alert' } } x
     .container
-      %button.btn.btn-primary.btn-large{'data-toggle' => 'modal','data-target' => '#utnif-modal'}
-        Launch a Modal
-
+    
       %section#content.container-fluid
         .row-fluid
           .span12
             = yield
-
-      =render 'layouts/modal'
+      
