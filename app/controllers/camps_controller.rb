@@ -64,15 +64,24 @@ class CampsController < ApplicationController
 
   # GET /sign_up/1
   def sign_up
-    logger.warn 'camp sign_up'
+    respond_to :html, :json
+    @camp = Camp.find(params[:id])
+
     unless current_user.account
       redirect_to new_account_path
       flash[:alert] = 'You must create an account first'
     end
-    
+    a = current_user.account.accountable
+    case a
+    when a.is_a?(Student)
+      then @student = current_user.account.accountable
+    else
+      @student = Student.new.build_account
+    end
   end
 
   private
+
     # Use callbacks to share common setup or constraints between actions.
     def set_camp
       @camp = Camp.find(params[:id])

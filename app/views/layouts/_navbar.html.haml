@@ -1,0 +1,6 @@
+%nav.navbar.navbar-light.navbar-static-top
+  =link_to "utnif", root_path, {class:'navbar-brand',id:'navbar-brand'}
+  %button.navbar-toggler.hidden-md-up{'type'=>'button','data-toggle'=>'collapse','data-target'=>'navbarCollapse','aria-controls'=>'navbarCollapse','aria-expanded'=>'false','aria-label'=>'Toggle Navigation'}
+    &#9776;
+  .collapse.navbar-toggleable-md#navbarCollapse
+    = render 'layouts/login_info'

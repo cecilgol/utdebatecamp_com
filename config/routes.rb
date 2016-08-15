@@ -1,8 +1,14 @@
 Rails.application.routes.draw do
+  resources :coaches
+  resources :directors
+  resources :labs
   resources :parents
   resources :students
   resources :camps
   resources :accounts
+  resources :camp_administrators
+  resources :programs
+  
   devise_for :users, controllers:{
     registrations: 'users/registrations'
   }

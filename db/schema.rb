@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160815013351) do
+ActiveRecord::Schema.define(version: 20160815021735) do
 
   create_table "accounts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "first_name"
@@ -96,6 +96,7 @@ ActiveRecord::Schema.define(version: 20160815013351) do
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
     t.boolean  "is_hired"
+    t.float    "compensation", limit: 24
     t.index ["account_id"], name: "index_employees_on_account_id", using: :btree
     t.index ["camp_id"], name: "index_employees_on_camp_id", using: :btree
     t.index ["program_id"], name: "index_employees_on_program_id", using: :btree

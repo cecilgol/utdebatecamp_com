@@ -7,7 +7,6 @@
     %meta{ :charset => "UTF-8" }
     = favicon_link_tag
     = stylesheet_link_tag    "application", :media => "all"
-    = stylesheet_link_tag    "http://fonts.googleapis.com/css?family=Ribeye", :media => "all"
     = javascript_include_tag "application"
     = csrf_meta_tags
     :plain
@@ -16,20 +15,19 @@
       <![endif]-->
 
   %body
-    %nav.navbar.navbar-dark.bg-inverse.navbar-static-top
-      =link_to "utnif", root_path, {class:'navbar-brand',id:'navbar-brand'}
-      %button.navbar-toggler.hidden-md-up{'type'=>'button','data-toggle'=>'collapse','data-target'=>'navbarCollapse','aria-controls'=>'navbarCollapse','aria-expanded'=>'false','aria-label'=>'Toggle Navigation'}
-        &#9776;
-      .collapse.navbar-toggleable-md#navbarCollapse
-        = render 'layouts/login_info'
-
+    =render 'layouts/navbar'
     .container
       - flash.each do |type, message|
         .alert.alert-dismissable{ :class => twitterized_type(type) }
           = message
           %button.close{ data: { dismiss: 'alert' } } x
+    .container
+      %button.btn.btn-primary.btn-large{'data-toggle' => 'modal','data-target' => '#utnif-modal'}
+        Launch a Modal
 
-    %section#content.container-fluid
-      .row-fluid
-        .span12
-          = yield
+      %section#content.container-fluid
+        .row-fluid
+          .span12
+            = yield
+
+      =render 'layouts/modal'
