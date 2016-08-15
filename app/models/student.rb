@@ -1,6 +1,7 @@
 class Student < ApplicationRecord
+  include Accountable
   belongs_to :camp
-  belongs_to :account
-  accepts_nested_attributes_for :account, allow_destroy: true, limit: 1
+  has_and_belongs_to_many :parents
+  has_and_belongs_to_many :coaches
 
 end

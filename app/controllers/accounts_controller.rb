@@ -27,7 +27,7 @@ class AccountsController < ApplicationController
   # POST /accounts.json
   def create
     @account = Account.new(account_params)
-
+    @account.user = current_user
     respond_to do |format|
       if @account.save
         format.html { redirect_to @account, notice: 'Account was successfully created.' }
@@ -71,6 +71,6 @@ class AccountsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def account_params
-      params.fetch(:account, {})
+      params.fetch(:account, {}).permit(:first_name,:middle_name,:last_name,:cell_phone,:other_phone,:address1,:address2,:city,:state,:country,:birthday,:eid)
     end
 end

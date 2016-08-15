@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160809233023) do
+ActiveRecord::Schema.define(version: 20160815013351) do
 
   create_table "accounts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "first_name"
@@ -25,11 +25,13 @@ ActiveRecord::Schema.define(version: 20160809233023) do
     t.string   "territory"
     t.string   "country"
     t.date     "birthday"
-    t.string   "dorm"
-    t.string   "eid"
     t.integer  "user_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.string   "accountable_type"
+    t.integer  "accountable_id"
+    t.string   "email"
+    t.index ["accountable_type", "accountable_id"], name: "index_accounts_on_accountable_type_and_accountable_id", using: :btree
     t.index ["user_id"], name: "index_accounts_on_user_id", using: :btree
   end
 
@@ -41,6 +43,124 @@ ActiveRecord::Schema.define(version: 20160809233023) do
     t.date     "end_date"
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
+  end
+
+  create_table "coaches", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.integer  "account_id"
+    t.string   "school_name"
+    t.string   "school_state"
+    t.string   "school_phone"
+    t.integer  "added_by_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["account_id"], name: "index_coaches_on_account_id", using: :btree
+  end
+
+  create_table "coaches_students", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.integer "coach_id",   null: false
+    t.integer "student_id", null: false
+    t.index ["student_id", "coach_id"], name: "index_coaches_students_on_student_id_and_coach_id", using: :btree
+  end
+
+  create_table "directors", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.integer  "account_id"
+    t.integer  "camp_id"
+    t.string   "official_phone"
+    t.string   "official_email"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.string   "eid"
+    t.index ["account_id"], name: "index_directors_on_account_id", using: :btree
+    t.index ["camp_id"], name: "index_directors_on_camp_id", using: :btree
+  end
+
+  create_table "employee_forms", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.integer  "employee_id"
+    t.string   "file_location"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["employee_id"], name: "index_employee_forms_on_employee_id", using: :btree
+  end
+
+  create_table "employees", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.integer  "camp_id"
+    t.integer  "program_id"
+    t.integer  "account_id"
+    t.string   "title"
+    t.date     "arrival_date"
+    t.date     "leave_date"
+    t.text     "bio",          limit: 65535
+    t.string   "pronouns"
+    t.string   "dorm"
+    t.string   "eid"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.boolean  "is_hired"
+    t.index ["account_id"], name: "index_employees_on_account_id", using: :btree
+    t.index ["camp_id"], name: "index_employees_on_camp_id", using: :btree
+    t.index ["program_id"], name: "index_employees_on_program_id", using: :btree
+  end
+
+  create_table "lab_students", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.integer  "lab_id"
+    t.integer  "student_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["lab_id"], name: "index_lab_students_on_lab_id", using: :btree
+    t.index ["student_id"], name: "index_lab_students_on_student_id", using: :btree
+  end
+
+  create_table "labs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.integer  "program_id"
+    t.string   "name"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.integer  "session"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["program_id"], name: "index_labs_on_program_id", using: :btree
+  end
+
+  create_table "parents", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.integer  "account_id"
+    t.string   "preferred_contact_method"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.integer  "added_by_id",              null: false
+    t.index ["account_id"], name: "index_parents_on_account_id", using: :btree
+  end
+
+  create_table "parents_students", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.integer "parent_id",  null: false
+    t.integer "student_id", null: false
+    t.index ["student_id", "parent_id"], name: "index_parents_students_on_student_id_and_parent_id", using: :btree
+  end
+
+  create_table "programs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.integer  "camp_id"
+    t.string   "name"
+    t.string   "nickname"
+    t.text     "info",       limit: 65535
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.index ["camp_id"], name: "index_programs_on_camp_id", using: :btree
+  end
+
+  create_table "site_administrators", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.integer  "account_id"
+    t.datetime "promoted_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "eid"
+    t.index ["account_id"], name: "index_site_administrators_on_account_id", using: :btree
+  end
+
+  create_table "student_forms", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.integer  "student_id"
+    t.string   "file_location"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["student_id"], name: "index_student_forms_on_student_id", using: :btree
   end
 
   create_table "students", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
@@ -56,6 +176,8 @@ ActiveRecord::Schema.define(version: 20160809233023) do
     t.string   "leave_means"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.boolean  "is_admitted"
+    t.string   "eid"
     t.index ["account_id"], name: "index_students_on_account_id", using: :btree
     t.index ["camp_id"], name: "index_students_on_camp_id", using: :btree
   end
@@ -78,6 +200,20 @@ ActiveRecord::Schema.define(version: 20160809233023) do
   end
 
   add_foreign_key "accounts", "users"
+  add_foreign_key "coaches", "accounts"
+  add_foreign_key "directors", "accounts"
+  add_foreign_key "directors", "camps"
+  add_foreign_key "employee_forms", "employees"
+  add_foreign_key "employees", "accounts"
+  add_foreign_key "employees", "camps"
+  add_foreign_key "employees", "programs"
+  add_foreign_key "lab_students", "labs"
+  add_foreign_key "lab_students", "students"
+  add_foreign_key "labs", "programs"
+  add_foreign_key "parents", "accounts"
+  add_foreign_key "programs", "camps"
+  add_foreign_key "site_administrators", "accounts"
+  add_foreign_key "student_forms", "students"
   add_foreign_key "students", "accounts"
   add_foreign_key "students", "camps"
 end

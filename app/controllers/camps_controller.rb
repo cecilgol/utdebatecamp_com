@@ -69,7 +69,7 @@ class CampsController < ApplicationController
       redirect_to new_account_path
       flash[:alert] = 'You must create an account first'
     end
-
+    
   end
 
   private
