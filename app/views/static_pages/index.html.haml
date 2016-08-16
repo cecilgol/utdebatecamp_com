@@ -1,5 +1,3 @@
-%h1 AHOY welcome to the danger zone
-
 - @camps.each do |camp|
   %h2= camp.name
   %p= camp.info
@@ -8,6 +6,9 @@
     %dd=camp.start_date
     %dt camp ends
     %dd=camp.end_date
+  
+  =link_to "Sign Up",apply_to_work_at_camp_path(camp.nickname),{class:'btn btn-primary'}
+
 
 
 

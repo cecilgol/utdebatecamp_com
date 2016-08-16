@@ -1,9 +1,17 @@
 class StaticPagesController < ApplicationController
+  before_action :set_camps, only: [:index,:apply_to_work]
+
   def index
-    @camps = Camp.all
-    @modal = { title: 'static_pages_controller#title', body: 'static_pages_controller#body' }
   end
 
   def about
+  end
+
+  def apply_to_work
+  end
+
+  private
+  def set_camps
+    @camps = Camp.all
   end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160815021735) do
+ActiveRecord::Schema.define(version: 20160816130230) do
 
   create_table "accounts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "first_name"
@@ -72,6 +72,17 @@ ActiveRecord::Schema.define(version: 20160815021735) do
     t.string   "eid"
     t.index ["account_id"], name: "index_directors_on_account_id", using: :btree
     t.index ["camp_id"], name: "index_directors_on_camp_id", using: :btree
+  end
+
+  create_table "employee_applications", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.integer  "employee_id"
+    t.integer  "camp_id"
+    t.integer  "program_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["camp_id"], name: "index_employee_applications_on_camp_id", using: :btree
+    t.index ["employee_id"], name: "index_employee_applications_on_employee_id", using: :btree
+    t.index ["program_id"], name: "index_employee_applications_on_program_id", using: :btree
   end
 
   create_table "employee_forms", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
@@ -144,6 +155,9 @@ ActiveRecord::Schema.define(version: 20160815021735) do
     t.text     "info",       limit: 65535
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
+    t.float    "price",      limit: 24
+    t.date     "start_date"
+    t.date     "end_date"
     t.index ["camp_id"], name: "index_programs_on_camp_id", using: :btree
   end
 
@@ -154,6 +168,17 @@ ActiveRecord::Schema.define(version: 20160815021735) do
     t.datetime "updated_at",  null: false
     t.string   "eid"
     t.index ["account_id"], name: "index_site_administrators_on_account_id", using: :btree
+  end
+
+  create_table "student_applications", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.integer  "student_id"
+    t.integer  "camp_id"
+    t.integer  "program_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["camp_id"], name: "index_student_applications_on_camp_id", using: :btree
+    t.index ["program_id"], name: "index_student_applications_on_program_id", using: :btree
+    t.index ["student_id"], name: "index_student_applications_on_student_id", using: :btree
   end
 
   create_table "student_forms", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
@@ -179,6 +204,7 @@ ActiveRecord::Schema.define(version: 20160815021735) do
     t.datetime "updated_at",    null: false
     t.boolean  "is_admitted"
     t.string   "eid"
+    t.integer  "grade"
     t.index ["account_id"], name: "index_students_on_account_id", using: :btree
     t.index ["camp_id"], name: "index_students_on_camp_id", using: :btree
   end
@@ -204,6 +230,9 @@ ActiveRecord::Schema.define(version: 20160815021735) do
   add_foreign_key "coaches", "accounts"
   add_foreign_key "directors", "accounts"
   add_foreign_key "directors", "camps"
+  add_foreign_key "employee_applications", "camps"
+  add_foreign_key "employee_applications", "employees"
+  add_foreign_key "employee_applications", "programs"
   add_foreign_key "employee_forms", "employees"
   add_foreign_key "employees", "accounts"
   add_foreign_key "employees", "camps"
@@ -214,6 +243,9 @@ ActiveRecord::Schema.define(version: 20160815021735) do
   add_foreign_key "parents", "accounts"
   add_foreign_key "programs", "camps"
   add_foreign_key "site_administrators", "accounts"
+  add_foreign_key "student_applications", "camps"
+  add_foreign_key "student_applications", "programs"
+  add_foreign_key "student_applications", "students"
   add_foreign_key "student_forms", "students"
   add_foreign_key "students", "accounts"
   add_foreign_key "students", "camps"

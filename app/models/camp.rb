@@ -2,6 +2,7 @@ class Camp < ApplicationRecord
   has_many :students
   has_many :employees
   has_many :labs
+  has_many :programs
   
   has_one :director
 

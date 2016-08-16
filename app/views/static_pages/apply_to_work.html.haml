@@ -1,0 +1,5 @@
+%h2
+  Apply to work at UTNIF!
+
+-@camps.each do |camp|
+  =link_to 'Work at UTNIF ' + camp.nickname, apply_to_work_at_camp_path(camp.nickname), {class:'btn btn-primary'}

@@ -1,6 +1,6 @@
 class CampsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_camp, only: [:show, :edit, :update, :destroy, :sign_up]
+  before_action :set_camp, only: [:show, :edit, :update, :destroy, :sign_up, :apply_to_work]
 
   respond_to :html, :js
 
@@ -66,9 +66,6 @@ class CampsController < ApplicationController
 
   # GET /sign_up/1
   def sign_up
-    respond_to :html, :json
-    @camp = Camp.find(params[:id])
-
     unless current_user.account
       redirect_to new_account_path
       flash[:alert] = 'You must create an account first'

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  student: one
+  camp: one
+  program: one
+
+two:
+  student: two
+  camp: two
+  program: two

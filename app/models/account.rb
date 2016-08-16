@@ -1,7 +1,6 @@
 class Account < ApplicationRecord
   belongs_to :user
   belongs_to :accountable, polymorphic: true
-  before_save :set_user
   def promote_to_site_administrator
     SiteAdministrator.new(
       account_id: self.id,
@@ -11,7 +10,5 @@ class Account < ApplicationRecord
     save!
   end
 
-  def set_user
-  end
 
 end
