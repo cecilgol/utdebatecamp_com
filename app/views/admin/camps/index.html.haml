@@ -1,5 +1,6 @@
 %h1 Listing camps
 
+
 %table.table
   %thead
     %tr
@@ -21,10 +22,10 @@
         %td= camp.start_date.to_s
         %td= camp.end_date.to_s
         %td= link_to 'Show', camp
-        %td= link_to 'Edit', edit_camp_path(camp)
+        %td= link_to 'Edit', edit_admin_camp_path(camp)
         %td= link_to 'Destroy', camp, :method => :delete, :data => { :confirm => 'Are you sure?' }
         
 
 %br
 
-= link_to 'New Camp', new_camp_path
+= link_to 'New Camp', new_admin_camp_path

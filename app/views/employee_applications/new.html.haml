@@ -1,2 +1,11 @@
-%h1 EmployeeApplications#new
-%p Find me in app/views/employee_applications/new.html.haml
+%h1 
+  Apply to work at UTNIF
+  = @camp.name
+
+%p
+  Applying as
+  = @employee.account.first_name
+   
+  = @employee.account.last_name
+
+= render 'form'

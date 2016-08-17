@@ -1,0 +1,19 @@
+%h1 Listing student_applications
+
+%table
+  %thead
+    %tr
+      %th
+      %th
+      %th
+
+  %tbody
+    - @student_applications.each do |student_application|
+      %tr
+        %td= link_to 'Show', student_application
+        %td= link_to 'Edit', edit_student_application_path(student_application)
+        %td= link_to 'Destroy', student_application, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Student application', new_student_application_path
