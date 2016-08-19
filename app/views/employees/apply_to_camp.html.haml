@@ -1,0 +1,80 @@
+= form_for(:employee, url: :employee_create_application) do |f|
+  - if @employee.errors.any?
+    #error_explanation
+      %h2 = "#{pluralize(@employee.errors.count,"error")} prohibited this program from being saved:"
+
+  %ul.nav.nav-tabs{'role'=>'tablist'}
+    %li.nav-item
+      %a#profile-tab.nav-link.active{'data-toggle'=>'tab','href'=>'#profile','role'=>'tab'} 
+        Profile
+    
+    %li.nav-item
+      %a#job-tab.nav-link{'data-toggle'=>'tab','href'=>'#job','role'=>'tab'} 
+        Job
+  .container{'style'=>'padding-top:20px'}
+    #tab-panes.tab-content
+      #profile.tab-pane.active{'role'=>'tabpanel'}
+        .form-group.row
+          = f.label :pronouns, {'class'=>'col-xs-2 col-form-label'}
+          .col-xs-10
+            = f.text_field :pronouns, {'class'=>'form-control'}
+        
+        .form-group.row
+          = f.label :arrival_date, {'class'=>'col-xs-2 col-form-label'}
+          .col-xs-10
+            = f.text_field :arrival_date, {'type' => 'date','class'=>'form-control'}
+
+        .form-group.row
+          = f.label :leave_date, {'class'=>'col-xs-2 col-form-label'}
+          .col-xs-10
+            = f.text_field :leave_date, {'type' => 'date','class'=>'form-control'}
+
+        .form-group.row
+          = f.label :bio, {'class'=>'col-xs-2 col-form-label'}
+          .col-xs-10
+            = f.text_area :bio, {'class'=>'form-control'}
+
+        .form-group.row
+          = f.label 'Profile Photo', {'class'=>'col-xs-2 col-form-label'}
+          %input.form-control-file.col-xs-10{'type'=>'file'}
+
+
+      #job.tab-pane{'role'=>'tabpanel'}          
+        #references.form-group.row
+          = f.label :references, {'class'=>'col-xs-2 col-form-label'}
+          #references-0.col-xs-9
+            .form-inline 
+              = f.text_field :references, {'class'=>'form-control','placeholder'=>'Reference Name'}
+              = f.text_field :references, {'class'=>'form-control','placeholder'=>'Reference Phone or Email'}
+          %a#add-ref-button.btn.btn-default.btn-small.col-xs-1
+            &plus;
+
+        .form-group.row
+          = f.label :experience,{'class'=>'col-xs-2 col-form-label'}
+          .col-xs-10
+            =f.text_area :experience, {'class'=>'form-control'}
+
+        = f.fields_for @application do |ff|
+          .form-group.row
+            = ff.label "Which Program are you applying For?", {'class'=>'col-xs-2 col-form-label'}
+            .col-xs-10
+              = ff.collection_select(:program, @camp.programs, :id, :nickname, {}, {'class'=>'form-control'})
+
+              = ff.hidden_field :camp, value: @camp.id
+  .actions
+    = f.submit 'Save Application', {'class'=>'btn btn-primary'}
+
+  :javascript
+    $('#tab-panes').css('min-height', function(){ 
+      return $(this).height();
+    });
+    var n = 0;
+    $('#add-ref-button').click(function(e){
+      n++;
+      if(n<5){
+        var html = '<div class="form-group row"><div class="col-xs-2"></div><div id="references-'+n+'" class="col-xs-9"><div class="form-inline"><input class="form-control" placeholder="Reference Name" type="text" value="" name="employee[references]" id="employee_references"><input class="form-control" placeholder="Reference Phone or Email" type="text" value="" name="employee[references]" id="employee_references"></div></div><div class="col-xs-1"></div>';
+        $('#references').after(html);
+      }else{
+        $(this).addClass('disabled');
+      }
+    });

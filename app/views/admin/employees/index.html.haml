@@ -1,0 +1,30 @@
+%h1 Listing employees
+
+%table.table
+  %thead
+    %tr
+      %th Last Name
+      %th First Name
+      %th Camp
+      %th Lab
+      %th 
+      %th
+      %th
+      %th
+      %th
+
+  %tbody
+    - @employees.each do |employee|
+      %tr
+        %td= employee.account.last_name
+        %td= employee.account.first_name
+        %td= employee.employee_applications.first.camp.nickname
+        %td= employee.employee_applications.first.program.nickname
+        %td= link_to 'Show', employee
+        %td= link_to 'Edit', edit_employee_path(employee)
+        %td= link_to 'Destroy', employee, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        %td= link_to 'hire employee'
+
+%br
+
+= link_to 'New Employee', new_employee_path

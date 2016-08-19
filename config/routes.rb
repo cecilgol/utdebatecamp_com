@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  get 'apply/:camp_nickname', to: 'employee_applications#new',
-                              as: :apply_to_work_at_camp
+  # get 'apply/:camp_nickname', to: 'employee_applications#new',
+  #                             as: :apply_to_work_at_camp
   # post 'apply/:camp_nickname', to: 'employee_applications#create',
   #                              as: :employee_applications
 
@@ -12,8 +12,8 @@ Rails.application.routes.draw do
   # get 'applications/:camp_id/index', to: 'employee_applications#index',
   #                                    as: :employement_applications
 
-  get 'attend/:camp_nickname', to: 'student_applications#new',
-                               as: :apply_to_attend_camp
+  #get 'register/:camp_nickname', to: 'student_applications#new',
+  #                               as: :apply_to_camp
   # get 'attend/:camp_nickname/edit', to: 'student_applications#edit',
   #                                   as: :edit_student_application
   # get 'attend/:camp_nickname/show', to: 'student_applications#show',
@@ -23,19 +23,28 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :camps
+    resources :employees, only: [:index]
   end
 
-  resources :employee_applications
-  resources :student_applications
   resources :coaches
   resources :directors
   resources :labs
   resources :parents
-  resources :students
+  resources :students, except: [:index] do
+    resources :student_applications
+  end
   resources :camps, only: [:show]
   resources :accounts
   resources :site_administrators
   resources :programs
+
+  resources :employees, param: :employee_id, except: [:index] do
+    get 'apply/:camp_id', to: 'employees#apply_to_camp',
+                          as: :apply_to_camp
+    post 'apply/:camp_id', to: 'employees#create_application',
+                          as: :create_application
+    # resources :employee_applications
+  end
 
   devise_for :users, controllers:{
     registrations: 'users/registrations'

@@ -1,7 +1,5 @@
 # Things only administrators can do
 class Admin::CampsController < AdminController
-  
-
   before_action :set_camp, only: [:show, :edit, :update, :destroy, :sign_up]
 
   respond_to :html, :js

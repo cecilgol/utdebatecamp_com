@@ -19,7 +19,7 @@ class Account < ApplicationRecord
   end
 
   def employee?
-    self.accountable.class == Director
+    self.accountable.class == Employee
   end
 
   def student?

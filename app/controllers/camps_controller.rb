@@ -82,12 +82,12 @@ class CampsController < ApplicationController
   # private
 
   #   # Use callbacks to share common setup or constraints between actions.
-  #   def set_camp
-  #     @camp = Camp.find(params[:id])
-  #   end
+    def set_camp
+      @camp = Camp.find(params[:id])
+    end
 
-  #   # Never trust parameters from the scary internet, only allow the white list through.
-  #   def camp_params
-  #     params.require(:camp).permit(:name,:nickname,:info,:start_date,:end_date)
-  #   end
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def camp_params
+      params.require(:camp).permit(:name,:nickname,:info,:start_date,:end_date)
+    end
 end
