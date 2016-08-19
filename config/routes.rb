@@ -54,5 +54,7 @@ Rails.application.routes.draw do
 
   get 'static_pages/about'
 
+  get '/apply', to: 'static_pages#apply_to_work'
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

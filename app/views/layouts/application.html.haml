@@ -20,9 +20,10 @@
     
     .container
       - flash.each do |type, message|
-        .alert.alert-dismissable{ :class => twitterized_type(type) }
+        .alert.alert-dismissable{ :class => utnif_type(type) }
           = message
           %button.close{ data: { dismiss: 'alert' } } x
+          
     .container
     
       %section#content.container-fluid

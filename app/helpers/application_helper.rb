@@ -2,7 +2,7 @@
 
 module ApplicationHelper
 
-  def twitterized_type(type)
+  def utnif_type(type)
     case type.to_sym
     when :error
       'alert-danger'
