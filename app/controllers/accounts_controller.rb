@@ -19,6 +19,12 @@ class AccountsController < ApplicationController
     @account = Account.new
   end
 
+  def accountable_change
+    respond_to do |format|
+      format.js { render :accountable_change, locals: { s: params[:s] } }
+    end
+  end
+
   # GET /accounts/1/edit
   def edit
     respond_to do |format|
