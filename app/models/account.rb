@@ -1,6 +1,7 @@
 class Account < ApplicationRecord
   belongs_to :user
   belongs_to :accountable, polymorphic: true
+  accepts_nested_attributes_for :accountable, allow_destroy: true
   def promote_to_site_administrator
     SiteAdministrator.new(
       account_id: self.id,
@@ -29,5 +30,11 @@ class Account < ApplicationRecord
   def parent?
     self.accountable.class == Parent
   end
+
+  def build_accountable(params)
+    p = params.except(:accountable_type)
+    self.accountable = params[:accountable_type].constantize.new(p)
+  end
+
 
 end

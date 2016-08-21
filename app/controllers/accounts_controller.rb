@@ -15,15 +15,25 @@ class AccountsController < ApplicationController
 
   # GET /accounts/new
   def new
-    @camps = Camp.all
     @account = Account.new
   end
 
   def accountable_change
+    @s = params[:s]
+    @a = Account.new(user: current_user)
+    @p = @s.constantize.new
+
     respond_to do |format|
-      format.js { render :accountable_change, locals: { s: params[:s] } }
+      format.js { render :accountable_change, s: @s, a: @a, p: @p }
     end
   end
+
+  def create_poly_account
+    @account = Account.new
+    @poly_accountable_type = params[:at]
+
+  end
+
 
   # GET /accounts/1/edit
   def edit
@@ -74,13 +84,18 @@ class AccountsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_account
-      @account = Account.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_account
+    @account = Account.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def account_params
-      params.fetch(:account, {}).permit(:first_name,:middle_name,:last_name,:cell_phone,:other_phone,:address1,:address2,:city,:state,:country,:birthday,:eid)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def account_params
+    params.fetch(:account, {}).permit(:first_name, :middle_name, :last_name,
+                                      :cell_phone, :other_phone, :address1,
+                                      :address2, :city, :state, :country,
+                                      :birthday, :eid,
+                                      accountable_attributes: [:accountable_type, :bio, :experience, :references])
+  end
+
 end

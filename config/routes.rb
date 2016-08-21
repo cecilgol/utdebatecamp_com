@@ -56,7 +56,9 @@ Rails.application.routes.draw do
 
   get '/apply', to: 'static_pages#apply_to_work'
   
-  post 'accountable/change', to: 'accounts#accountable_change'
+  post 'a/c', to: 'accounts#accountable_change'
+
+  post 'a/p/c', to: 'accounts#create_poly_account'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

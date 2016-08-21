@@ -1,8 +1,9 @@
-%h1 New account
+%h1 Welcome to the UTNIF!
 
 .form-group
-  = label_tag 'accountable', 'I am a', class: 'col-form-label lead'
-  = select_tag 'accountable', options_for_select(['Parent','Student','Coach','Employee'],'Student'),{class: 'form-control form-control-lg',id: 'accountable'}
+  = label_tag 'accountable', 'Are you applying as a', class: 'col-form-label lead'
+  = select_tag 'accountable', options_for_select([['Parent','Parent'],['Student','Student'],['Student\'s Coach','Coach'],['Lab Leader','Employee']],['Student','Student']),{class: 'form-control form-control-lg',id: 'accountable'}
+
 
 #new-account-form
   = render 'form'
@@ -10,6 +11,8 @@
 = link_to 'Back', accounts_path
 
 :javascript
-  $('#accountable').change(function(){
-    $.post('/accountable/change',{'s':$('#accountable').val()});
-  });
+  (function($){
+    $('#accountable').change(function(){
+      $.post('/a/c',{'s':$('#accountable').val()});
+    });
+  })(jQuery);
