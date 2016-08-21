@@ -2,70 +2,38 @@
 
 %p Let's get some quick information from you.
 
-=form_for @a do |f|
-
-  .form-group.row
-    =f.label :first_name, class:'col-xs-2 col-form-label'
-    .col-xs-10
-      =f.text_field :first_name, class:'form-control'
-  .form-group.row
-    =f.label :middle_name, class:'col-xs-2 col-form-label'
-    .col-xs-10
-      =f.text_field :middle_name, class:'form-control'
-  .form-group.row
-    =f.label :last_name, class:'col-xs-2 col-form-label'
-    .col-xs-10
-      =f.text_field :last_name, class:'form-control'
-  .form-group.row
-    =f.label :cell_phone, class:'col-xs-2 col-form-label'
-    .col-xs-10
-      =f.text_field :cell_phone, class:'form-control'
-  .form-group.row
-    =f.label :address1, class:'col-xs-2 col-form-label'
-    .col-xs-10
-      =f.text_field :address1, class:'form-control'
-  .form-group.row
-    =f.label :address2, class:'col-xs-2 col-form-label'
-    .col-xs-10
-      =f.text_field :address2, class:'form-control'
-  .form-group.row
-    =f.label :city, class:'col-xs-2 col-form-label'
-    .col-xs-10
-      =f.text_field :city, class:'form-control'
-  .form-group.row
-    =f.label :state, class:'col-xs-2 col-form-label'
-    .col-xs-10
-      =f.text_field :state, class:'form-control'
-  .form-group.row
-    =f.label :birthday, class:'col-xs-2 col-form-label'
-    .col-xs-10
-      =f.text_field :birthday, {'class'=>'form-control','type'=>'date'}
+= form_for @a do |f|
+  = create_account_generic_form(f)
 
   =f.fields_for :accountable, @p do |ff|
     -if @a.new_record?
       =ff.hidden_field :accountable_type, value: @p.class
 
-    -# .form-group.row
-    -#   =ff.label :bio, class:'col-xs-2 col-form-label'
-    -#   .col-xs-10
-    -#     =ff.text_area :bio, {'class'=>'form-control','rows'=>'3'}
+    .form-group.row
+      =ff.label 'Which camp are you applying to?', class:'col-xs-4 col-form-label'
+      .col-xs-8
+        =ff.collection_select(:camp, Camp.all,:id,:name,{},{'class'=>'form-control'})
 
-    #references.form-group.row
+    .form-group.row
+      =ff.label 'And which program?', class:'col-xs-4 col-form-label'
+      .col-xs-8
+        =ff.grouped_collection_select(:program,Camp.all,:programs,:name,:id,:name,{'include_blank'=>'true'},{'class'=>'form-control', 'disabled'=>'true'})
+
+    .form-group.row.references-input
       = ff.label :references, {'class'=>'col-xs-2 col-form-label'}
       #references-0.references.col-xs-8
         .form-inline 
-          = ff.text_field :references, {'class'=>'form-control','placeholder'=>'Reference Name','style'=>'width:48%','id'=>'account_employee_references-0-a'}
-          = ff.text_field :references, {'class'=>'form-control','placeholder'=>'Reference Phone or Email','style'=>'width:48%','id'=>'account_employee_references-0-b'}
+          %input#account_employee_references-0-a.references.form-control{'placeholder'=>'Reference Name','style'=>'width:48%','type'=>'text'}
+          %input#account_employee_references-0-b.references.form-control{'placeholder'=>'Reference Phone or Email','style'=>'width:48%','type'=>'text'}
       %a#add-ref-button.btn.btn-default.btn-small.col-xs-2
         &plus; Add another reference
         
-      =#ff.hidden_field :references, {'id'=>'vals','multiple'=>'true'}
+      = ff.hidden_field :references, {'id'=>'vals','multiple'=>'true'}
 
     .form-group.row
       =ff.label :experience, class:'col-xs-2 col-form-label'
       .col-xs-10
         =ff.text_area :experience, {'class'=>'form-control','rows'=>'3'}
-
 
   .actions
     =f.submit 'Submit Application', class:'btn btn-primary'
@@ -76,28 +44,38 @@
     $('#add-ref-button').click(function(e){
       n++;
       if(n<5){
-        var html = '<div class="form-group row">\
+        var html = '<div class="form-group row references-input">\
           <div class="col-xs-2"></div>\
           <div class="col-xs-8" id="references-'+n+'">\
           <div class="form-inline">\
-          <input class="form-control" placeholder="Reference Name" style="width:48%" type="text" value="" name="account[employee][references]" id="account_employee_references-'+n+'-a">\
-          <input class="form-control" placeholder="Reference Phone or Email" style="width:48%" type="text" value="" name="account[employee][references]" id="account_employee_references-'+n+'-b">\
+          <input class="references form-control" placeholder="Reference Name" style="width:48%" type="text" value="" name="account[employee][references]" id="account_employee_references-'+n+'-a">\
+          <input class="references form-control" placeholder="Reference Phone or Email" style="width:48%" type="text" value="" name="account[employee][references]" id="account_employee_references-'+n+'-b">\
           </div>\
           </div>\
           </div>';
-        $('#references').after(html);
+        $('.references-input').last().after(html);
       }else{
         $(this).addClass('disabled');
       }
     });
-    $('.form-control').blur(function(){
-        var vals = Object.prototype.toString.call(vals) == "[object Array]" ? vals : []
-        ,references = $('.references').length
-        for(var i = 0;i<references;i++){
-          var a = $('#account_employee_references-'+i+'-a').val();
-          var b = $('#account_employee_references-'+i+'-b').val();
-          vals.push('{"name":"'+a+'","contact":"'+b+'"}');
-        }
-        $('#vals').val(vals)
+    $('#new_account').on('change','input.references.form-control',function(){
+      var vals = Object.prototype.toString.call(vals) == "[object Array]" ? vals : []
+      ,references = $('.references-input').length
+      for(var i = 0;i<references;i++){
+        var a = $('#account_employee_references-'+i+'-a').val();
+        var b = $('#account_employee_references-'+i+'-b').val();
+        vals.push('{"name":"'+a+'","contact":"'+b+'"}');
+      }
+      $('#vals').val(vals)
+    });
+    var programs = $('#account_accountable_attributes_program').html();
+    $('#account_accountable_attributes_camp').change(function(){
+      var camp = $('#account_accountable_attributes_camp :selected').text() 
+      ,options = $(programs).filter('optgroup[label="'+camp+'"]').html()
+      if (options != null){
+        $('#account_accountable_attributes_program').html(options).prop('disabled',false);
+      }else{
+        $('#account_accountable_attributes_program').empty.prop('disabled',true);
+      }
     });
   })(jQuery);
