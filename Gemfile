@@ -15,6 +15,7 @@ gem 'sprockets-rails'
 gem 'devise'
 gem 'cancancan', '~> 1.10'
 
+gem 'font-awesome-rails'
 gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'

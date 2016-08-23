@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'sidebar/index'
+
   # get 'apply/:camp_nickname', to: 'employee_applications#new',
   #                             as: :apply_to_work_at_camp
   # post 'apply/:camp_nickname', to: 'employee_applications#create',

@@ -1,5 +1,15 @@
 @import "bootstrap"; //bootstrap-rails import statement
+@import "font-awesome";
+// CUSTOM MEDIA SIZE MIXINS
+
+@mixin when-xs() { @media (max-width: 34em) { @content; } }
+@mixin when-sm() { @media (min-width: 48em) { @content; } }
+@mixin when-md() { @media (min-width: 62em) { @content; } }
+@mixin when-lg() { @media (min-width: 75em) { @content; } }
+
 
 .navbar-light{
   background-color:transparent;
 }
+
+@import "sidebar";

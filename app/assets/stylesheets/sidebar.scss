@@ -1,0 +1,124 @@
+// Place all the styles related to the sidebar controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+body{
+  overflow-x:hidden;
+}
+
+#wrapper{
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  
+  padding-left: 0px;
+}
+
+#wrapper.toggle{
+  padding-left: 250px;
+}
+
+#sidebar-wrapper{
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+
+  background:#000;
+  left: 250px;
+  margin-left: -250px;
+  overflow-y:auto;
+  position:fixed;
+  width:0;height:100%;
+  z-index: 1000;
+}
+
+#wrapper.toggled #sidebar-wrapper{
+  width: 250px;
+}
+
+#page-content-wrapper {
+  padding:15px;
+  position:absolute;
+  width:100%,
+}
+
+#wrapper-toggled #page-content-wrapper{
+  margin-right: -250px;
+}
+
+.sidebar-nav{
+  list-style:none;
+  margin:0;
+  padding:0;
+  position:absolute;
+  top:0;
+  width: 250px;
+}
+
+.sidebar-nav li{
+  line-height:32px;
+  text-indent:16px;
+}
+
+.sidebar-nav a{
+  color: grey;
+  display:block;
+  text-decoration:none;
+}
+
+.sidebar-nav li a:hover{
+  background:darkgrey;
+  color:white;
+  text-decoration:none;
+}
+
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus{
+  text-decoration: none;
+}
+
+.sidebar-nav > .sidebar-brand {
+  font-size: 18px;
+  height:65px;
+  line-height: 60px
+}
+
+.sidebar-nav > .sidebar-brand {
+  color: gray;
+}
+
+.sidebar-nav > .sidebar-brand a:hover{
+  background:none;
+  color:white
+}
+
+@include when-lg{
+    #wrapper {
+        padding-left: 250px;
+    }
+
+    #wrapper.toggled {
+        padding-left: 0;
+    }
+
+    #sidebar-wrapper {
+        width: 250px;
+    }
+
+    #wrapper.toggled #sidebar-wrapper {
+        width: 0;
+    }
+
+    #page-content-wrapper {
+        padding: 20px;
+        position: relative;
+    }
+
+    #wrapper.toggled #page-content-wrapper {
+        margin-right: 0;
+        position: relative;
+    }
+}
