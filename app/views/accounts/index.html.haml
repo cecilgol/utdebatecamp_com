@@ -1,19 +1,17 @@
-%h1 Listing accounts
+%h1 Welcome to your account page!
 
-%table
-  %thead
-    %tr
-      %th
-      %th
-      %th
+- if @account.admin?
+  %h3
+    we have you listed as a 
+    = @account.accountable_type
 
-  %tbody
-    - @accounts.each do |account|
-      %tr
-        %td= link_to 'Show', account
-        %td= link_to 'Edit', edit_account_path(account)
-        %td= link_to 'Destroy', account, :method => :delete, :data => { :confirm => 'Are you sure?' }
+%p 
+  You can edit your account information
+  = link_to "here", edit_account_path(@account)
 
-%br
+%p 
+  You can apply for camp or employment here
 
-= link_to 'New Account', new_account_path
+%p 
+  You can sign up your parent or student or coach here
+

@@ -1,0 +1,111 @@
+@import "bootstrap"; //bootstrap-rails import statement
+@import "font-awesome";
+// CUSTOM MEDIA SIZE MIXINS
+
+@mixin when-xs() { @media (max-width: 34em) { @content; } }
+@mixin when-sm() { @media (min-width: 48em) { @content; } }
+@mixin when-md() { @media (min-width: 62em) { @content; } }
+@mixin when-lg() { @media (min-width: 75em) { @content; } }
+
+
+.body-bg{
+  background:#000;
+}
+
+.navbar-light{
+  background-color:transparent;
+}
+
+@import "sidebar";
+
+.v110{
+  display:table;
+  height:110vh;
+  width:100%;
+}
+
+.a{
+  background-color:#fff;
+  background-position:center;
+  background-repeat:none;
+  background-size:cover;
+  color:inherit;
+  padding:60px 30px;
+  position:relative;
+  width:100%;
+}
+
+.big-middle{
+  display:table-cell;
+  vertical-align: middle;
+  
+  .big-middle-content-row{
+    margin:0 auto;
+    padding:0 10px 0 10px;
+
+    .big-middle-content-alignment{
+      margin-left:-10px;
+      margin-right:-10px;
+
+      h1.bmca{
+        font-size:56px;
+      }
+    }
+  }
+}
+
+
+// HOMEPAGE COLOURS
+.obbt{
+  background: #bf5700;
+  color:black
+}
+
+.bbbt{
+  background: #00ffff;
+  color: black;
+}
+
+.pbbt{
+  background: #ff3167;
+  color: black;
+}
+
+.pbwt{
+  background:#ff3167;
+  color: white;
+}
+
+
+.homepage-divider{
+    position: absolute;
+    top: 25px;
+    right: -50px;
+    bottom: 25px;
+    left: -50px;
+    overflow: hidden;
+    -webkit-transform: rotate(-2deg);
+    transform: rotate(-2deg);
+}
+
+.yellow-homepage-divider{
+  border-bottom:yellow 10px solid;
+}
+
+.rotate-back{
+  
+}
+
+// MEDIA QUERIES
+
+
+@media(min-width:768px){
+  .big-middle-content-row{
+    width:740px;
+  }
+  .big-middle-content-size{
+    width:41.6666667%
+  }
+
+}
+

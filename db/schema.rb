@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160816231903) do
+ActiveRecord::Schema.define(version: 20161208182620) do
 
   create_table "accounts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "first_name"
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 20160816231903) do
     t.date     "end_date"
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
+    t.index ["nickname"], name: "index_camps_on_nickname", unique: true, using: :btree
   end
 
   create_table "coaches", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
@@ -110,6 +111,7 @@ ActiveRecord::Schema.define(version: 20160816231903) do
     t.float    "compensation", limit: 24
     t.text     "references",   limit: 65535
     t.text     "experience",   limit: 65535
+    t.string   "avatar_url",   limit: 40
     t.index ["account_id"], name: "index_employees_on_account_id", using: :btree
     t.index ["camp_id"], name: "index_employees_on_camp_id", using: :btree
     t.index ["program_id"], name: "index_employees_on_program_id", using: :btree
@@ -160,6 +162,7 @@ ActiveRecord::Schema.define(version: 20160816231903) do
     t.float    "price",      limit: 24
     t.date     "start_date"
     t.date     "end_date"
+    t.string   "old_link"
     t.index ["camp_id"], name: "index_programs_on_camp_id", using: :btree
   end
 

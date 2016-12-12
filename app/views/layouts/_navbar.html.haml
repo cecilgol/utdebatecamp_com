@@ -1,6 +1,19 @@
-%nav.navbar.navbar-light.navbar-static-top
-  =link_to "utnif", root_path, {class:'navbar-brand',id:'navbar-brand'}
-  %button.navbar-toggler.hidden-md-up{'type'=>'button','data-toggle'=>'collapse','data-target'=>'navbarCollapse','aria-controls'=>'navbarCollapse','aria-expanded'=>'false','aria-label'=>'Toggle Navigation'}
-    &#9776;
-  .collapse.navbar-toggleable-md#navbarCollapse
+#sidebar.aqt.hidden
+  %ul.nav.anr.nav-stacked
+    %li
+      = link_to 'Home', root_path, {"data-target" => "#stage", "data-toggle" => "stage"}
+    %li.nav-divider
     = render 'layouts/login_info'
+    %li.nav-divider
+    %li.tq
+      %small Camps
+    - @camps.each do |c|
+      %li
+        = link_to c.name, camp_path(c.nickname), {"data-target" => "#stage", "data-toggle" => "stage"}
+    %li.nav-divider
+    %li.tq
+      %small About
+    %li
+      %a{"data-target" => "#stage", "data-toggle" => "stage", "href" => "#"} FAQ - For Parents
+    %li
+      %a{"data-target" => "#stage", "data-toggle" => "stage", "href" => "#"} About UTNIF

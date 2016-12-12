@@ -1,0 +1,33 @@
+%h1 Listing Accounts
+
+
+%table.table.sortable
+  %thead
+    %tr
+      %th first name
+      %th last name
+      %th account type
+      %th email
+      %th phone
+      %th
+      %th actions
+      %th
+
+  %tbody
+    - @accounts.each do |a|
+      %tr
+        %td= a.first_name
+        %td= a.last_name
+        %td= a.accountable_type
+        - if a.user.nil?
+          %td "account has no user"
+        - else
+          %td= a.user.email
+        %td= a.cell_phone
+        %td= link_to 'Show', a
+        %td= link_to 'Edit', edit_admin_account_path(a)
+        %td= link_to 'Destroy', admin_account_path(a), :method => :delete, :data => { :confirm => 'Are you sure?' }
+        
+
+%br
+

@@ -13,27 +13,32 @@
       <!--[if lt IE 9]>
         <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
       <![endif]-->
-
-  %body
-    #wrapper
-      =render 'sidebar/sidebar'
-      
+      <style>
+        @media (max-width: 768px) and (-webkit-min-device-pixel-ratio: 2) {
+          body {
+            width: 1px;
+            min-width: 100%;
+            *width: 100%;
+          }
+          #stage {
+            height: 1px;
+            overflow: auto;
+            min-height: 100vh;
+            -webkit-overflow-scrolling: touch;
+          }
+        }
+      </style>
+  %body{:style => "overflow: auto;"}
+    = render 'layouts/navbar'
+    .stage#stage
       .container
-        - flash.each do |type, message|
-          .alert.alert-dismissable{ :class => utnif_type(type) }
-            = message
-            %button.close{ data: { dismiss: 'alert' } } x
-
-        %section#page-content-wrapper.container-fluid
-          .row-fluid
-            .span12
-              %a#menu-toggle.btn.btn-primary.pull-right
-                = fa_icon "cog"
-
-              = yield
-        
-:javascript
-  $("#menu-toggle").click(function(e) {
-    e.preventDefault();
-    $("#wrapper").toggleClass("toggled");
-  });
+      - flash.each do |type, message|
+        .alert.alert-dismissable{ :class => utnif_type(type) }
+          = message
+          %button.close{ data: { dismiss: 'alert' } } x
+      %button.btn.btn-link.stage-toggle{"data-target" => "#stage", "data-toggle" => "stage"}
+        %span.a.aez.ara
+          Menu
+ 
+      = yield
+      = render 'layouts/footer'

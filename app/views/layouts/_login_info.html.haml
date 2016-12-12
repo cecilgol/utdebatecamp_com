@@ -1,15 +1,15 @@
-%ul.nav.navbar-nav.pull-md-right
-  - if user_signed_in?
-    %li.nav.nav-item
-      -if current_user.account.present?
-        =link_to current_user.account.first_name, edit_account_path(current_user.account.id),{class:'nav-link'}
-      -else
-        =link_to current_user.email, edit_user_registration_path,{class:'nav-link'}
-      
-    %li.nav.nav-item
-      =link_to "sign out", destroy_user_session_path, {class:'nav-link',:method => 'delete'}
-  - else
-    %li.nav.nav-item
-      =link_to "sign in", new_user_session_path,{class:'nav-link'}
-    %li.nav.nav-item
-      =link_to "register", new_user_registration_path,{class:'nav-link'}
+%li.tq
+  %small Login
+- if user_signed_in?
+  %li
+    -if current_user.account.present?
+      =link_to current_user.account.first_name.titlecase, edit_account_path(current_user.account.id)
+    -else
+      =link_to current_user.email, edit_user_registration_path
+  %li
+    =link_to "Sign Out", destroy_user_session_path, {:method => 'delete'}
+- else
+  %li
+    =link_to "Sign In", new_user_session_path,{class:'nav-link', data:{:target => "#stage", :toggle=>"stage"}, remote: true}
+  %li
+    =link_to "Sign Up", new_user_registration_path,{class:'nav-link', data:{:target => "#stage", :toggle=>"stage"}, remote: true}

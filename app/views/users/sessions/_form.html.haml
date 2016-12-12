@@ -1,0 +1,9 @@
+%h1.apd.amf
+  %span.dp.aqa Login Please
+=form_for(resource, as: resource_name, url: session_path(resource_name), remote: true) do |f|
+  .apz.sign-in-form
+    =f.email_field :email, {autofocus:true, placeholder: "email",class:"ej apy aqa"}
+    =f.password_field :password, {autocomplete:"off", placeholder: "password",class:"ej apy aqa"}
+  .actions
+    =f.submit "login", {class:'dl anz oq ao btn-block'}
+    =render 'devise/shared/links'

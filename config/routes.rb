@@ -24,8 +24,10 @@ Rails.application.routes.draw do
   #                                   as: :student_applications
 
   namespace :admin do
+    resources :accounts
     resources :camps
-    resources :employees, only: [:index]
+    resources :employees
+    resources :programs
   end
 
   resources :coaches
@@ -35,7 +37,7 @@ Rails.application.routes.draw do
   resources :students, except: [:index] do
     resources :student_applications
   end
-  resources :camps, only: [:show]
+  resources :camps, only: [:show], param: :nickname
   resources :accounts
   resources :site_administrators
   resources :programs
@@ -49,18 +51,21 @@ Rails.application.routes.draw do
   end
 
   devise_for :users, controllers:{
-    registrations: 'users/registrations'
+    registrations: 'users/registrations',
+    sessions: 'users/sessions'
   }
 
   root to: 'static_pages#index'
 
   get 'static_pages/about'
 
-  get '/apply', to: 'static_pages#apply_to_work'
+  #get '/apply', to: 'static_pages#apply_to_work'
   
   post 'a/c', to: 'accounts#accountable_change'
 
   post 'a/p/c', to: 'accounts#create_poly_account'
+
+  get '/apply/(:s)', to: 'accounts#new'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

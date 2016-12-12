@@ -4,9 +4,9 @@ class ProgramsController < ApplicationController
 
   # GET /programs
   # GET /programs.json
-  def index
-    @programs = Program.all
-  end
+  # def index
+  #   @programs = Program.all
+  # end
 
   # GET /programs/1
   # GET /programs/1.json

@@ -1,7 +1,6 @@
 class CampsController < ApplicationController
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
   before_action :set_camp, only: [:show] #, :edit, :update, :destroy, :sign_up, :apply_to_work]
-
   # respond_to :html, :js
 
   # # GET /camps
@@ -13,6 +12,10 @@ class CampsController < ApplicationController
   # GET /camps/1
   # GET /camps/1.json
   def show
+    if !@camps
+      @camps = Camp.all
+    end
+    
   end
 
   # # GET /camps/new
@@ -83,7 +86,7 @@ class CampsController < ApplicationController
 
   #   # Use callbacks to share common setup or constraints between actions.
     def set_camp
-      @camp = Camp.find(params[:id])
+      @camp = Camp.find_by(nickname: params[:nickname])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

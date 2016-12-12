@@ -1,1 +1,10 @@
-%h2 STUDENTS COCKSUCKERS
+%h3 Great! We're exicted you'll be joining us this summer!
+
+%p Let's get some quick information about you.
+
+= form_for @a do |f|
+  = create_account_generic_form(f)
+
+  =f.fields_for :accountable, @p do |ff|
+    -if @a.new_record?
+      =ff.hidden_field :accountable_type, value: @p.class

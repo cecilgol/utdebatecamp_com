@@ -67,7 +67,7 @@ Devise.setup do |config|
   # config.http_authenticatable = false
 
   # If 401 status code should be returned for AJAX requests. True by default.
-  # config.http_authenticatable_on_xhr = true
+  # config.http_authenticatable_on_xhr = True
 
   # The realm used in Http Basic Authentication. 'Application' by default.
   # config.http_authentication_realm = 'Application'
@@ -111,7 +111,7 @@ Devise.setup do |config|
   # config.pepper = '6869f68beba2270a7b349658dbb517c5576910fbb7d70e2a64ee1504a8937ddeb41cf0b6b3101c041b149c93038cb45fcafa7cfae6db8ffa2ea2a6ab8a73b85b'
 
   # Send a notification email when the user's password is changed
-  # config.send_password_change_notification = false
+  # config.send_password_change_notification = true
 
   # ==> Configuration for :confirmable
   # A period that the user is allowed to access the website even without
@@ -239,7 +239,7 @@ Devise.setup do |config|
   # should add them to the navigational formats lists.
   #
   # The "*/*" below is required to match Internet Explorer requests.
-  # config.navigational_formats = ['*/*', :html]
+  config.navigational_formats = ['*/*', :html]
 
   # The default HTTP method used to sign out a resource. Default is :delete.
   config.sign_out_via = :delete
