@@ -1,17 +1,17 @@
-#sidebar.aqt.hidden
-  %ul.nav.anr.nav-stacked
-    %li
+#sidebar.stage-shelf.hidden
+  %ul.nav.nav-bordered.nav-stacked
+    %li.nav-header
       = link_to 'Home', root_path, {"data-target" => "#stage", "data-toggle" => "stage"}
     %li.nav-divider
     = render 'layouts/login_info'
     %li.nav-divider
-    %li.tq
+    %li.nav-header
       %small Camps
     - @camps.each do |c|
       %li
         = link_to c.name, camp_path(c.nickname), {"data-target" => "#stage", "data-toggle" => "stage"}
     %li.nav-divider
-    %li.tq
+    %li.nav-header
       %small About
     %li
       %a{"data-target" => "#stage", "data-toggle" => "stage", "href" => "#"} FAQ - For Parents

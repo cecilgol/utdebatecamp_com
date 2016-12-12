@@ -1,9 +1,35 @@
-%h1.apd.amf
-  %span.dp.aqa Register
+%h1.block-title.m-b-md
+  %span.text-ribbon.text-ribbon-primary 
+    %span Register
 =form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-  .apz.registration-form
-    =f.email_field :email, {autofocus:true, placeholder: "email",class:"ej apy aqa first-registration-entry"} 
-    =f.password_field :password, {autocomplete:"off", placeholder: "password",class:"ej apy aqa"} 
-    =f.password_field :password_confirmation, {autocomplete:"off",placeholder:"password one more time",class:"ej apy aqa"}
+  .text-ribbon-inputs-split.registration-form
+    =f.email_field :email, {autofocus:true, placeholder: "email",class:"h4 text-ribbon-input text-ribbon-primary"} 
+    =f.password_field :password, {autocomplete:"off", placeholder: "password",class:"h4 text-ribbon-input text-ribbon-primary"} 
+    =f.password_field :password_confirmation, {autocomplete:"off",placeholder:"password one more time",class:"h4 text-ribbon-input text-ribbon-primary"}
   .actions
-    =f.submit "Sign Up!", {class:'dl anz oq ao btn-block'}
+    =f.submit "Sign Up!", {class:'btn btn-square btn-primary btn-lg btn-block'}
+
+
+-# ///    <div class="block-xs-middle">
+-#       <div class="container">
+-#         <div class="row">
+-#           <div class="col-sm-6 col-sm-offset-6">
+-#             <h1 class="block-title m-b-md">
+-#               <span class="text-ribbon text-ribbon-primary">
+-#                 <span>Sign up now.</span>
+-#               </span>
+-#             </h1>
+
+-#             <div class="text-ribbon-inputs-split">
+-#               <input type="text" class="h4 text-ribbon-input text-ribbon-primary" placeholder="Name">
+-#               <input type="text" class="h4 text-ribbon-input text-ribbon-primary" placeholder="Email">
+-#             </div>
+-#             <input type="text" class="h4 text-ribbon-input text-ribbon-input-half text-ribbon-primary" placeholder="Promo code">
+-#             <button type="button" class="btn btn-square btn-primary btn-lg btn-block">
+-#               Get the beta early
+-#             </button>
+-#           </div>
+-#         </div>
+-#       </div>
+-#     </div>
+-#   </div>

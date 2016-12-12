@@ -12,7 +12,7 @@ $black_50: rgba(0, 0, 0, 0.5);
 $color_rangoon_green_approx: rgba(26, 26, 26, 1);
 $yellow: rgba(255, 255, 0, 1);
 $silver: rgba(192, 192, 192, 1);
-$color_starship_approx: rgba(238, 224, 74, 1);
+$color_starship_approx: rgba(255, 136, 85, 1);
 $color_bird_flower_approx: rgba(215, 199, 20, 1);
 $color_solitaire_approx: rgba(252, 248, 227, 1);
 $color_silver_chalice_approx: rgba(170, 170, 170, 1);
@@ -5698,20 +5698,20 @@ input[type="checkbox"][disabled] {
 	font-size: 21px;
 	font-weight: bold;
 	line-height: 1;
-	color: $black;
+	color: $color_tapa_approx;
 	//Instead of the line below you could use @include text-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
 	text-shadow: 0 1px 0 $white;
 	opacity: 0.2;
 	filter: alpha(opacity=20);
 	&:hover {
-		color: $black;
+		color: $color_tapa_approx;
 		text-decoration: none;
 		cursor: pointer;
 		opacity: 0.5;
 		filter: alpha(opacity=50);
 	}
 	&:focus {
-		color: $black;
+		color: $color_tapa_approx;
 		text-decoration: none;
 		cursor: pointer;
 		opacity: 0.5;
@@ -9018,12 +9018,12 @@ input[type="checkbox"][disabled] {
 }
 .modal-content {
 	position: relative;
-	background-color: $white;
-	border: 1px solid $black_20;
+	background-color: $black_60;
+	/*border: 1px solid $black_20;*/
 	//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
-	border-radius: 6px;
+	/*border-radius: 6px;*/
 	//Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
-	box-shadow: 0 3px 9px $black_50;
+	/*box-shadow: 0 3px 9px $black_50;*/
 	//Instead of the line below you could use @include background-clip($clip)
 	background-clip: padding-box;
 	outline: 0;
@@ -9047,7 +9047,7 @@ input[type="checkbox"][disabled] {
 }
 .modal-header {
 	padding: 15px;
-	border-bottom: 1px solid $mercury;
+	/*border-bottom: 1px solid $mercury;*/
 	.close {
 		margin-top: -2px;
 	}
@@ -9072,7 +9072,7 @@ input[type="checkbox"][disabled] {
 .modal-footer {
 	padding: 15px;
 	text-align: right;
-	border-top: 1px solid $mercury;
+	/*border-top: 1px solid $mercury;*/
 	&:before {
 		content: " ";
 		display: table;
@@ -11243,6 +11243,7 @@ img[data-action="zoom"] {
 	span {
 		position: relative;
 		left: auto;
+    z-index:1;
 	}
 }
 .text-ribbon-input {
@@ -11303,6 +11304,9 @@ img[data-action="zoom"] {
 }
 .text-ribbon-info {
 	background-color: $color_viking_approx;
+}
+.text-ribbon-transparent{
+  background-color: $black_0_01;
 }
 .iconlist {
 	list-style: none;
