@@ -31,6 +31,10 @@
     = f.label :end_date, {'class'=>'col-xs-2 col-form-label'}
     .col-xs-10
       = f.text_field :end_date, {'type' => 'date','class'=>'form-control'}
+  .form-group.row
+    = f.label :glossy, {'class'=>'col-xs-2 col-form-label'}
+    .col-xs-10
+      = f.file_field :glossy, {'type' => 'file','class'=>'form-control'}
 
   .actions
     = f.submit 'Save', {'class'=>'btn btn-primary','type'=>'submit'}

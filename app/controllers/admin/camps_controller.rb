@@ -45,7 +45,7 @@ class Admin::CampsController < AdminController
   def update
     respond_to do |format|
       if @camp.update(camp_params)
-        format.html { redirect_to @camp, notice: 'Camp was successfully updated.' }
+        format.html { redirect_to admin_camps_path, notice: 'Camp was successfully updated.' }
         format.json { render :show, status: :ok, location: @camp }
       else
         format.html { render :edit }
@@ -88,9 +88,6 @@ class Admin::CampsController < AdminController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def camp_params
-    params.require(:camp).permit(:name,:nickname,:info,:start_date,:end_date)
+    params.require(:camp).permit(:name,:nickname,:info,:start_date,:end_date,:glossy)
   end
-
-
-
 end

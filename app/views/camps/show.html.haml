@@ -1,26 +1,26 @@
-.block.app-block-wayne
-  .block-sm-middle.block-xs-bottom
+.block.block-fill-height.app-block-wayne{:style => "background-image: url(#{image_url(@camp.glossy)})"}
+  .block-lg-middle.block-xs-middle
     .container
       .row
         %h1.block-title.m-b-md
-          %span.text-ribbon-primary
+          %span
             %span
               = @camp.name
           %p.lead
-            %span.text-ribbon-primary
+            %span
               %span
                 = @camp.info
-  - @camp.programs.each do |p|
-    .k.b
-      .apk.apg
-        .e.aqa
-          .c
-            .aqa
-              %h1.apd.amf
-                %span.dp
-                  %span 
-                    = p.name
-              %p.ak
-                %span.dp
-                  %span
-                    = p.start_date
+- @camp.programs.each do |p|
+  .k.b
+    .apk.apg
+      .e.aqa
+        .c
+          .aqa
+            %h1.apd.amf
+              %span.dp
+                %span 
+                  = p.name
+            %p.ak
+              %span.dp
+                %span
+                  = p.start_date

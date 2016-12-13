@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161208182620) do
+ActiveRecord::Schema.define(version: 20161213011039) do
 
   create_table "accounts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "first_name"
@@ -38,11 +38,15 @@ ActiveRecord::Schema.define(version: 20161208182620) do
   create_table "camps", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "name"
     t.string   "nickname"
-    t.text     "info",       limit: 65535
+    t.text     "info",                limit: 65535
     t.date     "start_date"
     t.date     "end_date"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+    t.string   "glossy_file_name"
+    t.string   "glossy_content_type"
+    t.integer  "glossy_file_size"
+    t.datetime "glossy_updated_at"
     t.index ["nickname"], name: "index_camps_on_nickname", unique: true, using: :btree
   end
 

@@ -14,7 +14,7 @@ gem 'bootstrap', '~> 4.0.0.alpha3'
 gem 'sprockets-rails'
 gem 'devise'
 gem 'cancancan', '~> 1.10'
-
+gem "paperclip", "~> 5.0.0"
 gem 'font-awesome-rails'
 gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
