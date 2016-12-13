@@ -1,9 +1,10 @@
-%h1.apd.amf
-  %span.dp.aqa Login Please
+%h1.block-title.m-b-md
+  %span.text-ribbon.text-ribbon-primary 
+    %span Login Please
 =form_for(resource, as: resource_name, url: session_path(resource_name), remote: true) do |f|
-  .apz.sign-in-form
-    =f.email_field :email, {autofocus:true, placeholder: "email",class:"ej apy aqa"}
-    =f.password_field :password, {autocomplete:"off", placeholder: "password",class:"ej apy aqa"}
+  .text-ribbon-inputs-split.sign-in-form
+    =f.email_field :email, {autofocus:true, placeholder: "email",class:"h4 text-ribbon-input text-ribbon-primary"}
+    =f.password_field :password, {autocomplete:"off", placeholder: "password",class:"h4 text-ribbon-input text-ribbon-primary"}
   .actions
-    =f.submit "login", {class:'dl anz oq ao btn-block'}
+    =f.submit "login", {class:'btn btn-square btn-primary btn-lg btn-block'}
     =render 'devise/shared/links'

@@ -1,20 +1,15 @@
-#stage.aqs{:style => ""}
-  .k.apb.b
-    %button.dl.oy.aqv{"data-target" => "#stage", "data-toggle" => "stage"}
-      %span.a.aez.ara
-      Menu
-    .apk.apg
-      .e.aqa
-        .c
-          .aqa
-            %h1.apd.amf
-              %span.dp
-                %span 
-                  = @camp.name
-            %p.ak
-              %span.dp
-                %span
-                  = @camp.info
+.block.app-block-wayne
+  .block-sm-middle.block-xs-bottom
+    .container
+      .row
+        %h1.block-title.m-b-md
+          %span.text-ribbon-primary
+            %span
+              = @camp.name
+          %p.lead
+            %span.text-ribbon-primary
+              %span
+                = @camp.info
   - @camp.programs.each do |p|
     .k.b
       .apk.apg
