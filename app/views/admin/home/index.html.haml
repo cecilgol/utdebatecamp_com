@@ -1,0 +1,23 @@
+.block.block-fill-height
+  .block-lg-top.block-xs-top
+    .container
+      .row
+        %h1.block-title.m-b-md
+          %span.text-ribbon.text-ribbon-danger
+            %span WELCOME TO THE ADMIN SPACE
+      .row
+        %h4.m-b-md
+          %span.text-ribbon.text-ribbon-transparent
+            %span From here you can do all kinds of damage, so please try to be careful!
+
+    -# OK heres the deal with this: Theres a list in controllers/admin/home_controller that has these and theyre super fucked haxxord together right now. 
+    - @admin_actions.each do |a|
+      .row
+        %h3.block-title.m-b-md
+          %span.text-ribbon.text-ribbon-transparent
+            %span 
+              = a.pluralize.titlecase
+        .col-xs-6.col-lg-2
+          = link_to "Edit any #{a.pluralize.titlecase}", polymorphic_url([:admin,a.pluralize]), {class:'btn btn-square btn-info'}
+        .col-xs-6.col-lg-2
+          = link_to "Create a new #{a.titlecase}", polymorphic_url([:new,:admin,a]), {class:'btn btn-square btn-info'}

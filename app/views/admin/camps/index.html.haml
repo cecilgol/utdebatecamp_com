@@ -23,7 +23,7 @@
         %td= camp.end_date.to_s
         %td= link_to 'Show', camp
         %td= link_to 'Edit', edit_admin_camp_path(camp)
-        %td= link_to 'Destroy', camp, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        %td= link_to 'Destroy', admin_camp_path(camp), :method => :delete, :data => { :confirm => 'Are you sure?' }
         
 
 %br

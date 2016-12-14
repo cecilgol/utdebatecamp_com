@@ -25,9 +25,12 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :accounts
+    resources :users
     resources :camps
     resources :employees
     resources :programs
+    resources :labs
+    get '/', to: 'home#index'
   end
 
   resources :coaches
@@ -52,7 +55,8 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers:{
     registrations: 'users/registrations',
-    sessions: 'users/sessions'
+    sessions: 'users/sessions',
+    :omniauth_callbacks => "users/omniauth_callbacks"
   }
 
   root to: 'static_pages#index'

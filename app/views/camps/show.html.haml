@@ -1,26 +1,32 @@
-.block.block-fill-height.app-block-wayne{:style => "background-image: url(#{image_url(@camp.glossy)})"}
+.block.app-block-chainz{:style => "background-image: url(#{image_url(@camp.glossy.url)})"}
   .block-lg-middle.block-xs-middle
     .container
       .row
         %h1.block-title.m-b-md
-          %span
+          %span.text-ribbon{class:"text-ribbon-#{@camp.nickname.downcase}"}
             %span
               = @camp.name
           %p.lead
-            %span
+            %span.text-ribbon{class:"text-ribbon-#{@camp.nickname.downcase}"}
               %span
                 = @camp.info
 - @camp.programs.each do |p|
-  .k.b
-    .apk.apg
-      .e.aqa
-        .c
-          .aqa
-            %h1.apd.amf
-              %span.dp
-                %span 
-                  = p.name
-            %p.ak
-              %span.dp
-                %span
-                  = p.start_date
+  %div{:class => cycle('block block-inverse','block')}
+    .block-lg-middle.block-xs-middle
+      .container
+        .row
+          .col-xs-12
+            %h3
+              %span
+                = p.name
+            %p.lead
+              %span
+                = p.info
+
+            %p
+              %span
+                Begins
+                = p.start_date
+                &amp; Ends
+                = p.end_date
+            =link_to "Sign Up for #{p.nickname}", p.old_link, {class:'btn btn-square btn-primary sign-up-link-btn'}

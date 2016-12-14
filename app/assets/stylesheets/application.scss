@@ -54,7 +54,7 @@ $color_new_york_pink_approx: rgba(206, 132, 131, 1);
 $color_cape_cod_approx: rgba(64, 64, 64, 1);
 $black_12_5: rgba(0, 0, 0, 0.125);
 $color_baltic_sea_approx: rgba(43, 43, 43, 1);
-$color_golden_dream_approx: rgba(236, 220, 51, 1);
+$color_golden_dream_approx: darken(rgba(255, 136, 85, 1),10);
 $color_hacienda_approx: rgba(145, 134, 14, 1);
 $color_apple_approx: rgba(76, 174, 76, 1);
 $color_parsley_approx: rgba(37, 86, 37, 1);
@@ -5147,59 +5147,59 @@ input[type="checkbox"][disabled] {
 	border-color: $color_golden_dream_approx;
 	&:focus {
 		color: $black;
-		background-color: $color_sunflower_approx;
-		border-color: $color_hacienda_approx;
+		background-color: lighten($color_starship_approx, 7);
+		border-color: lighten($color_golden_dream_approx, 7);
 	}
 	&.focus {
 		color: $black;
-		background-color: $color_sunflower_approx;
-		border-color: $color_hacienda_approx;
+		background-color: lighten($color_starship_approx, 7);
+		border-color: lighten($color_golden_dream_approx, 7);
 	}
 	&:hover {
 		color: $black;
-		background-color: $color_sunflower_approx;
-		border-color: $color_bird_flower_approx;
+		background-color: lighten($color_starship_approx, 7);
+		border-color: lighten($color_golden_dream_approx, 7);
 	}
 	&:active {
 		color: $black;
-		background-color: $color_sunflower_approx;
-		border-color: $color_bird_flower_approx;
+		background-color: lighten($color_starship_approx, 7);
+		border-color: lighten($color_golden_dream_approx, 7);
 		background-image: none;
 		&:hover {
 			color: $black;
-			background-color: $color_bird_flower_approx;
-			border-color: $color_hacienda_approx;
+		background-color: lighten($color_starship_approx, 7);
+		border-color: lighten($color_golden_dream_approx, 7);
 		}
 		&:focus {
 			color: $black;
-			background-color: $color_bird_flower_approx;
-			border-color: $color_hacienda_approx;
+			background-color: lighten($color_starship_approx, 7);
+			border-color: lighten($color_golden_dream_approx, 7);
 		}
 		&.focus {
 			color: $black;
-			background-color: $color_bird_flower_approx;
-			border-color: $color_hacienda_approx;
+			background-color: lighten($color_starship_approx, 7);
+			border-color: lighten($color_golden_dream_approx, 7);
 		}
 	}
 	&.active {
 		color: $black;
-		background-color: $color_sunflower_approx;
-		border-color: $color_bird_flower_approx;
+		background-color: lighten($color_starship_approx, 7);
+		border-color: lighten($color_golden_dream_approx, 7);
 		background-image: none;
 		&:hover {
 			color: $black;
-			background-color: $color_bird_flower_approx;
-			border-color: $color_hacienda_approx;
+			background-color: lighten($color_starship_approx, 7);
+			border-color: lighten($color_golden_dream_approx, 7);
 		}
 		&:focus {
 			color: $black;
-			background-color: $color_bird_flower_approx;
-			border-color: $color_hacienda_approx;
+			background-color: lighten($color_starship_approx, 7);
+			border-color: lighten($color_golden_dream_approx, 7);
 		}
 		&.focus {
 			color: $black;
-			background-color: $color_bird_flower_approx;
-			border-color: $color_hacienda_approx;
+			background-color: lighten($color_starship_approx, 7);
+			border-color: lighten($color_golden_dream_approx, 7);
 		}
 	}
 	&.disabled {
@@ -9011,11 +9011,11 @@ input[type="checkbox"][disabled] {
 		transform: translate(0, 0);
 	}
 }
-.modal-dialog {
+/*.modal-dialog {
 	position: relative;
 	width: auto;
 	margin: 10px;
-}
+}*/
 .modal-content {
 	position: relative;
 	background-color: $black_60;
@@ -11308,6 +11308,15 @@ img[data-action="zoom"] {
 .text-ribbon-transparent{
   background-color: $black_0_01;
 }
+.text-ribbon-cx{
+	background-color: $color_starship_approx;
+}
+.text-ribbon-ld{
+	background-color: $color_lunar_green_approx;
+}
+.text-ribbon-pf{
+	background-color: $color_calypso_approx;
+}
 .iconlist {
 	list-style: none;
 	padding-left: 0;
@@ -13226,3 +13235,7 @@ tbody.collapse.in {
 /*@-moz-document url-prefix() {
 	.text-ribbon: ;
 }*/
+
+.sign-up-link-btn{
+	float: right;
+}

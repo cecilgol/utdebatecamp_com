@@ -2,16 +2,16 @@ class EmployeesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_employee, except: [:new]
 
-  # GET /employees
-  # GET /employees.json
-  def index
-    @employees = Employee.all
-  end
+  # # GET /employees
+  # # GET /employees.json
+  # def index
+  #   @employees = Employee.all
+  # end
 
-  # GET /employees/1
-  # GET /employees/1.json
-  def show
-  end
+  # # GET /employees/1
+  # # GET /employees/1.json
+  # def show
+  # end
 
   # GET /employees/new
   def new
@@ -19,11 +19,11 @@ class EmployeesController < ApplicationController
   end
 
   # GET /employees/1/edit
-  def edit
-  end
+  # def edit
+  # end
 
-  # POST /employees
-  # POST /employees.json
+  # # POST /employees
+  # # POST /employees.json
   def create
     @employee = Employee.new(employee_params)
 

@@ -9,7 +9,6 @@
       %th account type
       %th email
       %th phone
-      %th
       %th actions
       %th
 
@@ -24,10 +23,10 @@
         - else
           %td= a.user.email
         %td= a.cell_phone
-        %td= link_to 'Show', a
         %td= link_to 'Edit', edit_admin_account_path(a)
         %td= link_to 'Destroy', admin_account_path(a), :method => :delete, :data => { :confirm => 'Are you sure?' }
         
 
 %br
 
+=link_to "create new account", new_admin_account_path
