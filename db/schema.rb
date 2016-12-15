@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161215143058) do
+ActiveRecord::Schema.define(version: 20161215231607) do
 
   create_table "accounts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "first_name"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 20161215143058) do
     t.integer  "accountable_id"
     t.string   "email"
     t.string   "carrier"
+    t.string   "zipcode"
     t.index ["accountable_type", "accountable_id"], name: "index_accounts_on_accountable_type_and_accountable_id", using: :btree
     t.index ["user_id"], name: "index_accounts_on_user_id", using: :btree
   end
@@ -110,9 +111,9 @@ ActiveRecord::Schema.define(version: 20161215143058) do
     t.string   "pronouns"
     t.string   "dorm"
     t.string   "eid"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
-    t.boolean  "is_hired"
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
+    t.boolean  "is_hired",                   default: false
     t.float    "compensation", limit: 24
     t.text     "references",   limit: 65535
     t.text     "experience",   limit: 65535

@@ -5,6 +5,21 @@
       %ul
         - @employee.errors.full_messages.each do |msg|
           %li= msg
+  = fields_for :account  do |ff|
+    = ff.text_field :first_name, {placeholder:"First Name"}
+    = ff.text_field :middle_name, {placeholder:"Middle Name"}
+    = ff.text_field :last_name, {placeholder:"Last Name"}
+    = ff.text_field :cell_phone, {placeholder:"Cell"}
+    = ff.text_field :carrier, {placeholder:"Carrier"}
+    = ff.text_field :address1, {placeholder:"Address"}
+    = ff.text_field :address2, {placeholder:"Address (continued)"}
+    = ff.text_field :city, {placeholder:"City"}
+    = ff.text_field :state, {placeholder:"State"}
+    = ff.text_field :zipcode, {placeholder:"Zipcode"}
+    = ff.text_field :birthday, {placeholder:"Birthday"}
+
+  = f.select :camp_id, Camp.all.collect {|c| [ c.name, c.id ] }
+
 
   .actions
     = f.submit 'Save'

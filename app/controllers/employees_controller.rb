@@ -1,31 +1,23 @@
 class EmployeesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_employee, except: [:new]
+  before_action :set_employee, except: [:new,:create]
 
-  # # GET /employees
-  # # GET /employees.json
-  # def index
-  #   @employees = Employee.all
-  # end
-
-  # # GET /employees/1
-  # # GET /employees/1.json
-  # def show
-  # end
-
-  # GET /employees/new
   def new
     @employee = Employee.new
+    current_user.account ||= Account.new   
+    @employee.account = current_user.account
   end
 
-  # GET /employees/1/edit
-  # def edit
-  # end
 
-  # # POST /employees
-  # # POST /employees.json
   def create
     @employee = Employee.new(employee_params)
+    @account = current_user.account.reload
+
+    unless @account.update(account_params)
+      format.html {render :new}
+    end
+
+    @employee.account = @account
 
     respond_to do |format|
       if @employee.save
@@ -38,8 +30,7 @@ class EmployeesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /employees/1
-  # PATCH/PUT /employees/1.json
+
   def update
     respond_to do |format|
       if @employee.update(employee_params)
@@ -52,8 +43,6 @@ class EmployeesController < ApplicationController
     end
   end
 
-  # DELETE /employees/1
-  # DELETE /employees/1.json
   def destroy
     @employee.destroy
     respond_to do |format|
@@ -62,36 +51,13 @@ class EmployeesController < ApplicationController
     end
   end
 
-  # GET /employees/1/apply/1
-  def apply_to_camp
-    @camp = Camp.find(params[:camp_id])
-    @application = EmployeeApplication.new
-  end
 
-  # PUT /employees/1/apply/1
-  def create_application
-    @camp = Camp.find(params[:employee][:employee_application][:camp])
-    @program = Program.find(params[:employee][:employee_application][:program])
-    @employee_application = EmployeeApplication.new(camp: @camp, program: @program,employee: @employee)
-
-    respond_to do |format|
-      if @employee_application.save
-        format.html { redirect_to @employee, notice: 'Employee Application was successfully created.' }
-        format.json { render :show, status: :created, location: @employee }
-      else
-        format.html { render :new }
-        format.json { render json: @employee.errors, status: :unprocessable_entity }
-      end
-    end
-
-
-  end
 
   private
 
   # Use callbacks to share common setup or constraints between actions.
   def set_employee
-    @employee = Employee.find(params[:employee_id])
+    @employee = Employee.find(params[:id])
   end
 
   def is_employee
@@ -102,9 +68,9 @@ class EmployeesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def employee_params
-    params.fetch(:employee, {})
+    params.require(:employee).permit(:camp_id,:program,:pronouns,:arrival_date,:leave_date,:bio,:dorm,:eid,:references,:experience,:avatar)
   end
-  def application_params
-    params.fetch(:employee_application, {})
+  def account_params
+    params.require(:account).permit(:first_name,:middle_name,:last_name,:cell_phone,:carrier,:address1,:address2,:city,:state,:zipcode,:birthday)
   end
 end

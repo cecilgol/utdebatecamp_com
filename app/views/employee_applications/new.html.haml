@@ -1,11 +1,14 @@
-%h1 
-  Apply to work at UTNIF
-  = @camp.name
+.block.app-block-chainz
+  .block-lg-middle.block-xs-middle
+    .container
+      .row
+        %h1.block-title.m-b-md
+          %span.text-ribbon.text-ribbon-info
+            %span
+              Apply to work at UTNIF
 
-%p
-  Applying as
-  = @employee.account.first_name
-   
-  = @employee.account.last_name
-
-= render 'form'
+        %p.lead
+          %span.text-ribbon.text-ribbon-info
+            %span
+              First, lets get some information about you
+  = render 'form'

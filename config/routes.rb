@@ -53,15 +53,10 @@ Rails.application.routes.draw do
   resources :accounts
   resources :site_administrators
   resources :programs
-  resources :employee_applications, only: [:new, :edit, :show]
 
-  resources :employees, param: :employee_id, except: [:index] do
-    get 'apply/:camp_id', to: 'employees#apply_to_camp',
-                          as: :apply_to_camp
-    post 'apply/:camp_id', to: 'employees#create_application',
-                          as: :create_application
-    # resources :employee_applications
-  end
+
+  resources :employees, only: [:new, :edit, :show, :create, :update, :destroy]
+
 
   devise_for :users, controllers:{
     registrations: 'users/registrations',

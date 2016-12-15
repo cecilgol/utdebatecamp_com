@@ -3,35 +3,38 @@
     #error_explanation
       %h2 = "#{pluralize(@application.errors.count,"error")} prohibited this program from being saved:"
 
-  .form-group.row
-    = f.label :program, {'class'=>'col-xs-2 col-form-label'}
-    .col-xs-10
-      = f.collection_select(:program, @camp.programs, :id, :nickname, {}, {'class'=>'form-control'})
+  -# = fields_for @applicaiton.employee.account do |ff|
+  -#   = ff.text_field :first_name
 
-  = fields_for @employee do |ff|
-    .form-group.row
-      = ff.label :pronouns, {'class'=>'col-xs-2 col-form-label'}
-      .col-xs-10
-        = ff.text_field :pronouns, {'class'=>'form-control'}
+  -# .form-group.row
+  -#   = f.label :program, {'class'=>'col-xs-2 col-form-label'}
+  -#   .col-xs-10
+  -#     = f.collection_select(:program, @camp.programs, :id, :nickname, {}, {'class'=>'form-control'})
+
+  -# = fields_for @employee do |ff|
+  -#   .form-group.row
+  -#     = ff.label :pronouns, {'class'=>'col-xs-2 col-form-label'}
+  -#     .col-xs-10
+  -#       = ff.text_field :pronouns, {'class'=>'form-control'}
     
-    .form-group.row
-      = ff.label :arrival_date, {'class'=>'col-xs-2 col-form-label'}
-      .col-xs-10
-        = ff.text_field :arrival_date, {'type' => 'date','class'=>'form-control'}
+  -#   .form-group.row
+  -#     = ff.label :arrival_date, {'class'=>'col-xs-2 col-form-label'}
+  -#     .col-xs-10
+  -#       = ff.text_field :arrival_date, {'type' => 'date','class'=>'form-control'}
 
-    .form-group.row
-      = ff.label :leave_date, {'class'=>'col-xs-2 col-form-label'}
-      .col-xs-10
-        = ff.text_field :leave_date, {'type' => 'date','class'=>'form-control'}
+  -#   .form-group.row
+  -#     = ff.label :leave_date, {'class'=>'col-xs-2 col-form-label'}
+  -#     .col-xs-10
+  -#       = ff.text_field :leave_date, {'type' => 'date','class'=>'form-control'}
 
-    .form-group.row
-      = ff.label :bio, {'class'=>'col-xs-2 col-form-label'}
-      .col-xs-10
-        = ff.text_area :bio, {'class'=>'form-control'}
+  -#   .form-group.row
+  -#     = ff.label :bio, {'class'=>'col-xs-2 col-form-label'}
+  -#     .col-xs-10
+  -#       = ff.text_area :bio, {'class'=>'form-control'}
 
-    .form-group.row
-      = ff.label 'Profile Photo', {'class'=>'col-xs-2 col-form-label'}
-      %input.form-control-file.col-xs-10{'type'=>'file'}
+  -#   .form-group.row
+  -#     = ff.label 'Profile Photo', {'class'=>'col-xs-2 col-form-label'}
+  -#     %input.form-control-file.col-xs-10{'type'=>'file'}
 
 
   .actions
