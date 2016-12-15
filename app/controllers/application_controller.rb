@@ -7,10 +7,10 @@ class ApplicationController < ActionController::Base
   end
 
 
-  # Navbar links
+  # Navbar vars
   def application_vars
     if !@camps
-      @camps = Camp.all
+      @camps = Camp.none
     end
   end
 end

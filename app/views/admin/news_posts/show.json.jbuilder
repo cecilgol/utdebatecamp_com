@@ -1,0 +1,1 @@
+json.partial! "admin_news_posts/admin_news_post", admin_news_post: @admin_news_post

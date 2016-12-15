@@ -1,18 +1,24 @@
 #sidebar.stage-shelf.hidden
   %ul.nav.nav-bordered.nav-stacked
     %li.nav-header
+      %small UTNIF
+    %li
       = link_to 'Home', root_path, {"data-target" => "#stage", "data-toggle" => "stage"}
+      = link_to 'News', '/news', {"data-target" => "#stage", "data-toggle" => "stage"}
     %li.nav-divider
+    %li.nav-header
+      %small USER
     = render 'layouts/login_info'
     %li.nav-divider
     %li.nav-header
-      %small Camps
+      %small CAMPS
     - @camps.each do |c|
       %li
-        = link_to c.name, camp_path(c.nickname), {"data-target" => "#stage", "data-toggle" => "stage"}
+        - if c.name
+          = link_to c.name, camp_path(c.nickname), {"data-target" => "#stage", "data-toggle" => "stage"}
     %li.nav-divider
     %li.nav-header
-      %small About
+      %small ABOUT
     %li
       =link_to "FAQ - For Parents", faq_url, {data:{target:"#stage",toggle: "stage"}}
     %li

@@ -1,7 +1,7 @@
 class EmployeeApplicationsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_employee_application, only: [:edit,:show]
-  before_action :set_camp, only: [:new, :index]
+  # before_action :set_camp, only: [:new, :index]
 
   def new
     unless current_user.account.accountable_type == 'Employee'
@@ -17,10 +17,6 @@ class EmployeeApplicationsController < ApplicationController
   end
 
   def show
-  end
-
-  def index
-    @employee_applications = EmployeeApplication.all
   end
 
   def create
@@ -44,8 +40,6 @@ class EmployeeApplicationsController < ApplicationController
   def set_employee_application
     @employee_application = EmployeeApplication.find(params[:id])
   end
-
-  private
 
   def set_camp
     @camp = Camp.find_by(nickname: params[:camp_nickname])

@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'news', to: 'news_posts#index'
+
+  get 'create_account', to: 'static_pages#create_account'
+
   get 'faq', to: 'faqs#index'
 
   get 'sidebar/index'
@@ -31,6 +35,7 @@ Rails.application.routes.draw do
     resources :employees
     resources :faqs
     resources :labs
+    resources :news_posts
     resources :programs
     resources :students
     resources :users
@@ -48,6 +53,7 @@ Rails.application.routes.draw do
   resources :accounts
   resources :site_administrators
   resources :programs
+  resources :employee_applications, only: [:new, :edit, :show]
 
   resources :employees, param: :employee_id, except: [:index] do
     get 'apply/:camp_id', to: 'employees#apply_to_camp',

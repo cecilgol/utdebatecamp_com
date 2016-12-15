@@ -1,0 +1,19 @@
+.block.app-block-chainz
+  .block-lg-middle.block-xs-middle
+    .container
+      .row
+        %h1.block-title.m-b-md
+          %span.text-ribbon.text-ribbon-info
+            %span
+              Thank you for registering
+
+        %p.lead
+          %span.text-ribbon.text-ribbon-info
+            %span
+              Please select your account type
+
+
+      .row
+        =link_to "Student", "create_student_application"
+        =link_to "Parent", "create_student_application_by_parent"
+        =link_to "Employee", new_employee_application_path

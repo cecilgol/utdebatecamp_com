@@ -1,5 +1,5 @@
 class StaticPagesController < ApplicationController
-  before_action :set_camps, only: [:index,:apply_to_work]
+  before_action :set_camps
 
   def index
   end
@@ -8,6 +8,9 @@ class StaticPagesController < ApplicationController
   end
 
   def apply_to_work
+  end
+
+  def create_account
   end
 
   private

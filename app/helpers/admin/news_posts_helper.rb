@@ -1,0 +1,2 @@
+module Admin::NewsPostsHelper
+end

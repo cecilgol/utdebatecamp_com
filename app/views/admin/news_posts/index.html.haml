@@ -1,0 +1,30 @@
+%h1 Listing news posts
+
+%table.table
+  %thead
+    %tr
+      %th
+        Title
+      %th
+        Body
+      %th
+        Author
+      %th
+        Published?
+      %th
+        Actions
+      %th
+
+  %tbody
+    - @posts.each do |admin_news_post|
+      %tr
+        %td= admin_news_post.title
+        %td= admin_news_post.body
+        %td= admin_news_post.author.first_name
+        %td= admin_news_post.published
+        %td= link_to 'Edit', edit_admin_news_post_path(admin_news_post)
+        %td= link_to 'Destroy', admin_news_post_path(admin_news_post), :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New News post', new_admin_news_post_path

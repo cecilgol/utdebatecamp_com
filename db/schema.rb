@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161214170337) do
+ActiveRecord::Schema.define(version: 20161215143058) do
 
   create_table "accounts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "first_name"
@@ -149,6 +149,16 @@ ActiveRecord::Schema.define(version: 20161214170337) do
     t.index ["program_id"], name: "index_labs_on_program_id", using: :btree
   end
 
+  create_table "news_posts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.string   "title"
+    t.string   "body"
+    t.integer  "account_id"
+    t.boolean  "published"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_news_posts_on_account_id", using: :btree
+  end
+
   create_table "parents", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.integer  "account_id"
     t.string   "preferred_contact_method"
@@ -259,6 +269,7 @@ ActiveRecord::Schema.define(version: 20161214170337) do
   add_foreign_key "lab_students", "labs"
   add_foreign_key "lab_students", "students"
   add_foreign_key "labs", "programs"
+  add_foreign_key "news_posts", "accounts"
   add_foreign_key "parents", "accounts"
   add_foreign_key "programs", "camps"
   add_foreign_key "site_administrators", "accounts"
