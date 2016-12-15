@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161214143216) do
+ActiveRecord::Schema.define(version: 20161214170337) do
 
   create_table "accounts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "first_name"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 20161214143216) do
     t.string   "accountable_type"
     t.integer  "accountable_id"
     t.string   "email"
+    t.string   "carrier"
     t.index ["accountable_type", "accountable_id"], name: "index_accounts_on_accountable_type_and_accountable_id", using: :btree
     t.index ["user_id"], name: "index_accounts_on_user_id", using: :btree
   end
@@ -119,6 +120,13 @@ ActiveRecord::Schema.define(version: 20161214143216) do
     t.index ["account_id"], name: "index_employees_on_account_id", using: :btree
     t.index ["camp_id"], name: "index_employees_on_camp_id", using: :btree
     t.index ["program_id"], name: "index_employees_on_program_id", using: :btree
+  end
+
+  create_table "faqs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.text     "question",   limit: 65535
+    t.text     "answer",     limit: 65535
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   create_table "lab_students", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|

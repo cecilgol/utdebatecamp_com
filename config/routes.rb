@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'faq', to: 'faqs#index'
+
   get 'sidebar/index'
 
   # get 'apply/:camp_nickname', to: 'employee_applications#new',
@@ -25,11 +27,13 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :accounts
-    resources :users
     resources :camps
     resources :employees
-    resources :programs
+    resources :faqs
     resources :labs
+    resources :programs
+    resources :students
+    resources :users
     get '/', to: 'home#index'
   end
 

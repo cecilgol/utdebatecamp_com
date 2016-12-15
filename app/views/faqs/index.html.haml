@@ -1,0 +1,20 @@
+.block.block-inverse.app-block-nicki{:style => "background-image: url()"}
+  .block-lg-middle.block-xs-middle
+    .container
+      .row
+        %h1.block-title.m-b-md
+          %span.text-ribbon.text-ribbon-ld
+            %span Frequently Asked Questions
+          %p.lead
+            %span.text-ribbon.text-ribbon-ld
+              %span A quick resource for parents and guardians
+.container
+  - @faqs.each do |faq|
+    %h3
+      %span.text-ribbon.text-ribbon-success
+        %span
+          = faq.question.humanize
+    %p.lead
+      %span.text-ribbon.text-ribbon-info
+        %span
+          = faq.answer.humanize

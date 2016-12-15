@@ -1,0 +1,13 @@
+
+= form_for [:admin, @faq] do |f|
+  .row
+    %span.text-ribbon.text-ribbon-info.col-xs-12
+      %span
+        = f.text_field :question, {class:'col-xs-10',placeholder:'whats your quetstion?'}
+  .row
+    %span.text-ribbon.text-ribbon-info.col-xs-12
+      %span  
+        = f.text_area :answer, {class:'col-xs-10',placeholder:'whats the answer?',rows:'6'}
+
+  .actions.row.m-t.m-l
+    = f.submit "submit form", {class:'btn btn-info btn-square'} 

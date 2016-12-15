@@ -12,21 +12,20 @@
                 = @camp.info
 - @camp.programs.each do |p|
   %div{:class => cycle('block block-inverse','block')}
-    .block-lg-middle.block-xs-middle
-      .container
-        .row
-          .col-xs-12
-            %h3
-              %span
-                = p.name
-            %p.lead
-              %span
-                = p.info
+    .container
+      .row
+        .col-xs-12
+          %h3
+            %span
+              = p.name
+          %p.lead
+            %span
+              = p.info
 
-            %p
-              %span
-                Begins
-                = p.start_date
-                &amp; Ends
-                = p.end_date
-            =link_to "Sign Up for #{p.nickname}", p.old_link, {class:'btn btn-square btn-primary sign-up-link-btn'}
+          %p
+            %span
+              Begins
+              = p.start_date
+              &amp; Ends
+              = p.end_date
+          =link_to "Sign Up for #{p.nickname}", p.old_link, {class:'btn btn-square btn-primary sign-up-link-btn'}
