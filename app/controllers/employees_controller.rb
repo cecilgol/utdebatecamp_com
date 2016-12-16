@@ -30,7 +30,12 @@ class EmployeesController < ApplicationController
     end
   end
 
-
+  def show
+    redirect_to action: :edit
+  end
+  def edit
+    @account = @employee.account
+  end
   def update
     respond_to do |format|
       if @employee.update(employee_params)
