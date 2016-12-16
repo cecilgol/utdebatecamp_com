@@ -101,10 +101,10 @@
           %h1.block-title.m-b-md
             %span.text-ribbon
               %span Registration Begins 1/17
-          %p.lead
-            %span.text-ribbon.text-muted
-              %span
-                We are pre-registering students now.
+          -# %p.lead
+          -#   %span.text-ribbon.text-muted
+          -#     %span
+          -#       We are pre-registering students now.
         .row
         - @camps.each do |c|
           .col-sm-12.col-lg-6
@@ -112,7 +112,10 @@
               .panel-body
                 %h3.panel-title #{c.name}
                 %h4.text-muted.text-serif.m-t-0.m-b
-                  %em June 22nd - August 4th
+                  %em.small
+                    = c.start_date.strftime("%B %d, %Y")
+                    &mdash;
+                    = c.end_date.strftime("%B %d, %Y")
                 %p.text-serif.m-b
                   %em
                     A rigorous curriculum dedicated to skills development, research strategies, theoretical investigation and pracitcal application.
@@ -127,5 +130,6 @@
                   %li
                     %span.icon.icon-check
                     %em Over 10 full debates
-                %button.btn.btn-default.btn-square.btn-block.btn-lg Sign up for #{c.nickname}
+                %button.btn.btn-default.btn-square.btn-block.btn-lg{class:"text-ribbon-#{c.nickname.downcase}"}
+                  Sign up for #{c.nickname}
         

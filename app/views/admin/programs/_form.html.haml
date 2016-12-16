@@ -1,0 +1,51 @@
+= form_for [:admin, @program] do |f|
+  - if @program.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@program.errors.count, "error")} prohibited this program from being saved:"
+      %ul
+        - @program.errors.full_messages.each do |msg|
+          %li= msg
+      #input
+
+  .form-group.row
+    = f.label :name, {'class'=>'col-xs-2 col-form-label'}
+    .col-xs-10
+      = f.text_field :name, {'class'=>'form-control'}
+  
+  .form-group.row
+    = f.label "Curriculum", {class:"col-xs-2 col-form-label"}
+    .col-xs-10
+      = f.select :camp_id, Camp.all.collect {|c| [ c.name, c.id ] }, {}, {class:"custom-select"}
+
+  .form-group.row
+    = f.label :info, {'class'=>'col-xs-2 col-form-label'}
+    .col-xs-10
+      = f.text_area :info, {'rows'=>'3','class'=>'form-control'}
+  
+  .form-group.row
+    = f.label :nickname, {'class'=>'col-xs-2 col-form-label'}
+    .col-xs-10
+      = f.text_field :nickname, {'class'=>'form-control'}
+
+  .form-group.row
+    = f.label :start_date, {'class'=>'col-xs-2 col-form-label'}
+    .col-xs-10
+      = f.text_field :start_date, {'type' => 'date','class'=>'form-control'}
+
+  .form-group.row
+    = f.label :end_date, {'class'=>'col-xs-2 col-form-label'}
+    .col-xs-10
+      = f.text_field :end_date, {'type' => 'date','class'=>'form-control'}
+
+  .form-group.row
+    = f.label :price, {'class'=>'col-xs-2 col-form-label'}
+    .col-xs-10
+      = f.number_field :price, {'type' => 'number','class'=>'form-control'}
+
+  .form-group.row
+    = f.label :old_link, {'class'=>'col-xs-2 col-form-label'}
+    .col-xs-10
+      = f.url_field :old_link, {'type' => 'url','class'=>'form-control'}
+
+  .actions
+    = f.submit 'Save', {'class'=>'btn btn-primary','type'=>'submit'}

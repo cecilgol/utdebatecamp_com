@@ -1,4 +1,28 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    get 'programs/index'
+  end
+
+  namespace :admin do
+    get 'programs/new'
+  end
+
+  namespace :admin do
+    get 'programs/create'
+  end
+
+  namespace :admin do
+    get 'programs/edit'
+  end
+
+  namespace :admin do
+    get 'programs/update'
+  end
+
+  namespace :admin do
+    get 'programs/destroy'
+  end
+
   get 'news', to: 'news_posts#index'
 
   get 'create_account', to: 'static_pages#create_account'

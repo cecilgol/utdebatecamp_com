@@ -11,7 +11,7 @@ class CreateAccounts < ActiveRecord::Migration[5.0]
       t.string :city, null: false
       t.string :state
       t.string :territory
-      t.string :country, null: false
+      t.string :country, default: "US"
       t.date :birthday
       t.string :eid
       t.belongs_to :user, foreign_key: true

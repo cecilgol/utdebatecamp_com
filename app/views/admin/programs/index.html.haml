@@ -1,4 +1,29 @@
 %h1 Listing Programs
-- @programs.each do |p|
-  %p
-    =p.name
+%table.table
+  %thead
+    %tr
+      %th name
+      %th nickname
+      %th info
+      %th starts
+      %th ends
+      %th
+      %th actions
+      %th
+
+  %tbody
+    - @programs.each do |program|
+      %tr
+        %td= program.name
+        %td= program.nickname
+        %td= program.info[0..50]
+        %td= program.start_date.to_s
+        %td= program.end_date.to_s
+        %td= link_to 'Show', program
+        %td= link_to 'Edit', edit_admin_program_path(program)
+        %td= link_to 'Destroy', admin_program_path(program), :method => :delete, :data => { :confirm => 'Are you sure?' }
+        
+
+%br
+
+= link_to 'New program', new_admin_program_path

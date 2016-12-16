@@ -4,19 +4,16 @@ class EmployeesController < ApplicationController
 
   def new
     @employee = Employee.new
-    current_user.account ||= Account.new   
-    @employee.account = current_user.account
+    # current_user.account ||= Account.new   
+    # @employee.account = current_user.account
   end
 
 
   def create
     @employee = Employee.new(employee_params)
-    @account = current_user.account.reload
-
-    unless @account.update(account_params)
-      format.html {render :new}
-    end
-
+    current_user.account ||= Account.new(account_params)
+    @account = current_user.account
+    
     @employee.account = @account
 
     respond_to do |format|
