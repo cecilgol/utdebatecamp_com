@@ -1072,6 +1072,7 @@
     t.fn.stage = e, t.fn.stage.Constructor = o, t.fn.stage.noConflict = function() {
         return t.fn.stage = n, this
     }, t(document).on("click", i, function() {
+        console.log('tried to open or close the stage');
         var e = t(this).data(),
             i = t(this.getAttribute("data-target"));
         i.data("bs.stage") || i.stage(e), i.stage("toggle")
