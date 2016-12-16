@@ -30,16 +30,25 @@ Rails.application.routes.draw do
   #                                   as: :student_applications
 
   namespace :admin do
+    # buncha bullshit rails stuff in /admin
     resources :accounts
     resources :camps
-    resources :employees
+    resources :employees 
     resources :faqs
     resources :labs
     resources :news_posts
     resources :programs
     resources :students
     resources :users
+    
+    # GET requests in /admin
     get '/', to: 'home#index'
+    get '/hired/employees', to: 'employees#hired'
+    get '/not_hired/employees', to: 'employees#not_hired'
+
+    # POST (mostly JS) requests in /admin
+    post 'hire_employee/:id',to: 'employees#hire',as:'hire_employee'
+
   end
 
   resources :coaches
@@ -56,6 +65,7 @@ Rails.application.routes.draw do
 
 
   resources :employees, only: [:new, :edit, :show, :create, :update, :destroy]
+
 
 
   devise_for :users, controllers:{

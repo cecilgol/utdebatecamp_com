@@ -6,6 +6,10 @@ class ApplicationController < ActionController::Base
     current_user.account.accountable.is_a? SiteAdministrator
   end
 
+  def is_employee?
+    current_user.account.accountable.is_a? Employee
+  end
+
 
   # Navbar vars
   def application_vars

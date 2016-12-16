@@ -7,8 +7,7 @@ class Employee < ApplicationRecord
   accepts_nested_attributes_for :employee_applications, allow_destroy: true
 
   def hire
-    self.is_hired = true
-    save!
+    self.toggle!(:is_hired)
   end
 
 end

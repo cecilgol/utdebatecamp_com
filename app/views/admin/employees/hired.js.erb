@@ -1,0 +1,5 @@
+$("<%= ".hired-#{@employee.id}" %>").find('a').text(function(){
+  return <%= @employee.is_hired %> ? "Deactivate employee" : "Activate employee";
+}).attr('class',function(){
+  return <%= @employee.is_hired %> ? "btn btn-square btn-warning" : "btn btn-square btn-info";
+});
