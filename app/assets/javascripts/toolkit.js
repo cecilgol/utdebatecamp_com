@@ -1,4 +1,80 @@
-+ function(t) {
+ + function(t) {
+    "use strict";
+
+    function e(e) {
+        return this.each(function() {
+            var i = t(this),
+                n = i.data("bs.stage"),
+                s = t.extend({}, o.DEFAULTS, i.data(), "object" == typeof e && e);
+            n || i.data("bs.stage", n = new o(this, s)), "string" == typeof e && n[e]()
+        })
+    }
+    var i = '[data-toggle="stage"]',
+        o = function(t, e) {
+            this.element = t, this.options = e
+        };
+    o.VERSION = "3.3.5", o.TRANSITION_DURATION = 150, o.DEFAULTS = {
+        easing: "cubic-bezier(.2,.7,.5,1)",
+        duration: 300,
+        delay: 0,
+        distance: 250,
+        hiddenElements: "#sidebar"
+    }, o.prototype.isOpen = function() {
+        return t(this.element).hasClass("stage-open")
+    }, o.prototype.toggle = function() {
+        this.isOpen() ? this.close() : this.open()
+    }, o.prototype.open = function() {
+        var e = this;
+        return t(document.body).css("overflow", "hidden"), "ontouchstart" in document.documentElement && t(document).on("touchmove.bs.stage", function(t) {
+            t.preventDefault()
+        }), t(this.options.hiddenElements).removeClass("hidden"), t(window).one("keydown.bs.stage", t.proxy(function(t) {
+            27 == t.which && this.close()
+        }, this)), t(this.element).on("click.bs.stage", t.proxy(this.close, this)).trigger("open.bs.stage").addClass("stage-open"), t.support.transition ? (t(this.element).css({
+            "-webkit-transition": "-webkit-transform " + this.options.duration + "ms " + this.options.easing,
+            "-ms-transition": "-ms-transform " + this.options.duration + "ms " + this.options.easing,
+            transition: "transform " + this.options.duration + "ms " + this.options.easing
+        }), this.element.offsetWidth, void t(this.element).css({
+            "-webkit-transform": "translateX(" + this.options.distance + "px)",
+            "-ms-transform": "translateX(" + this.options.distance + "px)",
+            transform: "translateX(" + this.options.distance + "px)"
+        }).one("bsTransitionEnd", function() {
+            t(e.element).trigger("opened.bs.stage")
+        }).emulateTransitionEnd(this.options.duration)) : void t(e.element).css({
+            left: this.options.distance + "px",
+            position: "relative"
+        }).trigger("opened.bs.stage")
+    }, o.prototype.close = function() {
+        function e() {
+            t(document.body).css("overflow", "auto"), "ontouchstart" in document.documentElement && t(document).off("touchmove.bs.stage"), t(i.options.hiddenElements).addClass("hidden"), t(i.element).removeClass("stage-open").css({
+                "-webkit-transition": "",
+                "-ms-transition": "",
+                transition: ""
+            }).css({
+                "-webkit-transform": "",
+                "-ms-transform": "",
+                transform: ""
+            }).trigger("closed.bs.stage")
+        }
+        t(window).off("keydown.bs.stage");
+        var i = this;
+        return t.support.transition ? void t(this.element).trigger("close.bs.stage").off("click.bs.stage").css({
+            "-webkit-transform": "none",
+            "-ms-transform": "none",
+            transform: "none"
+        }).one("bsTransitionEnd", e).emulateTransitionEnd(this.options.duration) : (t(this.element).trigger("close.bs.stage").css({
+            left: "",
+            position: ""
+        }).off("click.bs.stage"), e())
+    };
+    var n = t.fn.stage;
+    t.fn.stage = e, t.fn.stage.Constructor = o, t.fn.stage.noConflict = function() {
+        return t.fn.stage = n, this
+    }, t(document).on("click", i, function() {
+        var e = t(this).data(),
+            i = t(this.getAttribute("data-target"));
+        i.data("bs.stage") || i.stage(e), i.stage("toggle")
+    })
+}(jQuery),+ function(t) {
     "use strict";
 
     function e() {
@@ -999,82 +1075,5 @@
         this._targetImageWrap && this._targetImageWrap.parentNode && (t(this._targetImage).removeClass("zoom-img").attr("data-action", "zoom"), this._targetImageWrap.parentNode.replaceChild(this._targetImage, this._targetImageWrap), this._overlay.parentNode.removeChild(this._overlay), this._$body.removeClass("zoom-overlay-transitioning"))
     }, t(function() {
         (new e).listen()
-    })
-}(jQuery), + function(t) {
-    "use strict";
-
-    function e(e) {
-        return this.each(function() {
-            var i = t(this),
-                n = i.data("bs.stage"),
-                s = t.extend({}, o.DEFAULTS, i.data(), "object" == typeof e && e);
-            n || i.data("bs.stage", n = new o(this, s)), "string" == typeof e && n[e]()
-        })
-    }
-    var i = '[data-toggle="stage"]',
-        o = function(t, e) {
-            this.element = t, this.options = e
-        };
-    o.VERSION = "3.3.5", o.TRANSITION_DURATION = 150, o.DEFAULTS = {
-        easing: "cubic-bezier(.2,.7,.5,1)",
-        duration: 300,
-        delay: 0,
-        distance: 250,
-        hiddenElements: "#sidebar"
-    }, o.prototype.isOpen = function() {
-        return t(this.element).hasClass("stage-open")
-    }, o.prototype.toggle = function() {
-        this.isOpen() ? this.close() : this.open()
-    }, o.prototype.open = function() {
-        var e = this;
-        return t(document.body).css("overflow", "hidden"), "ontouchstart" in document.documentElement && t(document).on("touchmove.bs.stage", function(t) {
-            t.preventDefault()
-        }), t(this.options.hiddenElements).removeClass("hidden"), t(window).one("keydown.bs.stage", t.proxy(function(t) {
-            27 == t.which && this.close()
-        }, this)), t(this.element).on("click.bs.stage", t.proxy(this.close, this)).trigger("open.bs.stage").addClass("stage-open"), t.support.transition ? (t(this.element).css({
-            "-webkit-transition": "-webkit-transform " + this.options.duration + "ms " + this.options.easing,
-            "-ms-transition": "-ms-transform " + this.options.duration + "ms " + this.options.easing,
-            transition: "transform " + this.options.duration + "ms " + this.options.easing
-        }), this.element.offsetWidth, void t(this.element).css({
-            "-webkit-transform": "translateX(" + this.options.distance + "px)",
-            "-ms-transform": "translateX(" + this.options.distance + "px)",
-            transform: "translateX(" + this.options.distance + "px)"
-        }).one("bsTransitionEnd", function() {
-            t(e.element).trigger("opened.bs.stage")
-        }).emulateTransitionEnd(this.options.duration)) : void t(e.element).css({
-            left: this.options.distance + "px",
-            position: "relative"
-        }).trigger("opened.bs.stage")
-    }, o.prototype.close = function() {
-        function e() {
-            t(document.body).css("overflow", "auto"), "ontouchstart" in document.documentElement && t(document).off("touchmove.bs.stage"), t(i.options.hiddenElements).addClass("hidden"), t(i.element).removeClass("stage-open").css({
-                "-webkit-transition": "",
-                "-ms-transition": "",
-                transition: ""
-            }).css({
-                "-webkit-transform": "",
-                "-ms-transform": "",
-                transform: ""
-            }).trigger("closed.bs.stage")
-        }
-        t(window).off("keydown.bs.stage");
-        var i = this;
-        return t.support.transition ? void t(this.element).trigger("close.bs.stage").off("click.bs.stage").css({
-            "-webkit-transform": "none",
-            "-ms-transform": "none",
-            transform: "none"
-        }).one("bsTransitionEnd", e).emulateTransitionEnd(this.options.duration) : (t(this.element).trigger("close.bs.stage").css({
-            left: "",
-            position: ""
-        }).off("click.bs.stage"), e())
-    };
-    var n = t.fn.stage;
-    t.fn.stage = e, t.fn.stage.Constructor = o, t.fn.stage.noConflict = function() {
-        return t.fn.stage = n, this
-    }, t(document).on("click", i, function() {
-        console.log('tried to open or close the stage');
-        var e = t(this).data(),
-            i = t(this.getAttribute("data-target"));
-        i.data("bs.stage") || i.stage(e), i.stage("toggle")
     })
 }(jQuery);
