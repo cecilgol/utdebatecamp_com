@@ -59,7 +59,7 @@ Rails.application.routes.draw do
     resources :student_applications
   end
   resources :camps, only: [:show], param: :nickname
-  resources :accounts
+  resources :accounts, except: [:index]
   resources :site_administrators
   resources :programs
 
