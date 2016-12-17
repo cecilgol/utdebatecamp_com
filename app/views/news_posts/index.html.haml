@@ -1,19 +1,19 @@
-.block.app-block-blue
-  .block-sm-middle
+.block.block-inverse.app-block-primary{:style => "background-image: url()"}
+  .block-lg-middle.block-xs-middle
     .container
       .row
         %h1.block-title.m-b-md
-          %span.text-ribbon.text-ribbon-primary
-            %span News and Announcements
-
-- @posts.each do |post|
-  %div{:class => cycle('block block-inverse','block')}
+          %span.text-ribbon.text-ribbon-cx
+            %span News
+          %p.lead
+            %span.text-ribbon.text-ribbon-cx
+              %span Announcements from UTNIF
+.block.app-block-primary
+  .block-lg-middle.block-xs-middle
     .container
-      .row
-        .col-xs-12
+      - @posts.each do |faq|
+        .row
           %h3
-            %span
-              = post.title
-          %p
-            %span
-              = post.body
+            = simple_format(faq.question)
+          %p.lead
+            = simple_format(faq.answer)

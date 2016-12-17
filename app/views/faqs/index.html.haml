@@ -8,13 +8,12 @@
           %p.lead
             %span.text-ribbon.text-ribbon-ld
               %span A quick resource for parents and guardians
-.container
-  - @faqs.each do |faq|
-    %h3
-      %span.text-ribbon.text-ribbon-success
-        %span
-          = faq.question.humanize
-    %p.lead
-      %span.text-ribbon.text-ribbon-info
-        %span
-          = faq.answer.humanize
+.block.app-block-yellow
+  .block-lg-middle.block-xs-middle
+    .container
+      - @faqs.each do |faq|
+        .row
+          %h3
+            = simple_format(faq.question)
+          %p.lead
+            = simple_format(faq.answer)
