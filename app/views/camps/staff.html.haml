@@ -1,0 +1,20 @@
+.block.app-block-primary{:style => "background-image: url(#{image_url(@camp.glossy.url)})"}
+  .block-lg-middle.block-xs-middle
+    .container
+      .row
+        %h1.block-title.m-b-md
+          %span.text-ribbon{class:"text-ribbon-#{@camp.nickname.downcase}"}
+            %span
+              = @camp.nickname
+              Staff
+
+- @employees.each do |e|
+  %div{:class => cycle('block block-inverse','block')}
+    .container
+      .row
+        .col-xs-12
+          %h3
+            %span
+              = e.account.first_name
+              = e.account.last_name
+              = image_tag e.avatar

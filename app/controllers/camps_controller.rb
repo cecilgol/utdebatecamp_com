@@ -1,6 +1,6 @@
 class CampsController < ApplicationController
   # before_action :authenticate_user!
-  before_action :set_camp, only: [:show] #, :edit, :update, :destroy, :sign_up, :apply_to_work]
+  before_action :set_camp, only: [:show,:staff] #, :edit, :update, :destroy, :sign_up, :apply_to_work]
   # respond_to :html, :js
 
   # # GET /camps
@@ -17,6 +17,11 @@ class CampsController < ApplicationController
     end
     
   end
+
+  def staff
+    @employees = Employee.where(camp: @camp,is_hired: true)
+  end
+
 
   # # GET /camps/new
   # def new
@@ -90,7 +95,7 @@ class CampsController < ApplicationController
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def camp_params
-      params.require(:camp).permit(:name,:nickname,:info,:start_date,:end_date)
-    end
+    # def camp_params
+    #   params.require(:camp).permit(:name,:nickname,:info,:start_date,:end_date)
+    # end
 end

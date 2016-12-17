@@ -118,7 +118,7 @@
                     = c.end_date.strftime("%B %d, %Y")
                 %p.text-serif.m-b
                   %em
-                    A rigorous curriculum dedicated to skills development, research strategies, theoretical investigation and pracitcal application.
+                    = c.info_blurb? ? c.info_blurb : "A rigorous curriculum dedicated to skills development, research strategies, theoretical investigation and pracitcal application."
                 %hr/
                 %ul.iconlist.text-serif.m-b-md
                   %li

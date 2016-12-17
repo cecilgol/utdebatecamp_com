@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161215231607) do
+ActiveRecord::Schema.define(version: 20161217214345) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,6 +52,8 @@ ActiveRecord::Schema.define(version: 20161215231607) do
     t.string   "glossy_content_type"
     t.integer  "glossy_file_size"
     t.datetime "glossy_updated_at"
+    t.string   "info_blurb"
+    t.string   "staff_blurb"
     t.index ["nickname"], name: "index_camps_on_nickname", unique: true, using: :btree
   end
 
@@ -114,13 +116,16 @@ ActiveRecord::Schema.define(version: 20161215231607) do
     t.string   "pronouns"
     t.string   "dorm"
     t.string   "eid"
-    t.datetime "created_at",                              null: false
-    t.datetime "updated_at",                              null: false
-    t.boolean  "is_hired",                default: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.boolean  "is_hired",            default: false
     t.float    "compensation"
     t.text     "references"
     t.text     "experience"
-    t.string   "avatar_url",   limit: 40
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
     t.index ["account_id"], name: "index_employees_on_account_id", using: :btree
     t.index ["camp_id"], name: "index_employees_on_camp_id", using: :btree
     t.index ["program_id"], name: "index_employees_on_program_id", using: :btree

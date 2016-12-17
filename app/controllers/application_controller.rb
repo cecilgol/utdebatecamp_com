@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
   # Navbar vars
   def application_vars
     if !@camps
-      @camps = Camp.all
+      @camps = Camp.order(id: :asc)
     end
   end
 end

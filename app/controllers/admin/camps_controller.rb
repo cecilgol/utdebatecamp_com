@@ -7,7 +7,7 @@ class Admin::CampsController < AdminController
   # GET /camps
   # GET /camps.json
   def index
-    @camps = Camp.all
+    @camps = Camp.order(id: :asc)
   end
 
   # GET /camps/1
@@ -88,6 +88,6 @@ class Admin::CampsController < AdminController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def camp_params
-    params.require(:camp).permit(:name,:nickname,:info,:start_date,:end_date,:glossy)
+    params.require(:camp).permit(:name,:nickname,:info,:start_date,:end_date,:glossy,:info_blurb,:staff_blurb)
   end
 end

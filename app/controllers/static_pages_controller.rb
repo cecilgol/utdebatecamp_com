@@ -15,6 +15,6 @@ class StaticPagesController < ApplicationController
 
   private
   def set_camps
-    @camps = Camp.all
+    @camps = Camp.order(id: :asc)
   end
 end

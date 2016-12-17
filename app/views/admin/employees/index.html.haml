@@ -21,12 +21,11 @@
         %td= employee.account ? employee.account.first_name : ""
         %td= employee.camp ? employee.camp.nickname : "no camp yet"
         %td= employee.program ? employee.program.nickname : "no lab yet"
-        %td= link_to 'Show', employee
-        %td= link_to 'Edit', edit_employee_path(employee)
+        %td= link_to 'Edit', edit_admin_employee_path(employee)
         %td{class:"hired-#{employee.id}"}
           - ad = employee.is_hired ? ["Deactivate","btn-warning"] : ["Activate","btn-info"]
           = link_to "#{ad[0]} employee", admin_hire_employee_path(employee.id), {method: :post, remote: true, class:"btn btn-square #{ad[1]}"}
 
 %br
 
-= link_to 'New Employee', new_employee_path
+= link_to 'New Employee', new_admin_employee_path
