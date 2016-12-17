@@ -1,4 +1,4 @@
-.block.app-block-chainz{:style => "background-image: url(#{image_url(@camp.glossy.url)})"}
+.block.app-block-primary{:style => "background-image: url(#{image_url(@camp.glossy.url)})"}
   .block-lg-middle.block-xs-middle
     .container
       .row
@@ -8,8 +8,8 @@
               = @camp.name
           %p.lead
             %span.text-ribbon{class:"text-ribbon-#{@camp.nickname.downcase}"}
-              %span
-                = @camp.info
+              %span 
+                =@camp.info.html_safe
 - @camp.programs.each do |p|
   %div{:class => cycle('block block-inverse','block')}
     .container
@@ -20,12 +20,12 @@
               = p.name
           %p.lead
             %span
-              = p.info
+              = simple_format(p.info)
 
           %p
             %span
               Begins
-              = p.start_date
+              = p.start_date.strftime("%B %d, %Y")
               &amp; Ends
-              = p.end_date
+              = p.end_date.strftime("%B %d, %Y")
           =link_to "Sign Up for #{p.nickname}", p.old_link, {class:'btn btn-square btn-primary sign-up-link-btn'}
