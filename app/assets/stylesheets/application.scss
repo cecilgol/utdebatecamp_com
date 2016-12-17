@@ -3677,6 +3677,19 @@ caption {
 	min-height: 0.01%;
 }
 @media screen and(max-width: 767px) {
+	#sidebar{
+		> ul{
+			> li{
+				font-size:14px;
+				>a {
+					margin-bottom: -6 px
+				}
+			}
+			> .nav-divider{
+				margin: 4px 0 4px 34px;
+			}
+		}
+	}
 	.table-responsive {
 		width: 100%;
 		margin-bottom: 16.5px;
