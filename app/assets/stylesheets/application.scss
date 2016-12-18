@@ -13278,7 +13278,7 @@ tbody.collapse.in {
 			height:100%;
 			bottom:0;
 			position:absolute;
-			transition:all .2s ease-in-out;
+			transition: all .2s ease-in-out;
 			-moz-transition: all .2s ease-in-out;
 			-webkit-transition: all .2s ease-in-out;
 			width:100%;
@@ -13286,12 +13286,18 @@ tbody.collapse.in {
 			> .staff-name{
 				margin:50% auto 0;
 				padding:0 10%;
+				transition: all .2s ease-in-out;
+				-moz-transition: all .2s ease-in-out;
+				-webkit-transition: all .2s ease-in-out;
 			}
 			> .biog {
 				visibility:hidden;
 				margin:10% auto 0;
 				padding: 0 10%;
 				overflow:hidden;
+				transition: all .2s ease-in-out;
+				-moz-transition: all .2s ease-in-out;
+				-webkit-transition: all .2s ease-in-out;
 			}
 		}
 	}
@@ -13343,4 +13349,8 @@ tbody.collapse.in {
 			}
 		}
 	}
+}
+
+.text-white{
+	color:white;
 }

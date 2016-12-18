@@ -1,10 +1,17 @@
 %h1.block-title.m-b-md
   %span.text-ribbon.text-ribbon-primary 
     %span Login Please
-=form_for(resource, as: resource_name, url: session_path(resource_name), remote: true) do |f|
-  .text-ribbon-inputs-split.sign-in-form
-    =f.email_field :email, {autofocus:true, placeholder: "email",class:"h4 text-ribbon-input text-ribbon-primary"}
-    =f.password_field :password, {autocomplete:"off", placeholder: "password",class:"h4 text-ribbon-input text-ribbon-primary"}
-  .actions
-    =f.submit "login", {class:'btn btn-square btn-primary btn-lg btn-block'}
-    =render 'devise/shared/links'
+.m-l-md
+  = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+    .form-group.row
+      = f.label "Email Address", {class:"col-xs-6 col-form-label"}
+      .col.xs-10
+        = f.email_field :email, {autofocus:true, class:"form-control"}
+    .form-group.row
+      = f.label "Password", {class:"col-xs-6 col-form-label"}
+      .col.xs-10
+        = f.password_field :password, {autocomplete:"off",class:"form-control"}
+
+    .actions
+      = f.submit "Log In", {class:'btn btn-square btn-primary btn-lg col-sm-2 align-right text-white'}
+

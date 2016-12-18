@@ -1,4 +1,7 @@
 .block.block-fill-height.app-block-k{:style => "background-image: url(#{image_url('tower_bg.jpg')})"}
+  - if request.server_name == "utdebatecamp.dev"
+    .block-sm-top.block-xs-top
+      = link_to "Click here to apply to work at UTNIF", new_user_registration_path, {class:"btn btn-primary btn-square"}
   .block-sm-middle.block-xs-bottom
     .container
       .row
@@ -20,7 +23,7 @@
         .row.m-b
           .col-lg-12
             .panel.panel-primary.panel-bold.m-b-0.app-box-shadow
-              %img{:src => "#{image_url('camp_rs.jpg')}"}
+              %img{:src => "#{image_url('camp_rs_bw.jpg')}"}
               .panel-body.p-b-lg
                 %h4.m-b-0 University of Texas National Institute in Forensics
                 %p.text-serif
@@ -39,7 +42,7 @@
               %img{:src => "#{image_url('toya_rs.jpg')}"}/
           .col-lg-6.m-b
             .app-box-shadow
-              %img{:src => "#{image_url('teddy_rs.jpg')}"}/
+              %img{:src => "#{image_url('teddy_rs_bw.jpg')}"}/
         .row.hidden-xs
           .col-lg-12
             %img{:src => "#{image_url('must_have_rs.jpg')}"}/
