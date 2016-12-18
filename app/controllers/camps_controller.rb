@@ -91,7 +91,7 @@ class CampsController < ApplicationController
 
   #   # Use callbacks to share common setup or constraints between actions.
     def set_camp
-      @camp = Camp.find_by(nickname: params[:nickname])
+      @camp = Camp.find_by(nickname: params[:camp_nickname])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

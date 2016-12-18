@@ -7,14 +7,15 @@
             %span
               = @camp.nickname
               Staff
-
-- @employees.each do |e|
-  %div{:class => cycle('block block-inverse','block')}
-    .container
-      .row
-        .col-xs-12
-          %h3
-            %span
+.block-inverse.block-fill-height
+  %ul.staff
+    - @employees.each do |e|
+      %li{style:"background-image:url(#{image_url(e.avatar.url)})"}
+        .staff-member
+          %h2.staff-name.panel-title.text-serif
+            %em
               = e.account.first_name
               = e.account.last_name
-              = image_tag e.avatar
+          .biog
+            %span.text-serif
+              = e.bio

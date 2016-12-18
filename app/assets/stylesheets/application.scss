@@ -13260,3 +13260,87 @@ tbody.collapse.in {
 .bg-white{
 	background-color:$color_alabaster_approx;
 }
+
+.staff{
+	list-style:none;
+	> li{
+		background-position: center top;
+		background-repeat:none;
+		background-size:cover;
+		border:5px rgb(21,21,21) solid;
+		float:left;
+		height:0;
+		padding-bottom:50%;
+		position:relative;
+		width:100%;
+		> .staff-member{
+			background-color:rgba(21, 21, 21, 0.5);
+			height:100%;
+			bottom:0;
+			position:absolute;
+			transition:all .2s ease-in-out;
+			-moz-transition: all .2s ease-in-out;
+			-webkit-transition: all .2s ease-in-out;
+			width:100%;
+
+			> .staff-name{
+				margin:50% auto 0;
+				padding:0 10%;
+			}
+			> .biog {
+				visibility:hidden;
+				margin:10% auto 0;
+				padding: 0 10%;
+				overflow:hidden;
+			}
+		}
+	}
+}
+
+@media (min-width: 768px){ 	
+	.staff{
+		> li {
+			width:50%;
+		}
+	}
+}
+
+@media (min-width: 992px){ 
+	.staff{
+		> li {
+			width:33%;
+			> .staff-member{
+				opacity: 0;
+			}
+			&:hover{
+				> .staff-member{
+					background-color:rgba(21, 21, 21, 0.8);
+					opacity: 1;
+					> .biog {
+						visibility:visible;
+					}
+				}
+			}
+		}
+	}
+}
+
+@media (min-width: 1200px){ 
+	.staff{
+		> li {
+			width:25%;
+			> .staff-member{
+				opacity: 0;
+			}
+			&:hover{
+				> .staff-member{
+					background-color:rgba(21, 21, 21, 0.8);
+					opacity: 1;
+					> .biog {
+						visibility:visible;
+					}
+				}
+			}
+		}
+	}
+}

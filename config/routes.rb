@@ -58,9 +58,11 @@ Rails.application.routes.draw do
   resources :students, except: [:index] do
     resources :student_applications
   end
-  resources :camps, only: [:show], param: :nickname
+  resources :camps, param: :nickname do
+    get '/', to:'camps#show'
+    get '/staff', to: 'camps#staff'
+  end
 
-  get ':nickname/staff', to: 'camps#staff'
 
   resources :accounts, except: [:index]
   resources :site_administrators
