@@ -1,4 +1,4 @@
 class Coach < ApplicationRecord
-  include Accountable
+  # include Accountable
   has_and_belongs_to_many :students
 end

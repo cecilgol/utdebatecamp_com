@@ -1,7 +1,7 @@
 class Account < ApplicationRecord
   belongs_to :user
-  belongs_to :accountable, polymorphic: true
-  accepts_nested_attributes_for :accountable, allow_destroy: true
+  # belongs_to :accountable, polymorphic: true
+  # accepts_nested_attributes_for :accountable, allow_destroy: true
 
   has_many :news_posts
 
@@ -15,29 +15,28 @@ class Account < ApplicationRecord
   end
 
   def admin?
-    self.accountable.class == SiteAdministrator
+    SiteAdministrator.exists?(account_id: self.id)
   end
 
+
   def director?
-    self.accountable.class == Director
+    Director.exists?(account_id: self.id)
   end
 
   def employee?
-    self.accountable.class == Employee
+    Employee.exists?(account_id: self.id)
   end
 
   def student?
-    self.accountable.class == Student
+    Student.exists?(account_id: self.id)
   end
 
   def parent?
-    self.accountable.class == Parent
+    Parent.exists?(account_id: self.id)
   end
 
-  def build_accountable(params)
-    p = params.except(:accountable_type)
-    self.accountable = params[:accountable_type].constantize.new(p)
+  def coach?
+    Coach.exists?(account_id: self.id)
   end
-
 
 end

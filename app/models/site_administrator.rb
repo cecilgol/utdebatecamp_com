@@ -1,4 +1,5 @@
 class SiteAdministrator < ApplicationRecord
-  include Accountable
+  # include Accountable
+  belongs_to :account
   
 end

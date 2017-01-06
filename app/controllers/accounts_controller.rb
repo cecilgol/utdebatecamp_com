@@ -27,14 +27,14 @@ class AccountsController < ApplicationController
 
   end
 
-  def accountable_change
-    @s = params[:s]
-    @a = Account.new(user: current_user)
-    @p = @s.constantize.new
-    respond_to do |format|
-      format.js { render :accountable_change, s: @s, a: @a, p: @p }
-    end
-  end
+  # def accountable_change
+  #   @s = params[:s]
+  #   @a = Account.new(user: current_user)
+  #   @p = @s.constantize.new
+  #   respond_to do |format|
+  #     format.js { render :accountable_change, s: @s, a: @a, p: @p }
+  #   end
+  # end
 
   # POST /accounts
   # POST /accounts.json

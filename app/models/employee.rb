@@ -1,5 +1,6 @@
 class Employee < ApplicationRecord
-  include Accountable
+  # include Accountable
+  belongs_to :account
   belongs_to :camp
   belongs_to :program
   #serialize :references, String
