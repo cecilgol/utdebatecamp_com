@@ -2,7 +2,8 @@ class Employee < ApplicationRecord
   # include Accountable
   belongs_to :account
   belongs_to :camp
-  belongs_to :program
+  has_many :programs
+  has_many :labs
   #serialize :references, String
   has_many :employee_applications
   accepts_nested_attributes_for :employee_applications, allow_destroy: true

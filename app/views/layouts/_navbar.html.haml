@@ -4,7 +4,13 @@
       %small UTNIF
     %li
       = link_to 'Home', root_path, {"data-target" => "#stage", "data-toggle" => "stage"}
-      = link_to 'News', '/news', {"data-target" => "#stage", "data-toggle" => "stage"}
+    %li
+      = link_to '/news',{"data-target" => "#stage", "data-toggle" => "stage"} do
+        News
+        %span.label.label-info
+          = unread_blog_posts
+
+
     %li.nav-divider
     %li.nav-header
       %small USER

@@ -10,14 +10,15 @@ class Account < ApplicationRecord
       account_id: self.id,
       promoted_at: Time.now
       ).save!
-    self.accountable = SiteAdministrator.last
-    save!
+  end
+
+  def demote_from_site_administrator
+    SiteAdministrator.destroy(SiteAdministrator.where(account_id: self.id).ids)
   end
 
   def admin?
     SiteAdministrator.exists?(account_id: self.id)
   end
-
 
   def director?
     Director.exists?(account_id: self.id)
