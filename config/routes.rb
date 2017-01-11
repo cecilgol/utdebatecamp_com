@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+
+  get '.well-known/acme-challenge/J2vwy8GxBVdTpiCMopCHR3zXOYYoKTYXdOe8T7M1T8E', to: 'static_pages#letsencrypt'
   get 'news', to: 'news_posts#index'
 
   get 'create_account', to: 'static_pages#create_account'

@@ -7,8 +7,9 @@
     %li
       = link_to '/news',{"data-target" => "#stage", "data-toggle" => "stage"} do
         News
-        %span.label.label-info
-          = unread_blog_posts
+        - if unread_blog_posts != ""
+          %span.label.label-info
+            = unread_blog_posts
 
 
     %li.nav-divider

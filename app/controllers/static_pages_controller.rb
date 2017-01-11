@@ -13,6 +13,9 @@ class StaticPagesController < ApplicationController
   def create_account
   end
 
+  def letsencrypt
+    render text: 'J2vwy8GxBVdTpiCMopCHR3zXOYYoKTYXdOe8T7M1T8E.d5pK7IaTpTaVqCVAJdyrM8kShbQ3SUeBDZo06JRzB1U'
+  end
   private
   def set_camps
     @camps = Camp.order(id: :asc)
