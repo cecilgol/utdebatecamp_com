@@ -18,6 +18,7 @@ class EmployeesController < ApplicationController
 
     respond_to do |format|
       if @employee.save
+        EmployeeMailer.welcome_email(@employee).deliver_now
         format.html { redirect_to @employee, notice: 'Employee was successfully created.' }
         format.json { render :show, status: :created, location: @employee }
       else
@@ -59,7 +60,7 @@ class EmployeesController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_employee
-    @employee = Employee.find(params[:id])
+    @employee = Employee.where(account: current_user.account.id).first
   end
 
   def is_employee
