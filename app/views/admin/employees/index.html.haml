@@ -7,7 +7,7 @@
       %th Last Name
       %th First Name
       %th Camp
-      %th Lab
+      -#th Lab
       %th 
       %th
       %th
@@ -20,7 +20,7 @@
         %td= employee.account ? employee.account.last_name : "you done goofed - employee has no account"
         %td= employee.account ? employee.account.first_name : ""
         %td= employee.camp ? employee.camp.nickname : "no camp yet"
-        %td= employee.program ? employee.program.nickname : "no lab yet"
+        -#td= employee.program ? employee.program.nickname : "no lab yet"
         %td= link_to 'Edit', edit_admin_employee_path(employee)
         %td{class:"hired-#{employee.id}"}
           - ad = employee.is_hired ? ["Deactivate","btn-warning"] : ["Activate","btn-info"]
