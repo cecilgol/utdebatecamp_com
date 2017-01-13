@@ -39,10 +39,32 @@
     = f.label :end_date, {'class'=>'col-xs-2 col-form-label'}
     .col-xs-10
       = f.text_field :end_date, {'type' => 'date','class'=>'form-control'}
+
   .form-group.row
     = f.label :glossy, {'class'=>'col-xs-2 col-form-label'}
     .col-xs-10
       = f.file_field :glossy, {'type' => 'file','class'=>'form-control'}
+
+  = f.fields_for :oblique, OpenStruct.new(f.object.oblique) do |o|
+
+    .form-group.row
+      = o.label "Homepage Sales Pitch", {'class'=>'col-xs-2 col-form-label'}
+      .col-xs-10
+        = o.text_field :main, {'class'=>'form-control'}
+    .form-group.row
+      = o.label "Short Benefit 1", {'class'=>'col-xs-2 col-form-label'}
+      .col-xs-10
+        = o.text_field :one, {'class'=>'form-control'}
+    .form-group.row
+      = o.label "Short Benefit 2", {'class'=>'col-xs-2 col-form-label'}
+      .col-xs-10
+        = o.text_field :two, {'class'=>'form-control'}
+    .form-group.row
+      = o.label "Short Benefit 1", {'class'=>'col-xs-2 col-form-label'}
+      .col-xs-10
+        = o.text_field :three, {'class'=>'form-control'}
+
+
 
   .actions
     = f.submit 'Save', {'class'=>'btn btn-primary','type'=>'submit'}

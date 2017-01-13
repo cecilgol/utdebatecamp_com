@@ -18,8 +18,8 @@ class EmployeesController < ApplicationController
 
     respond_to do |format|
       if @employee.save
-        EmployeeMailer.welcome_email(@employee).deliver_now
-        format.html { redirect_to @employee, notice: 'Employee was successfully created.' }
+        EmployeeMailer.welcome_email(@employee).deliver
+        format.html { redirect_to root_path, notice: 'Welcome to UTNIF!' }
         format.json { render :show, status: :created, location: @employee }
       else
         format.html { render :new }
@@ -37,7 +37,7 @@ class EmployeesController < ApplicationController
   def update
     respond_to do |format|
       if @employee.update(employee_params)
-        format.html { redirect_to @employee, notice: 'Employee was successfully updated.' }
+        format.html { redirect_to @employee, notice: 'We\'ve logged your changes.' }
         format.json { render :show, status: :ok, location: @employee }
       else
         format.html { render :edit }

@@ -10,10 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161217214345) do
+ActiveRecord::Schema.define(version: 20170113012145) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "hstore"
 
   create_table "accounts", force: :cascade do |t|
     t.string   "first_name",                      null: false
@@ -54,7 +55,9 @@ ActiveRecord::Schema.define(version: 20161217214345) do
     t.datetime "glossy_updated_at"
     t.string   "info_blurb"
     t.string   "staff_blurb"
+    t.hstore   "oblique"
     t.index ["nickname"], name: "index_camps_on_nickname", unique: true, using: :btree
+    t.index ["oblique"], name: "index_camps_on_oblique", using: :gin
   end
 
   create_table "coaches", force: :cascade do |t|

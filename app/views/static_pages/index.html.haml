@@ -1,5 +1,5 @@
 .block.block-fill-height.app-block-k{:style => "background-image: url(#{image_url('tower_bg.jpg')})"}
-  - if request.server_name == "utdebatecamp.dev"
+  - if !current_user && request.server_name == "www.workatutnif.com" || "workatutnif.com" || "localhost"
     .block-sm-top.block-xs-top
       = link_to "Click here to apply to work at UTNIF", new_user_registration_path, {class:"btn btn-primary btn-square"}
   .block-sm-middle.block-xs-bottom
@@ -121,18 +121,22 @@
                     = c.end_date.strftime("%B %d, %Y")
                 %p.text-serif.m-b
                   %em
-                    = c.info_blurb? ? c.info_blurb : "A rigorous curriculum dedicated to skills development, research strategies, theoretical investigation and pracitcal application."
+                    = c.oblique? ? c.oblique['main'] : "A rigorous curriculum dedicated to skills development, research strategies, theoretical investigation and pracitcal application."
                 %hr/
                 %ul.iconlist.text-serif.m-b-md
                   %li
                     %span.icon.icon-check
-                    %em Skills Workshops
+                    %em 
+                    = c.oblique? ? c.oblique['one'] : "A rigorous curriculum dedicated to skills development, research strategies, theoretical investigation and pracitcal application."
                   %li
                     %span.icon.icon-check
-                    %em Topic Research Workshops
+                    %em 
+                    = c.oblique? ? c.oblique['two'] : "A rigorous curriculum dedicated to skills development, research strategies, theoretical investigation and pracitcal application."
                   %li
                     %span.icon.icon-check
-                    %em Over 10 full debates
-                %button.btn.btn-default.btn-square.btn-block.btn-lg{class:"text-ribbon-#{c.nickname.downcase}"}
-                  Sign up for #{c.nickname}
+                    %em 
+                    = c.oblique? ? c.oblique['three'] : "A rigorous curriculum dedicated to skills development, research strategies, theoretical investigation and pracitcal application."
+
+                  %br 
+                  =link_to "Sign up for #{c.nickname}", camp_path(c.nickname), {class:"text-white btn btn-square btn-block btn-lg text-ribbon-#{c.nickname.downcase}"}
         

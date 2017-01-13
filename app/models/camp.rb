@@ -8,7 +8,7 @@ class Camp < ApplicationRecord
 
   has_attached_file :glossy
 
-
+  store_accessor :oblique
   validates :name, presence: true
   validates :info, presence: true, length: {minimum: 280, maximum: 1000}
   validates :nickname, presence: true, length: {maximum: 3}
