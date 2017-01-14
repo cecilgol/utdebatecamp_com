@@ -2,8 +2,7 @@ class StaticPagesController < ApplicationController
   before_action :set_camps
 
   def index
-    flash[:warning]=request.server_name
-    
+ 
   end
 
   def about

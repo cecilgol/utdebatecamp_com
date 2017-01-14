@@ -4,13 +4,6 @@ class EmployeeApplicationsController < ApplicationController
 
 
   def new
-
-
-
-
-
-
-
     unless current_user.account
       current_user.account = Account.new
       current_user.account.accountable = Employee.new
@@ -68,11 +61,6 @@ class EmployeeApplicationsController < ApplicationController
 
   def employee_application_params
     params.require(:employee_application)
-          .permit(:program_id)# , :employee_attributes[:pronouns,
-
-
-
-
-
+          .permit(:program_id)
   end
 end
