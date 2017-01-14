@@ -9,30 +9,30 @@ Rails.application.routes.draw do
 
   get 'sidebar/index'
 
-  # get 'apply/:camp_nickname', to: 'employee_applications#new',
-  #                             as: :apply_to_work_at_camp
-  # post 'apply/:camp_nickname', to: 'employee_applications#create',
-  #                              as: :employee_applications
 
-  # get 'applications/:id/edit', to: 'employee_applications#edit',
-  #                              as: :edit_employee_application
-  # get 'applications/:id/show', to: 'employee_applications#show',
-  #                              as: :view_employee_application
 
-  # get 'applications/:camp_id/index', to: 'employee_applications#index',
-  #                                    as: :employement_applications
 
-  #get 'register/:camp_nickname', to: 'student_applications#new',
-  #                               as: :apply_to_camp
-  # get 'attend/:camp_nickname/edit', to: 'student_applications#edit',
-  #                                   as: :edit_student_application
-  # get 'attend/:camp_nickname/show', to: 'student_applications#show',
-  #                                   as: :view_student_application
-  # get 'attendance/:camp_id/index',  to: 'student_applications#index',
-  #                                   as: :student_applications
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   namespace :admin do
-    # buncha bullshit rails stuff in /admin
+
     resources :accounts
     resources :camps
     resources :employees 
@@ -43,12 +43,12 @@ Rails.application.routes.draw do
     resources :students
     resources :users
     
-    # GET requests in /admin
+
     get '/', to: 'home#index'
     get '/hired/employees', to: 'employees#hired'
     get '/not_hired/employees', to: 'employees#not_hired'
 
-    # POST (mostly JS) requests in /admin
+
     post 'hire_employee/:id',to: 'employees#hire',as:'hire_employee'
 
   end
@@ -85,7 +85,7 @@ Rails.application.routes.draw do
 
   get 'static_pages/about'
 
-  #get '/apply', to: 'static_pages#apply_to_work'
+
   
   post 'a/c', to: 'accounts#accountable_change'
 
@@ -93,5 +93,5 @@ Rails.application.routes.draw do
 
   get '/apply/(:s)', to: 'accounts#new'
 
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
 end

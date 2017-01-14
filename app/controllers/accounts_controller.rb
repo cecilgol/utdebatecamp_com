@@ -8,7 +8,7 @@ class AccountsController < ApplicationController
     @account = Account.find(current_user.account)
   end
 
-  # GET /accounts/new
+
   def new
     @account = Account.new
 
@@ -16,7 +16,7 @@ class AccountsController < ApplicationController
       @s = params[:s]
       respond_to do |format|
         format.js { render :accountable_change, s: @s, a: @a, p: @p }
-        # format.html { render 'accountable_change.js', s: @s, a: @a, p: @p }
+
 
       end
     end
@@ -27,17 +27,17 @@ class AccountsController < ApplicationController
 
   end
 
-  # def accountable_change
-  #   @s = params[:s]
-  #   @a = Account.new(user: current_user)
-  #   @p = @s.constantize.new
-  #   respond_to do |format|
-  #     format.js { render :accountable_change, s: @s, a: @a, p: @p }
-  #   end
-  # end
 
-  # POST /accounts
-  # POST /accounts.json
+
+
+
+
+
+
+
+
+
+
   def create
     @account = Account.new(account_params)
     @account.user = current_user
@@ -53,12 +53,12 @@ class AccountsController < ApplicationController
   end
 
   private
-  # Use callbacks to share common setup or constraints between actions.
+
   def set_account
     @account = Account.find(params[:id])
   end
 
-  # Never trust parameters from the scary internet, only allow the white list through.
+
   def account_params
     params.fetch(:account, {}).permit(:first_name, :middle_name, :last_name,
                                       :cell_phone, :other_phone, :address1,

@@ -1,7 +1,7 @@
 class Account < ApplicationRecord
   belongs_to :user
-  # belongs_to :accountable, polymorphic: true
-  # accepts_nested_attributes_for :accountable, allow_destroy: true
+
+
 
   has_many :news_posts
 

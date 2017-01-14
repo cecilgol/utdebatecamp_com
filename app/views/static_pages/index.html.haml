@@ -1,5 +1,5 @@
 .block.block-fill-height.app-block-k{:style => "background-image: url(#{image_url('tower_bg.jpg')})"}
-  - if !current_user && request.server_name == "www.workatutnif.com" || "workatutnif.com" || "localhost"
+  - if !user_signed_in? and request.server_name == "localhost" or request.server_name == "workatutnif.com" or request.server_name == "www.workatutnif.com"
     .block-sm-top.block-xs-top
       = link_to "Click here to apply to work at UTNIF", new_user_registration_path, {class:"btn btn-primary btn-square"}
   .block-sm-middle.block-xs-bottom

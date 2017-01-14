@@ -4,8 +4,8 @@ class EmployeesController < ApplicationController
 
   def new
     @employee = Employee.new
-    # current_user.account ||= Account.new   
-    # @employee.account = current_user.account
+
+
   end
 
 
@@ -58,7 +58,7 @@ class EmployeesController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
+
   def set_employee
     @employee = Employee.where(account: current_user.account.id).first
   end
@@ -69,7 +69,7 @@ class EmployeesController < ApplicationController
     end
   end
 
-  # Never trust parameters from the scary internet, only allow the white list through.
+
   def employee_params
     params.require(:employee).permit(:camp_id,:program,:pronouns,:arrival_date,:leave_date,:bio,:dorm,:eid,:references,:experience,:avatar)
   end

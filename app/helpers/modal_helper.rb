@@ -28,9 +28,9 @@ module ModalHelper
     icon_button type, label, url, modal_options(options)
   end
 
-  # options must be an HTML options hash as passed to link_to etc.
-  #
-  # returns a new hash with modal class added. Keeps existing classes.
+
+
+
   def modal_options(options, type=nil)
     inline_selector = options.delete :inline
     options[:onclick] = "return noosfero.modal.inline('#{inline_selector}')" if inline_selector

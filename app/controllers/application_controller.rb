@@ -11,10 +11,15 @@ class ApplicationController < ActionController::Base
   end
 
 
-  # Navbar vars
+
   def application_vars
     if !@camps
       @camps = Camp.order(id: :asc)
     end
+  end
+
+  def append_info_to_payload(payload)
+    super
+    payload[:user] = current_user.account.last_name if user_signed_in?
   end
 end

@@ -43,8 +43,8 @@ class Admin::ProgramsController < AdminController
     end
   end
 
-  # DELETE /programs/1
-  # DELETE /programs/1.json
+
+
   def destroy
     @program.destroy
     respond_to do |format|

@@ -1,15 +1,15 @@
 class EmployeeApplicationsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_employee_application, only: [:edit,:show]
-  # before_action :set_camp, only: [:new, :index]
+
 
   def new
-    # unless current_user.account.accountable_type == 'Employee'
-    #   current_user.account.accountable = Employee.new
-    # end
-    # @employee = current_user.account.accountable
 
-    # @application = EmployeeApplication.new(camp: @camp, employee: @employee)
+
+
+
+
+
 
     unless current_user.account
       current_user.account = Account.new
@@ -69,10 +69,10 @@ class EmployeeApplicationsController < ApplicationController
   def employee_application_params
     params.require(:employee_application)
           .permit(:program_id)# , :employee_attributes[:pronouns,
-                              #                     :arrival_date,
-                              #                     :leave_date,
-                              #                     :bio,
-                              #                     :references,
-                              #                     :experience])
+
+
+
+
+
   end
 end
