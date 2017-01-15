@@ -1,6 +1,6 @@
 class Camp < ApplicationRecord
   has_many :students
-  has_many :employees
+  has_many :employees, inverse_of: :camp
   has_many :labs
   has_many :programs
   

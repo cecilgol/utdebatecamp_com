@@ -20,6 +20,6 @@ class ApplicationController < ActionController::Base
 
   def append_info_to_payload(payload)
     super
-    payload[:user] = current_user.account.last_name if user_signed_in?
+    payload[:user] = current_user.account.last_name if user_signed_in? and current_user.account != nil
   end
 end

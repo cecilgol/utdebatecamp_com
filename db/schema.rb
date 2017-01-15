@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 20170113012145) do
 
-
+  # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "hstore"
 
@@ -87,17 +87,6 @@ ActiveRecord::Schema.define(version: 20170113012145) do
     t.string   "eid"
     t.index ["account_id"], name: "index_directors_on_account_id", using: :btree
     t.index ["camp_id"], name: "index_directors_on_camp_id", using: :btree
-  end
-
-  create_table "employee_applications", force: :cascade do |t|
-    t.integer  "employee_id"
-    t.integer  "camp_id"
-    t.integer  "program_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.index ["camp_id"], name: "index_employee_applications_on_camp_id", using: :btree
-    t.index ["employee_id"], name: "index_employee_applications_on_employee_id", using: :btree
-    t.index ["program_id"], name: "index_employee_applications_on_program_id", using: :btree
   end
 
   create_table "employee_forms", force: :cascade do |t|
@@ -209,17 +198,6 @@ ActiveRecord::Schema.define(version: 20170113012145) do
     t.index ["account_id"], name: "index_site_administrators_on_account_id", using: :btree
   end
 
-  create_table "student_applications", force: :cascade do |t|
-    t.integer  "student_id"
-    t.integer  "camp_id"
-    t.integer  "program_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["camp_id"], name: "index_student_applications_on_camp_id", using: :btree
-    t.index ["program_id"], name: "index_student_applications_on_program_id", using: :btree
-    t.index ["student_id"], name: "index_student_applications_on_student_id", using: :btree
-  end
-
   create_table "student_forms", force: :cascade do |t|
     t.integer  "student_id"
     t.string   "file_location"
@@ -271,9 +249,6 @@ ActiveRecord::Schema.define(version: 20170113012145) do
   add_foreign_key "coaches", "accounts"
   add_foreign_key "directors", "accounts"
   add_foreign_key "directors", "camps"
-  add_foreign_key "employee_applications", "camps"
-  add_foreign_key "employee_applications", "employees"
-  add_foreign_key "employee_applications", "programs"
   add_foreign_key "employee_forms", "employees"
   add_foreign_key "employees", "accounts"
   add_foreign_key "employees", "camps"
@@ -285,9 +260,6 @@ ActiveRecord::Schema.define(version: 20170113012145) do
   add_foreign_key "parents", "accounts"
   add_foreign_key "programs", "camps"
   add_foreign_key "site_administrators", "accounts"
-  add_foreign_key "student_applications", "camps"
-  add_foreign_key "student_applications", "programs"
-  add_foreign_key "student_applications", "students"
   add_foreign_key "student_forms", "students"
   add_foreign_key "students", "accounts"
   add_foreign_key "students", "camps"

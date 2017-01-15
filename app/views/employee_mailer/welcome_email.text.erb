@@ -1,6 +1,6 @@
 <%- str = "Thank you for applying to the UTNIF, #{@user.account.first_name}" %>
 <%= str %>
-<%= "=" * str.length %>
+<%= "=" * (str.length - (str.length*0.2)) %>
 
 
 We have received your application and will be reviewing it as soon as possible.

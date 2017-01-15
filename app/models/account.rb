@@ -1,9 +1,13 @@
 class Account < ApplicationRecord
   belongs_to :user
 
-
-
   has_many :news_posts
+  
+  has_one :employee
+  has_one :student
+  has_one :director
+  has_one :parent
+  has_one :coach
 
   def promote_to_site_administrator
     SiteAdministrator.new(

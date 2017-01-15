@@ -1,7 +1,7 @@
 class Employee < ApplicationRecord
 
   belongs_to :account
-  belongs_to :camp
+  belongs_to :camp, inverse_of: :employees
   has_many :programs
   has_many :labs
 
@@ -15,6 +15,7 @@ class Employee < ApplicationRecord
 
   def hire
     self.toggle!(:is_hired)
+    EmployeeMailer.hired_email(self).deliver
   end
 
 end
