@@ -34,7 +34,9 @@ Rails.application.routes.draw do
   resources :accounts, except: [:index]
   resources :site_administrators
   resources :programs
-  resources :employees, only: [:new, :edit, :show, :create, :update, :destroy]
+  resources :employees, only: [:new, :edit, :show, :create, :update, :destroy] do
+    patch '/avatar_upload', to: 'employees#avatar_upload'
+  end
   devise_for :users, controllers:{
     registrations: 'users/registrations',
     sessions: 'users/sessions',

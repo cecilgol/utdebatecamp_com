@@ -1,7 +1,7 @@
 # Listing and managing Employees
 class Admin::EmployeesController < AdminController
   before_action :authenticate_user!
-  before_action :set_employee, only: [:edit,:update,:hire,:destroy]
+  before_action :set_employee, except: [:new,:create]
 
   def index
     @employees = Employee.all
@@ -16,6 +16,7 @@ class Admin::EmployeesController < AdminController
   end
 
   def edit
+    @account = @employee.account
   end
 
   def hire
@@ -26,6 +27,7 @@ class Admin::EmployeesController < AdminController
   end
 
   def edit
+    @account = @employee.account
   end
 
   def update

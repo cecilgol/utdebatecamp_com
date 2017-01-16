@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  account: one
-  signed_up_by: one
+  account_id: 1
+  added_by_id: 3
   preferred_contact_method: MyString
 
 two:
-  account: two
-  signed_up_by: two
+  account_id: 2
+  added_by_id: 3
   preferred_contact_method: MyString

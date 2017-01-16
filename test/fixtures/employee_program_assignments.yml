@@ -1,11 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  student: one
-  camp: one
+  employee: one
   program: one
 
 two:
-  student: two
-  camp: two
+  employee: two
   program: two

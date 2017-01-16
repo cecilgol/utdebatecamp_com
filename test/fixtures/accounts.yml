@@ -13,8 +13,6 @@ one:
   territory: MyString
   country: MyString
   birthday: 2016-08-09
-  dorm: MyString
-  eid: MyString
   user: one
 
 two:
@@ -30,6 +28,4 @@ two:
   territory: MyString
   country: MyString
   birthday: 2016-08-09
-  dorm: MyString
-  eid: MyString
   user: two

@@ -4,8 +4,6 @@ class EmployeesController < ApplicationController
 
   def new
     @employee = Employee.new
-
-
   end
 
 
@@ -55,6 +53,15 @@ class EmployeesController < ApplicationController
   end
 
 
+  # def avatar_upload(e)
+  #   respondto do |format|
+  #     if e.update(cardparams)
+  #       format.js { render json: {avatar: true} }
+  #     else
+  #       format.js { render json: e.errors }
+  #     end
+  #   end
+  # end
 
   private
 

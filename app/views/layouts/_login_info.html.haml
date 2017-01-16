@@ -1,6 +1,8 @@
 - if user_signed_in?
   %li
-    -if current_user&.account&.first_name
+    -if current_user&.account&.employee?
+      =link_to current_user.account.first_name.titlecase, edit_employee_path(current_user.account.employee.id)
+    -elsif current_user&.account&.first_name
       =link_to current_user.account.first_name.titlecase, edit_account_path(current_user.account.id)
     -else
       =link_to current_user.email, edit_user_registration_path

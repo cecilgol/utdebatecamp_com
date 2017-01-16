@@ -5,11 +5,6 @@ class AccountsControllerTest < ActionDispatch::IntegrationTest
     @account = accounts(:one)
   end
 
-  test "should get index" do
-    get accounts_url
-    assert_response :success
-  end
-
   test "should get new" do
     get new_account_url
     assert_response :success
@@ -43,6 +38,6 @@ class AccountsControllerTest < ActionDispatch::IntegrationTest
       delete account_url(@account)
     end
 
-    assert_redirected_to accounts_url
+    assert_redirected_to root_url
   end
 end

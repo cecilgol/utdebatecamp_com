@@ -161,11 +161,13 @@
     = f.label "Picture", {class:"col-xs-2 col-form-label"}
     .col-xs-10
       = f.file_field :avatar, {class:"form-control"}
-  .form-group.form-inline
-    = f.label "Available From:"
-    = f.date_field :arrival_date, {class:"form-control"}
-    = f.label "until:"
-    = f.date_field :leave_date, {class:"form-control"}
+  .form-group.row
+    = f.label "Summer Availability?", {class:"col-form-label col-xs-2"}
+    .col-xs-10.form-inline
+      = f.label "Available From:"
+      = f.date_field :arrival_date, {class:"form-control"}
+      = f.label "until:"
+      = f.date_field :leave_date, {class:"form-control"}
 
   .actions.row
     = f.submit 'Save', {class:"btn btn-info btn-square"}

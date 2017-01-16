@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170113012145) do
+ActiveRecord::Schema.define(version: 20170115223756) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -97,6 +97,15 @@ ActiveRecord::Schema.define(version: 20170113012145) do
     t.index ["employee_id"], name: "index_employee_forms_on_employee_id", using: :btree
   end
 
+  create_table "employee_program_assignments", force: :cascade do |t|
+    t.integer  "employee_id"
+    t.integer  "program_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["employee_id"], name: "index_employee_program_assignments_on_employee_id", using: :btree
+    t.index ["program_id"], name: "index_employee_program_assignments_on_program_id", using: :btree
+  end
+
   create_table "employees", force: :cascade do |t|
     t.integer  "camp_id"
     t.integer  "program_id"
@@ -175,6 +184,15 @@ ActiveRecord::Schema.define(version: 20170113012145) do
     t.index ["student_id", "parent_id"], name: "index_parents_students_on_student_id_and_parent_id", using: :btree
   end
 
+  create_table "program_student_assignments", force: :cascade do |t|
+    t.integer  "student_id"
+    t.integer  "program_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["program_id"], name: "index_program_student_assignments_on_program_id", using: :btree
+    t.index ["student_id"], name: "index_program_student_assignments_on_student_id", using: :btree
+  end
+
   create_table "programs", force: :cascade do |t|
     t.integer  "camp_id"
     t.string   "name"
@@ -250,6 +268,8 @@ ActiveRecord::Schema.define(version: 20170113012145) do
   add_foreign_key "directors", "accounts"
   add_foreign_key "directors", "camps"
   add_foreign_key "employee_forms", "employees"
+  add_foreign_key "employee_program_assignments", "employees"
+  add_foreign_key "employee_program_assignments", "programs"
   add_foreign_key "employees", "accounts"
   add_foreign_key "employees", "camps"
   add_foreign_key "employees", "programs"
@@ -258,6 +278,8 @@ ActiveRecord::Schema.define(version: 20170113012145) do
   add_foreign_key "labs", "programs"
   add_foreign_key "news_posts", "accounts"
   add_foreign_key "parents", "accounts"
+  add_foreign_key "program_student_assignments", "programs"
+  add_foreign_key "program_student_assignments", "students"
   add_foreign_key "programs", "camps"
   add_foreign_key "site_administrators", "accounts"
   add_foreign_key "student_forms", "students"

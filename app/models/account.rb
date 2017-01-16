@@ -2,12 +2,24 @@ class Account < ApplicationRecord
   belongs_to :user
 
   has_many :news_posts
-  
+
   has_one :employee
   has_one :student
   has_one :director
   has_one :parent
   has_one :coach
+
+  
+  validates_presence_of :first_name, on: :create, message: "can't be blank"
+  validates_presence_of :last_name, on: :create, message: "can't be blank"
+  validates_presence_of :address1, on: :create, message: "can't be blank"
+  validates_presence_of :city, on: :create, message: "can't be blank"
+  validates_presence_of :state, on: :create, message: "can't be blank"
+  
+  validates_each :birthday do |record,attr,value|
+    record.errors.add(attr,'must be of age to participate at UTNIF') if value >= Time.now - 9.years
+  end
+
 
   def promote_to_site_administrator
     SiteAdministrator.new(

@@ -1,3 +1,5 @@
+
+
 //colors
 $black: rgba(0, 0, 0, 1);
 $color_mountain_mist_approx: rgba(153, 153, 153, 1);
@@ -13291,7 +13293,7 @@ tbody.collapse.in {
 		height:0;
 		padding-bottom:50%;
 		position:relative;
-		width:100%;
+		width:50%;
 		> .staff-member{
 			background-color:rgba(21, 21, 21, 0.5);
 			height:100%;
@@ -13318,14 +13320,6 @@ tbody.collapse.in {
 				-moz-transition: all .2s ease-in-out;
 				-webkit-transition: all .2s ease-in-out;
 			}
-		}
-	}
-}
-
-@media (min-width: 768px){ 	
-	.staff{
-		> li {
-			width:50%;
 		}
 	}
 }
@@ -13372,4 +13366,51 @@ tbody.collapse.in {
 
 .text-white{
 	color:white;
+}
+
+
+.pic{
+	position:relative;
+	width:200px;height:200px;
+	.bg{
+		position:absolute;
+		top:0px;
+		left:0px;
+		bottom:0px;
+		width:100%;
+	}
+	.overlay{
+		position:absolute;
+		top:0px;
+		left:0px;
+		bottom:0px;
+		width:100%;
+		opacity:0;
+		background:rgba(0, 0, 0, 0.5);
+		color:white;
+		> h3 {
+			font-family: $font_20;
+			padding-top:25px;
+			text-align:center;
+		}
+	}
+	&:hover{
+		.bg{
+			-webkit-filter: blur(2px);
+			filter:blur(2px);
+		}
+		.overlay{
+			opacity:1;
+		}
+	}
+
+}
+input#employee_avatar{
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+
 }

@@ -2,11 +2,7 @@
 
 one:
   camp: one
-  program: one
   account: one
-  first_name: MyString
-  last_name: MyString
-  title: MyString
   arrival_date: 2016-08-14
   leave_date: 2016-08-14
   bio: MyText
@@ -16,11 +12,7 @@ one:
 
 two:
   camp: two
-  program: two
   account: two
-  first_name: MyString
-  last_name: MyString
-  title: MyString
   arrival_date: 2016-08-14
   leave_date: 2016-08-14
   bio: MyText

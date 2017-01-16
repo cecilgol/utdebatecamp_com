@@ -12,6 +12,9 @@ class StaticPagesController < ApplicationController
   end
 
   def create_account
+    if current_user.account != nil
+      redirect_to root_path
+    end
   end
 
   def letsencrypt
