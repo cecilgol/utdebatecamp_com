@@ -23,7 +23,7 @@
         .row.m-b
           .col-lg-12
             .panel.panel-primary.panel-bold.m-b-0.app-box-shadow
-              %img{:src => "#{image_url('camp_rs_bw.jpg')}"}
+              %img{:src => "#{image_url('camp_rs.jpg')}"}
               .panel-body.p-b-lg
                 %h4.m-b-0 University of Texas National Institute in Forensics
                 %p.text-serif
@@ -39,10 +39,10 @@
         .row
           .col-lg-6.m-b
             .app-box-shadow
-              %img{:src => "#{image_url('toya_rs.jpg')}"}/
+              %img{:src => "#{image_url('toya_rs_na.jpg')}"}/
           .col-lg-6.m-b
             .app-box-shadow
-              %img{:src => "#{image_url('teddy_rs_bw.jpg')}"}/
+              %img{:src => "#{image_url('teddy_rs.jpg')}"}/
         .row.hidden-xs
           .col-lg-12
             %img{:src => "#{image_url('must_have_rs.jpg')}"}/
@@ -119,6 +119,9 @@
                     = c.start_date.strftime("%B %d, %Y")
                     &mdash;
                     = c.end_date.strftime("%B %d, %Y")
+
+                -#.cal-heatmap[c]{:data => {:start_date=>"#{c.start_date}", :end_date=> "#{c.end_date}"}}
+ 
                 %p.text-serif.m-b
                   %em
                     = c.oblique? ? c.oblique['main'] : "A rigorous curriculum dedicated to skills development, research strategies, theoretical investigation and pracitcal application."
@@ -139,4 +142,4 @@
 
                   %br 
                   =link_to "Sign up for #{c.nickname}", camp_path(c.nickname), {class:"text-white btn btn-square btn-block btn-lg text-ribbon-#{c.nickname.downcase}"}
-        
+          
