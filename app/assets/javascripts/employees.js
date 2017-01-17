@@ -1,6 +1,4 @@
 (function($) {
-
-
     function readURL(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();
@@ -14,7 +12,6 @@
     }
 
     $("input#employee_avatar").change(function(){
-        console.log("changed the right thing");
         readURL(this);
     });
 

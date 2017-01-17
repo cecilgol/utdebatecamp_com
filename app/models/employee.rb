@@ -10,7 +10,7 @@ class Employee < ApplicationRecord
 
   has_many :labs
  
-  has_attached_file :avatar, styles: {thumb:["200x200#",:png]}, default_url: "/system/employees/avatars/default-:style.png"
+  has_attached_file :avatar, styles: {thumb:["200x200#",:png]}, default_url: "missing-:style.png"
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
 
 

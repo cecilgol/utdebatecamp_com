@@ -5,165 +5,91 @@
       %ul
         - @employee.errors.full_messages.each do |msg|
           %li= msg
-  = fields_for @employee.account  do |ff|
+  = fields_for :account  do |ff|
     .form-group.row
-      = ff.label "First Name", {class:"col-xs-2 col-form-label"}
-      .col-xs-10
+      = ff.label "First Name", {class:"col-sm-2 control-label"}
+      .col-sm-10
         = ff.text_field :first_name, {class:"form-control"}
     .form-group.row
-      = ff.label "Middle Name", {class:"col-xs-2 col-form-label"}
-      .col-xs-10
+      = ff.label "Middle Name", {class:"col-sm-2 col-form-label"}
+      .col-sm-10
         = ff.text_field :middle_name, {class:"form-control"}
     .form-group.row
-      = ff.label "Last Name", {class:"col-xs-2 col-form-label"}
-      .col-xs-10
+      = ff.label "Last Name", {class:"col-sm-2 col-form-label"}
+      .col-sm-10
         = ff.text_field :last_name, {class:"form-control"}
     .form-group.row
-      = ff.label "Cell Phone", {class:"col-xs-2 col-form-label"}
-      .col-xs-10
+      = ff.label "Cell Phone", {class:"col-sm-2 col-form-label"}
+      .col-sm-10
         = ff.telephone_field :cell_phone, {class:"form-control"}
     .form-group.row
-      = ff.label "Cell Carrier", {class:"col-xs-2 col-form-label"}
-      .col-xs-10
-        - @carriers = ["AT&T","mms.att.net"],
-["T-Mobile","tmomail.net"],
-["Sprint (PCS)","messaging.sprintpcs.com"],
-["Verizon/Tracfone Prepaid","vtext.com"],
-["Google Fi","msg.fi.google.com"],
-["Ting Mobile","message.ting.com"],
-["Cricket/AIO","mms.cricketwireless.net"],
-["Virgin Mobile","vmobl.com"],
-["MetroPCS","mymetropcs.com"],
-["Sprint (Nextel)","page.nextel.com"],
-["AT&T Enterprise Paging","page.att.net"],
-["Alaska Communications","msg.acsalaska.com"],
-["Alltel","message.alltel.com"],
-["Boost Mobile","myboostmobile.com"],
-["Cellular One","mobile.celloneusa.com"],
-["Centennial Wireless","cwemail.com"],
-["Cingular/GoPhone/7-11 Speakout","cingularme.com"],
-["Cricket (Old/Sprint)","mms.mycricket.com"],
-["General Communications","msg.gci.net"],
-["Globalstar","msg.globalstarusa.com"],
-["Helio","myhelio.com"],
-["Illinois Valley Cellular","ivctext.com"],
-["Qwest","qwestmp.com"],
-["Thumb Cellular","sms.thumbcellular.com"],
-["US Cellular","email.uscc.net"],
-["Unicel","utext.com"]
-
-        = ff.select :carrier, options_for_select(@carriers),{include_blank:"Landline/Do Not Text Me"} ,{class:"custom-select"}
+      = ff.label "Cell Carrier", {class:"col-sm-2 col-form-label"}
+      .col-sm-10
+        = ff.select :carrier, carriers,{include_blank:"Landline/Do Not Text Me"} ,{class:"custom-select"}
     .form-group.row
-      = ff.label "Address", {class:"col-xs-2 col-form-label"}
-      .col-xs-10
+      = ff.label "Address", {class:"col-sm-2 col-form-label"}
+      .col-sm-10
         = ff.text_field :address1, {class:"form-control"}
     .form-group.row
-      = ff.label "Address Line 2", {class:"col-xs-2 col-form-label"}
-      .col-xs-10
+      = ff.label "Address Line 2", {class:"col-sm-2 col-form-label"}
+      .col-sm-10
         = ff.text_field :address2, {class:"form-control"}
     .form-group.row
-      = ff.label "City", {class:"col-xs-2 col-form-label"}
-      .col-xs-10
+      = ff.label "City", {class:"col-sm-2 col-form-label"}
+      .col-sm-10
         = ff.text_field :city, {class:"form-control"}
     .form-group.row
-      = ff.label "State", {class:"col-xs-2 col-form-label"}
-      .col-xs-10
-        - states = Array[ ["Alaska", "AK"],
-                ["Alabama", "AL"], 
-                ["Arkansas", "AR"], 
-                ["American Samoa", "AS"], 
-                ["Arizona", "AZ"], 
-                ["California", "CA"], 
-                ["Colorado", "CO"], 
-                ["Connecticut", "CT"], 
-                ["District of Columbia", "DC"], 
-                ["Delaware", "DE"], 
-                ["Florida", "FL"], 
-                ["Georgia", "GA"], 
-                ["Guam", "GU"], 
-                ["Hawaii", "HI"], 
-                ["Iowa", "IA"], 
-                ["Idaho", "ID"], 
-                ["Illinois", "IL"], 
-                ["Indiana", "IN"], 
-                ["Kansas", "KS"], 
-                ["Kentucky", "KY"], 
-                ["Louisiana", "LA"], 
-                ["Massachusetts", "MA"], 
-                ["Maryland", "MD"], 
-                ["Maine", "ME"], 
-                ["Michigan", "MI"], 
-                ["Minnesota", "MN"], 
-                ["Missouri", "MO"], 
-                ["Mississippi", "MS"], 
-                ["Montana", "MT"], 
-                ["North Carolina", "NC"], 
-                ["North Dakota", "ND"], 
-                ["Nebraska", "NE"], 
-                ["New Hampshire", "NH"], 
-                ["New Jersey", "NJ"], 
-                ["New Mexico", "NM"], 
-                ["Nevada", "NV"], 
-                ["New York", "NY"], 
-                ["Ohio", "OH"], 
-                ["Oklahoma", "OK"], 
-                ["Oregon", "OR"], 
-                ["Pennsylvania", "PA"], 
-                ["Puerto Rico", "PR"], 
-                ["Rhode Island", "RI"], 
-                ["South Carolina", "SC"], 
-                ["South Dakota", "SD"], 
-                ["Tennessee", "TN"], 
-                ["Texas", "TX"], 
-                ["Utah", "UT"], 
-                ["Virginia", "VA"], 
-                ["Virgin Islands", "VI"], 
-                ["Vermont", "VT"], 
-                ["Washington", "WA"], 
-                ["Wisconsin", "WI"], 
-                ["West Virginia", "WV"], 
-                ["Wyoming", "WY"] ]
-
-        = ff.select :state, options_for_select(states), {}, {class:"custom-select"}
+      = ff.label "State", {class:"col-sm-2 col-form-label"}
+      .col-sm-10
+        = ff.select :state, states, {}, class:"custom-select"
     .form-group.row
-      = ff.label "Zip", {class:"col-xs-2 col-form-label"}
-      .col-xs-10
+      = ff.label "Zip", {class:"col-sm-2 col-form-label"}
+      .col-sm-10
         = ff.text_field :zipcode, {class:"form-control"}
     .form-group.row
-      = ff.label "Birthday", {class:"col-xs-2 col-form-label"}
-      .col-xs-10
+      = ff.label "Birthday", {class:"col-sm-2 col-form-label"}
+      .col-sm-10
         = ff.date_field :birthday, {class:"form-control"}
   .form-group.row
-    = f.label "Curriculum", {class:"col-xs-2 col-form-label"}
-    .col-xs-10
+    = f.label "Curriculum", {class:"col-sm-2 col-form-label"}
+    .col-sm-10
       = f.select :camp_id, Camp.all.collect {|c| [ c.name, c.id ] }, {}, {class:"custom-select"}
   .form-group.row
-    = f.label "Quick Biography", {class:"col-xs-2 col-form-label"}
-    .col-xs-10
+    = f.label "Quick Biography", {class:"col-sm-2 col-form-label"}
+    .col-sm-10
       = f.text_area :bio, {class:"form-control",rows:'3'}
   .form-group.row
-    = f.label "Relevant Experience", {class:"col-xs-2 col-form-label"}
-    .col-xs-10
+    = f.label "Relevant Experience", {class:"col-sm-2 col-form-label"}
+    .col-sm-10
       = f.text_area :experience, {class:"form-control",rows:'3'}
   .form-group.row
-    = f.label "Any References?", {class:"col-xs-2 col-form-label"}
-    .col-xs-10
+    = f.label "Any References?", {class:"col-sm-2 col-form-label"}
+    .col-sm-10
       = f.text_area :references, {class:"form-control",rows:'3'}
   .form-group.row
-    = f.label "Pronouns?", {class:"col-xs-2 col-form-label"}
-    .col-xs-10
+    = f.label "A Picture!", {class:"col-sm-2 col-form-label"}
+    .col-sm-10
+      = f.file_field :avatar, {id: 'employee_avatar',capture: "camera"}
+      = f.label :avatar do
+        .pic
+          .bg.img-thumbnail{style: "background-image:url(#{image_url(@employee.avatar.url(:thumb))});background-size:200px;"}
+          .overlay
+            %h3 Upload an image!        
+
+  .form-group.row
+    = f.label "Pronouns?", {class:"col-sm-2 col-form-label"}
+    .col-sm-10
       = f.text_field :pronouns, {class:"form-control"}
   .form-group.row
-    = f.label "EID", {class:"col-xs-2 col-form-label"}
-    .col-xs-10
+    - if @employee.eid?
+      = f.label :eid,"UT EID", {:class =>"col-sm-2 col-form-label"}
+    - else
+      = f.label :eid,"UT EID", {:class =>"col-sm-2 col-form-label", :data=>{'toggle' => 'tooltip', 'html'=>"true"}, :title=>"Get an EID at <a href=\"https://idmanager.its.utexas.edu/eid_self_help/?geid=\" target=\"blank\">UT</a>"}
+    .col-sm-10
       = f.text_field :eid, {class:"form-control"}
   .form-group.row
-    = f.label "Picture", {class:"col-xs-2 col-form-label"}
-    .col-xs-10
-      = f.file_field :avatar, {class:"form-control"}
-  .form-group.row
-    = f.label "Summer Availability?", {class:"col-form-label col-xs-2"}
-    .col-xs-10.form-inline
+    = f.label "Summer Availability?", {class:"col-form-label col-sm-2"}
+    .col-sm-10.form-inline
       = f.label "Available From:"
       = f.date_field :arrival_date, {class:"form-control"}
       = f.label "until:"
@@ -171,3 +97,4 @@
 
   .actions.row
     = f.submit 'Save', {class:"btn btn-info btn-square"}
+
