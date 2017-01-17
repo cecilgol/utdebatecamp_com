@@ -81,7 +81,10 @@
     .col-sm-10
       = f.text_field :pronouns, {class:"form-control"}
   .form-group.row
-    = f.label "UT EID", {class:"col-sm-2 col-form-label"}
+    - if @employee.eid?
+      = f.label :eid,"UT EID", {:class =>"col-sm-2 col-form-label"}
+    - else
+      = f.label :eid,"UT EID", {:class =>"col-sm-2 col-form-label", :data=>{'toggle' => 'tooltip', 'html'=>"true"}, :title=>"Get an EID at <a href=\"https://idmanager.its.utexas.edu/eid_self_help/?geid=\" target=\"blank\">UT</a>"}
     .col-sm-10
       = f.text_field :eid, {class:"form-control"}
   .form-group.row

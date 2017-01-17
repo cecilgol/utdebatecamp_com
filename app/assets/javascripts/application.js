@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require toolkit
+//= require tether.min
 //= require bootstrap
 //= require turbolinks
 //= require_tree .

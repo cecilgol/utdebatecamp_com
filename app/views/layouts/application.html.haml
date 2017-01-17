@@ -49,4 +49,11 @@
       = javascript_include_tag "application"
 
       :javascript
-        $('.alert.alert-dismissable').delay(2000).slideUp("slow");
+        +function ($) {
+          $('.alert.alert-dismissable').delay(2000).slideUp("slow");
+          $('[data-toggle="tooltip"]').tooltip({placement: 'top',trigger: 'manual'}).tooltip('show');
+          $('[data-toggle="tooltip"]').click(function(){
+            $(this).tooltip('hide');
+          });
+        }(jQuery);
+
