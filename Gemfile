@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
-ruby '~> 2.3.3'
+ruby '~> 2.4'
 
-gem 'rails', '~> 5.0.0'
+gem 'rails'
 # gem 'mysql2', '>= 0.3.18', '< 0.5'
 gem 'pg'
 gem 'puma', '~> 3.0'
@@ -11,11 +11,11 @@ gem 'coffee-rails', '~> 4.2'
 gem 'haml'
 gem 'haml-rails'
 # gem 'therubyracer', platforms: :ruby
-gem 'bootstrap', '~> 4.0.0.alpha3'
-gem 'sprockets-rails'
-gem 'devise'
+gem 'bootstrap', '~> 4.0.0.alpha6'
+gem 'sprockets-rails', '>= 2.3.2'
+gem 'devise', git: 'https://github.com/plataformatec/devise.git', branch: 'master'
 gem 'cancancan', '~> 1.10'
-gem "paperclip", "~> 5.0.0"
+gem 'paperclip'
 gem 'font-awesome-rails'
 gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
@@ -24,7 +24,8 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 gem 'lograge'
-
+gem 'simple_calendar', '~> 2.0'
+gem 'ice_cube'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

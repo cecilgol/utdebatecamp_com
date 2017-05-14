@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170115223756) do
+ActiveRecord::Schema.define(version: 20170510032210) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -130,6 +130,18 @@ ActiveRecord::Schema.define(version: 20170115223756) do
     t.index ["account_id"], name: "index_employees_on_account_id", using: :btree
     t.index ["camp_id"], name: "index_employees_on_camp_id", using: :btree
     t.index ["program_id"], name: "index_employees_on_program_id", using: :btree
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.integer  "camp_id"
+    t.integer  "program_id"
+    t.jsonb    "schedule"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["camp_id"], name: "index_events_on_camp_id", using: :btree
+    t.index ["program_id"], name: "index_events_on_program_id", using: :btree
+    t.index ["schedule"], name: "index_events_on_schedule", using: :gin
   end
 
   create_table "faqs", force: :cascade do |t|
@@ -273,6 +285,8 @@ ActiveRecord::Schema.define(version: 20170115223756) do
   add_foreign_key "employees", "accounts"
   add_foreign_key "employees", "camps"
   add_foreign_key "employees", "programs"
+  add_foreign_key "events", "camps"
+  add_foreign_key "events", "programs"
   add_foreign_key "lab_students", "labs"
   add_foreign_key "lab_students", "students"
   add_foreign_key "labs", "programs"

@@ -13,9 +13,7 @@ class ApplicationController < ActionController::Base
 
 
   def application_vars
-    if !@camps
       @camps = Camp.order(id: :asc)
-    end
   end
 
   def append_info_to_payload(payload)

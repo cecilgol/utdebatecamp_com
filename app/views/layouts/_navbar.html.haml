@@ -11,8 +11,6 @@
         - if u && u != ""
           %span.label.label-info
             = u
-
-
     %li.nav-divider
     %li.nav-header
       %small USER
@@ -20,10 +18,11 @@
     %li.nav-divider
     %li.nav-header
       %small CAMPS
-    - @camps.each do |c|
-      %li
-        - if c.name
-          = link_to c.name, camp_path(c.nickname), {"data-target" => "#stage", "data-toggle" => "stage"}
+    -# - @camps.each do |c|
+    -#   %li
+    -#     - if c.name
+    -#       = link_to c.name, camp_path(c.nickname), {"data-target" => "#stage", "data-toggle" => "stage"}
+    = render partial: 'layouts/camp', collection: @camps, cached: true
     %li.nav-divider
     %li.nav-header
       %small ABOUT

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  camp: one
+  schedule: 
+
+two:
+  name: MyString
+  camp: two
+  schedule: 

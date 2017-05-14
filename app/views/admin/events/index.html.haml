@@ -1,0 +1,30 @@
+%h1 Upcoming events
+
+
+
+= month_calendar events: @events do |date,events|
+  .date{id: date, style: "height:100px;width:100px;overflow:hidden"}
+    = date.day
+    - events.each do |event|
+      .date-events{data:{container:"body", toggle:"popover", placement:"top", content:"Vivamus sagittis lacus vel augue laoreet rutrum faucibus."}}
+        = event.name 
+
+%table.table
+  %thead
+    %tr
+      %th
+      %th
+      %th
+
+  %tbody
+    - @events.each do |event|
+      %tr
+        %td= link_to 'Show', admin_event_url(event)
+        %td= link_to 'Edit', edit_admin_event_path(event)
+        %td= link_to 'Destroy', admin_event_url(event), method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Event', new_admin_event_path
+
+= render 'layouts/modal'
