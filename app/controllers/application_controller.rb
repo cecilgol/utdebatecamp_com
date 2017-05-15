@@ -1,6 +1,9 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :application_vars
+  include ApplicationHelper  
+
+# TODO: fix scss/custom/app-block.scss
 
   def is_admin?
     current_user.account.accountable.is_a? SiteAdministrator

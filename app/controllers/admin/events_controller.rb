@@ -6,6 +6,7 @@ class Admin::EventsController < AdminController
   # GET /events.json
   def index
     @events = Event.all
+    @event = Event.new
   end
 
   # GET /events/1
@@ -22,6 +23,15 @@ class Admin::EventsController < AdminController
   def edit
   end
 
+  def modal
+    respond_to do |format|
+      format.html
+      format.js
+    end
+    logger.debug { "Partial is" }
+    utnif_modal("Add a new Event")
+  end
+  
   # POST /events
   # POST /events.json
   def create

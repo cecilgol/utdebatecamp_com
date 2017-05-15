@@ -3,21 +3,28 @@ default: &default
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
+laptop:
+    <<: *default 
+    database: utdebatecamp_com_development
+    username: cecilgol
+    host: localhost
+    port: 5432
+    min_messages: notice
+
 development:
   <<: *default
   database: utdebatecamp_com_development
-  username: utdebatecamp_com
-  password: very secure password
-  host: localhost
+  username: cecilgol 
+  host: aphrodite.local
   port: 5432
+  min_messages: notice
 
 test:
   <<: *default
   database: utdebatecamp_com_test
-  username: utdebatecamp_com
-  password: very secure password
-  host: localhost
+  host: aphrodite.local
   port: 5432
+  min_messages: notice
 
 production:
   <<: *default

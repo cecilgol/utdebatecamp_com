@@ -1,32 +1,21 @@
 #sidebar.stage-shelf.hidden
-  %ul.nav.nav-bordered.nav-stacked
-    %li.nav-header
-      %small UTNIF
-    %li
-      = link_to 'Home', root_path, {"data-target" => "#stage", "data-toggle" => "stage"}
-    %li
-      = link_to '/news',{"data-target" => "#stage", "data-toggle" => "stage"} do
-        News
-        - u = unread_blog_posts
-        - if u && u != ""
-          %span.label.label-info
-            = u
-    %li.nav-divider
-    %li.nav-header
-      %small USER
+  .nav.flex-column
+    %small.nav-header UTNIF
+    = link_to 'Home', root_path, {"data-target" => "#stage", "data-toggle" => "stage", "class" => "nav-link"}
+    = link_to '/news',{"data-target" => "#stage", "data-toggle" => "stage", "class" => "nav-link"} do
+      News
+      - u = unread_blog_posts
+      - if u && u != ""
+        %span.label.label-info
+          = u
+    .dropdown-divider
+    %small.nav-header USER
     = render 'layouts/login_info'
-    %li.nav-divider
-    %li.nav-header
-      %small CAMPS
-    -# - @camps.each do |c|
-    -#   %li
-    -#     - if c.name
-    -#       = link_to c.name, camp_path(c.nickname), {"data-target" => "#stage", "data-toggle" => "stage"}
+    .dropdown-divider
+    %small.nav-header CAMPS
     = render partial: 'layouts/camp', collection: @camps, cached: true
-    %li.nav-divider
-    %li.nav-header
-      %small ABOUT
-    %li
-      =link_to "FAQ - For Parents", faq_url, {data:{target:"#stage",toggle: "stage"}}
-    %li
-      %a{"data-target" => "#stage", "data-toggle" => "stage", "href" => "#"} About UTNIF
+    .dropdown-divider
+    %small.nav-header ABOUT
+    =link_to "FAQ - For Parents", faq_url, {class: 'nav-link',data:{target:"#stage",toggle: "stage"}}
+    %a{class:'nav-link',href:'#',target:"#stage",toggle: "stage"} 
+      About UTNIF

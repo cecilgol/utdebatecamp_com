@@ -4,8 +4,11 @@
     });
 
     function showCreateEventDialog(element) {
-        console.log('fuck yeah!', $(element));
-        $(element).popover('toggle');
+        $.get('/admin/e/modal',function(res){
+            $('#m').html(res);
+            $('#utnif-modal').modal('toggle');
+        });
+        
         $(element).css("color", "red");
     }
 })(jQuery);

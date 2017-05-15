@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     get '/hired/employees', to: 'employees#hired'
     get '/not_hired/employees', to: 'employees#not_hired'
     post 'hire_employee/:id',to: 'employees#hire',as:'hire_employee'
+    get '/e/modal', to: 'events#modal', as:'new_event_modal'
   end
   resources :coaches
   resources :directors

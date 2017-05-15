@@ -1,0 +1,28 @@
+.panel-bold {
+    background-color: #ddd;
+    border: 0;
+    hr {
+        background: #fff;
+    }
+    p {
+        color: rgba(255, 255, 255, .7)
+    }
+    &.panel-default {
+        background-color: #ddd;
+    }
+    &.panel-primary {
+        background-color: $brand-primary;
+    }
+    &.panel-success {
+        background-color: $brand-success;
+    }
+    &.panel-info {
+        background-color: $brand-info;
+    }
+    &.panel-warning {
+        background-color: $brand-warning;
+    }
+    &.panel-danger {
+        background-color: $brand-danger;
+    }
+}

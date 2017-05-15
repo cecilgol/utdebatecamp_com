@@ -6,9 +6,9 @@
           %span{'aria-hidden'=>'true'}
             &times;
         %h4
-          =yield :title if content_for? :title 
+          = modal_title
       .modal-body
-        = yield
+        = modal_content
       .modal-footer
         %button.btn.btn-secondary{'data-dismiss'=>'modal','type'=>'button'}
           Close
