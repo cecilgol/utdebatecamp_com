@@ -81,8 +81,8 @@ module ApplicationHelper
     ]
   end
 
-  def utnif_modal(modal_title = 'modal-title', modal_content = 'modal-content', modal_footer = 'modal-footer')
-    render partial: 'layouts/modal', locals: {modal_title: modal_title, modal_content: modal_content, modal_footer: modal_footer}
+  def utnif_modal(modal_title = 'modal-title',&block)
+    render(partial: 'layouts/modal', locals:{modal_title: modal_title, block: block})
   end
 
 end

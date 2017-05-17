@@ -1,0 +1,21 @@
+<div aria-hidden='true' aria-labelledby='utnif-modal-label' class='modal fade' id='utnif-modal' role='dialog' tabindex='-1'>
+    <div class='modal-dialog' role='document'>
+        <div class='modal-content'>
+            <div class='modal-header'>
+                <button aria-label='Close' class='close' data-dismiss='modal'>
+          <span aria-hidden='true'>
+            &times;
+          </span>
+        </button>
+                <h4>
+                    <%= modal_title %>
+                </h4>
+            </div>
+            <div class='modal-body'>
+                <div class="container-fluid">
+                    <%= capture(&block) %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

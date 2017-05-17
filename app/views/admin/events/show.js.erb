@@ -1,0 +1,15 @@
+(function() {
+    function html(eventClass, eventStartTime, eventEndTime, eventName) {
+        var html = "<div class='" + eventClass + " event' data-endtime='" + eventEndTime + "' data-starttime='" + eventStartTime + "'>" + eventName + "</div>";
+
+        return html;
+    }
+    $('#<%= @event.start_date.to_date %>').find('.date-events').append(html(
+        "<%= @event&.camp&.print_class_name %>",
+        null,
+        null,
+        "<%= @event.name %>"
+    ));
+
+    $('#utnif-modal').modal('hide');
+})(jQuery);

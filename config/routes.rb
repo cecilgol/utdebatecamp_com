@@ -5,6 +5,12 @@ Rails.application.routes.draw do
   get 'faq', to: 'faqs#index'
   get 'sidebar/index'
   namespace :admin do
+    get '/', to: 'home#index'
+    get '/hired/employees', to: 'employees#hired'
+    get '/not_hired/employees', to: 'employees#not_hired'
+    post 'hire_employee/:id',to: 'employees#hire',as:'hire_employee'
+    get '/events/modal', to: 'events#modal'
+    get '/events/camp-id-program', to: 'events#camp_id_program'
     resources :accounts
     resources :camps
     resources :employees
@@ -15,12 +21,6 @@ Rails.application.routes.draw do
     resources :programs
     resources :students
     resources :users
-    
-    get '/', to: 'home#index'
-    get '/hired/employees', to: 'employees#hired'
-    get '/not_hired/employees', to: 'employees#not_hired'
-    post 'hire_employee/:id',to: 'employees#hire',as:'hire_employee'
-    get '/e/modal', to: 'events#modal', as:'new_event_modal'
   end
   resources :coaches
   resources :directors

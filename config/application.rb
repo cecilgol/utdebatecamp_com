@@ -6,6 +6,7 @@ Bundler.require(*Rails.groups)
 
 module UtdebatecampCom
   class Application < Rails::Application
-    config.assets.paths << Rails.root.join("app","assets","fonts")
+    config.assets.paths << Rails.root.join('app','assets','fonts')
+    config.time_zone = 'Central Time (US & Canada)'
   end
 end

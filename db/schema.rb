@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170510032210) do
+ActiveRecord::Schema.define(version: 20170516154827) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -139,6 +139,9 @@ ActiveRecord::Schema.define(version: 20170510032210) do
     t.jsonb "schedule"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "start_date"
+    t.boolean "display_overview"
+    t.index "date(start_date)", name: "event_start_date_idx"
     t.index ["camp_id"], name: "index_events_on_camp_id"
     t.index ["program_id"], name: "index_events_on_program_id"
     t.index ["schedule"], name: "index_events_on_schedule", using: :gin

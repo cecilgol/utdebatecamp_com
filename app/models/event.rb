@@ -2,9 +2,16 @@ class Event < ApplicationRecord
   belongs_to :camp
   belongs_to :program
 
-  def start_time
-    self.schedule['start_time']
+  validates_presence_of :start_date, on: :create, message: "can't be blank"
+  
+  def ic_schedule
+    IceCube::Schedule.from_hash(self.schedule)
   end
+
+  def start_time
+    self.start_date
+  end
+
 
   # jsonb_accessor :schedule, 
   #   is_recurring: :string,

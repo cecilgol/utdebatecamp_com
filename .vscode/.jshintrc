@@ -1,0 +1,6 @@
+{
+    "ignoreDelimiters": [
+        { "start": "<%=", "end": "%>" },
+        { "start": "<%", "end": "%>" }
+    ]
+}

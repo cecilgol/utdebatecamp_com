@@ -1,13 +1,18 @@
 %h1 Upcoming events
-
+%p.notice
 
 
 = month_calendar events: @events do |date,events|
-  .date{id: date, style: "height:100px;width:100px;overflow:hidden"}
-    = date.day
-    - events.each do |event|
-      .date-events{data:{container:"body", toggle:"popover", placement:"top", content:"Vivamus sagittis lacus vel augue laoreet rutrum faucibus."}}
-        = event.name 
+  .date{id: date, style: "height:100px;width:100px;overflow:hidden",data:{startTime:'',endTime:'',date:date}}
+    -if(defined? params && date.month == params.fetch('start_date').to_date.month)
+      = date.day.to_s(:short)
+    -else
+      = date.to_s(:short)
+
+    .date-events
+      - events.each do |event|
+        .event{data:{startTime:'',endTime:''},class:"#{event&.camp&.print_class_name || "camp-wide"}"}
+          = event.name 
 
 %table.table
   %thead
@@ -26,3 +31,7 @@
 %br
 
 = link_to 'New Event', new_admin_event_path
+:css
+  .prev-month, .next-month{
+    opacity:0.5;
+  }

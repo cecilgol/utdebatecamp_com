@@ -16,4 +16,9 @@ class Camp < ApplicationRecord
   validates :end_date, presence: true
   validates_attachment_content_type :glossy, content_type: /\Aimage\/.*\z/
 
+  def print_class_name
+    self.name.gsub(/[Dd]ebate/,'').parameterize.downcase
+  end
+
+
 end

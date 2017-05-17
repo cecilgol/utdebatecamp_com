@@ -4,6 +4,9 @@ class ApplicationController < ActionController::Base
   include ApplicationHelper  
 
 # TODO: fix scss/custom/app-block.scss
+# TODO: further implement scheduling!!!
+# TODO: why is camps being called so many times?
+# TODO: more efficient database calls
 
   def is_admin?
     current_user.account.accountable.is_a? SiteAdministrator

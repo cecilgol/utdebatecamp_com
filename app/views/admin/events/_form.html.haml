@@ -1,10 +1,66 @@
-= form_for [:admin, @event] do |f|
+= form_for [:admin, @event], remote:true do |f|
   - if @event.errors.any?
     #error_explanation
       %h2= "#{pluralize(@event.errors.count, "error")} prohibited this event from being saved:"
       %ul
         - @event.errors.full_messages.each do |message|
           %li= message
+  .row.mb-1
+    = f.label :name, {class:'col-form-label col-2'}
+    .col-10
+      = f.text_field :name, {class:'form-control'}
+  .row.mb-1
+    = f.label :camp, {class:'col-form-label col-2'}
+    .col-10
+      = f.collection_select :camp_id, Camp.all, :id, :name, {prompt: true},{class:'form-control'}
+  .row.mb-1
+    = f.label :program, {class:'col-form-label col-2'}
+    .col-10
+      = f.collection_select :program_id, Program.all, :id, :name,{prompt:"Select a Camp"}, {class:'form-control disabled',disabled:true}
+  .row.mb-1
+    = f.label :date, {class:'col-form-label col-2'}
+    .col-10
+      = f.date_field :start_date, {class:'form-control'}
+  .row.mb-1
+    = f.label :At, {class:'col-form-label col-2'}
+    .col-10
+      = select_tag :start_time, options_for_select([['Morning','9:30'],['Afternoon','13:00'],['Evening','17:00'],['All Day','00:00']]),{class:'form-control'}
+  .row.mb-1
+    .form-check
+      = label_tag :repeats_check, {class:'form-check-label'} do
+        = check_box_tag :repeats_check, 0, false, {class:'form-check-input'}
+        Does this event repeat?
+  .row.hidden-xs-up.mb-1#event_repeats_info
+    .d-flex.justify-content-center
+      .monday.p-2.m-2
+        M
+      .tuesday.p-2.m-2
+        T
+      .wednesday.p-2.m-2
+        W
+      .thursday.p-2.m-2
+        R
+      .friday.p-2.m-2
+        F
+      .saturday.p-2.m-2
+        S
+      .sunday.p-2.m-2
+        U
+  .row.actions.mt-3
+    .col-3.offset-9
+      = f.submit 'Save', {class:'btn btn-square btn-block btn-success'}
 
-  .actions
-    = f.submit 'Save'
+:javascript
+  $('#event_camp_id').on('change', function() {
+      var params = { campId: $(this).val() };
+      $.get('events/camp-id-program', params, function(data) {
+          $('#event_program_id').replaceWith(data);
+      }, "html");
+  });
+  $('#repeats_check').change(function(){
+    if($(this).is(':checked')){
+      $('#event_repeats_info').show().removeClass('hidden-xs-up');
+    }else{
+      $('#event_repeats_info').hide().addClass('hidden-xs-up');      
+    }
+  })
