@@ -1,15 +1,38 @@
-.event.policy {
-    color: $brand-policy;
-}
+/*
+ * Styles for the admin pages - this will be replicated eventually to the
+ * Employee and Stuent portals
+ * NB: All styles need to be wrapped in the body.admin tag to avoid collision
+ * with global styles elsewhere
+ */
 
-.event.lincoln-douglas {
-    color: $brand-ld;
-}
-
-.event.public-forum {
-    color: $brand-pf;
-}
-
-.event.individual-events {
-    color: $brand-ie;
+body.admin {
+    background-color: white;
+    .event.policy {
+        color: $brand-policy;
+    }
+    .event.lincoln-douglas {
+        color: $brand-ld;
+    }
+    .event.public-forum {
+        color: $brand-pf;
+    }
+    .event.individual-events {
+        color: $brand-ie;
+    }
+    .sidebar {
+        background-color: $gray-lighter;
+        .nav-item {
+            .nav-link {
+                color: $gray-dark;
+                text-decoration: none;
+            }
+            &:hover {
+                background-color: $gray-light;
+                color: $gray-darker;
+            }
+        }
+        .text-ribbon-danger {
+            color: $gray-base
+        }
+    }
 }

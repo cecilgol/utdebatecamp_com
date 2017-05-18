@@ -33,20 +33,18 @@
         }
       </style>
 
-  %body{:style => "overflow: auto;"}
-    = render 'layouts/navbar'
-    .stage#stage
-      .container
-      - flash.each do |type, message|
-        .alert.alert-dismissable{ :class => utnif_type(type) }
-          = message
-          %button.close{ data: { dismiss: 'alert' } } x
-      %button.btn.btn-link.stage-toggle{"data-target" => "#stage", "data-toggle" => "stage"}
-        %span.a.aez.ara
-          Menu
-      =link_to 'ADMIN Home', admin_path,{:type=>"button", :class=>"btn btn-link stage-toggle btn-warning", :style => "margin-left:90px"} 
-      .block
-        = yield
+  %body.admin{:style => "overflow: auto;"}
+    .container-fluid.h-100
+      .row
+        = render 'layouts/admin/sidebar'
+        - flash.each do |type, message|
+          .alert.alert-dismissable{ :class => utnif_type(type) }
+            = message
+        .col-sm-9.col-md-10.pt-5
+          = yield
+
+
+
       #m
       = javascript_include_tag "application"
       :javascript

@@ -2,28 +2,20 @@
 class Admin::LabsController < AdminController
   before_action :set_lab, only: [:show, :edit, :update, :destroy]
   respond_to :html, :js
-
-
-
   def index
     @labs = Lab.all
   end
 
-
-
   def show
   end
 
-
   def new
-    @lab = Lab.new
+    @lab = Lab.new(lab_params)
+    logger.debug { @lab.to_json }
   end
-
 
   def edit
   end
-
-
 
   def create
     @lab = Lab.new(lab_params)
@@ -39,8 +31,6 @@ class Admin::LabsController < AdminController
     end
   end
 
-
-
   def update
     respond_to do |format|
       if @lab.update(lab_params)
@@ -52,8 +42,6 @@ class Admin::LabsController < AdminController
       end
     end
   end
-
-
 
   def destroy
     @lab.destroy
@@ -87,9 +75,10 @@ class Admin::LabsController < AdminController
 
 
   def lab_params
-    params.require(:lab).permit(:name,:nickname,:info,:start_date,:end_date)
+    params.require(:lab).permit(:name,:nickname,:info,:start_date,:end_date,:employees, :program_id)
   end
 
+  
 
 
 end

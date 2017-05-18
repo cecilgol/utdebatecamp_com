@@ -1,0 +1,12 @@
+%h1 Listing Labs
+
+-@labs.each do |lab|
+    %p lab.name
+
+= form_tag 'labs/new-lab' do
+    .form-group.row
+        = label 'program_program_id', 'Create a new lab for', {class:'col-2 col-form-label'}
+        .col-4
+            = select('program', 'program_id', Program.all.collect {|p| [ p.name, p.id ] }, { include_blank: false },{class:'form-control'})
+        .col-2
+            =submit_tag "Go"

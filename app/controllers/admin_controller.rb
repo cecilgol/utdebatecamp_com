@@ -1,7 +1,7 @@
 # Namespace for site_admin actions
 class AdminController < ApplicationController
   before_action :require_admin
-  layout "admin"
+  layout "admin/application"
   private
 
   def require_admin

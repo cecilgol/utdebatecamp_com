@@ -17,7 +17,9 @@ class Account < ApplicationRecord
   validates_presence_of :state, on: :create, message: "can't be blank"
   
   validates_each :birthday do |record,attr,value|
-    record.errors.add(attr,'must be of age to participate at UTNIF') if value >= Time.now - 9.years
+    unless value == nil
+      record.errors.add(attr,'must be of age to participate at UTNIF') if value >= Time.now - 9.years
+    end
   end
 
 

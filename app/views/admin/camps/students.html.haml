@@ -1,0 +1,41 @@
+%h1 
+    =@camp.name 
+    Students
+    %span.small 
+        =@students.length
+%table.table.table-striped.table-bordered.table-sm
+    %thead.thead-default
+        %tr
+            %td id
+            %td First Name
+            %td Last Name
+            %td Gender
+            %td Phone
+            %td Session
+            %td Arrival Date
+            %td{colspan: 3}
+                Actions
+    %tbody
+        - @students.each do |student|
+            -cache student do
+                %tr
+                    %td 
+                        =student.id
+                    %td 
+                        = student.account&.first_name
+                    %td 
+                        = student.account&.last_name
+                    %td 
+                        = student.gender
+                    %td
+                        = student.account&.cell_phone
+                    %td
+                        = @camp.name
+                    %td
+                        = student.arrival_date
+                    %td
+                        %a{href:"#"} Contact
+                    %td
+                        %a{href:"#"} Edit
+                    %td 
+                        %a{href:"#"} Move Student

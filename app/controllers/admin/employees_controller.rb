@@ -15,6 +15,11 @@ class Admin::EmployeesController < AdminController
     @employees = Employee.where(is_hired: false)
   end
 
+  def new
+    @employee = Employee.new
+  end
+
+
   def edit
     @account = @employee.account
   end
@@ -37,6 +42,22 @@ class Admin::EmployeesController < AdminController
       end
 
       if @employee.update(employee_params)
+        format.html {redirect_to admin_employees_path, notice: "Updated #{@employee.account.first_name} #{@employee.account.last_name}'s personal information."}
+      else
+        format.html {redirect_to edit_admin_employee_path(@employee.id)}
+      end
+    end
+  end
+
+  def create
+    @employee = Employee.new(employee_params)
+    @employee.account = Account.new(account_params)
+    respond_to do |format|
+      if @employee.account.save(account_params)
+        flash[:notice] = "Updated #{@employee.account.first_name} #{@employee.account.last_name}'s personal information."
+      end
+
+      if @employee.save(employee_params)
         format.html {redirect_to admin_employees_path, notice: "Updated #{@employee.account.first_name} #{@employee.account.last_name}'s personal information."}
       else
         format.html {redirect_to edit_admin_employee_path(@employee.id)}

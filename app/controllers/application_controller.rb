@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
 # TODO: further implement scheduling!!!
 # TODO: why is camps being called so many times?
 # TODO: more efficient database calls
+# TODO: student 'scrip (habtm? hm through :perscription). self-administration?
 
   def is_admin?
     current_user.account.accountable.is_a? SiteAdministrator

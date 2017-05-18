@@ -11,6 +11,8 @@ Rails.application.routes.draw do
     post 'hire_employee/:id',to: 'employees#hire',as:'hire_employee'
     get '/events/modal', to: 'events#modal'
     get '/events/camp-id-program', to: 'events#camp_id_program'
+    get '/camps/:id/students', to: 'camps#students'
+    post '/labs/new-lab', to: 'labs#new_lab', as: 'new_lab'
     resources :accounts
     resources :camps
     resources :employees

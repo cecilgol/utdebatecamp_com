@@ -1,0 +1,37 @@
+%p#notice= notice
+
+%h1 
+    #{@admin_student.account.first_name} #{@admin_student.account.last_name} from #{@admin_student.camp.nickname} 
+    %span.small 
+        ID: #{@admin_student.id}
+        = link_to 'Edit', edit_admin_student_path(@admin_student)
+        \|
+        = link_to 'Back', admin_students_path
+
+%h3 Contact
+%p Email: #{@admin_student.account&.email || 'No reported email'}
+%p Cell Phone: #{@admin_student.account&.cell_phone || 'No reported cell chone'}
+%p Dorm Room: #{@admin_student.commuter ? "Commuter" : @admin_student.dorm || 'No Assigned Dorm Room'}
+
+
+%h3 
+    Parents
+    %span.small #{@admin_student.parents.length} listed
+-@admin_student.parents.each do |p|
+    %h4 #{p.account&.first_name} #{p.account&.last_name}
+%h3 History
+%p This will have lots of info eventually
+%h3 Emergency Contacts
+-@admin_student.emergency_contacts.each do |ec|
+    %p #{ec.name} - #{ec.phone}
+
+%h3 Pronouns
+%p #{@admin_student.pronouns || 'No stated preference: ' + @admin_student.gender}
+
+%h3 Forms 
+%p This will have links to forms... eventually
+-# - @admin_student.student_forms.current_year do
+%h3 Diet
+%p #{@admin_student.diet || 'No stated preference'}
+%h3 Allergies
+%p #{@admin_student.medicine_allergy || 'None Reported'}

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170516154827) do
+ActiveRecord::Schema.define(version: 20170517184325) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 20170516154827) do
     t.string "email"
     t.string "carrier"
     t.string "zipcode"
+    t.string "home_phone"
     t.index ["accountable_type", "accountable_id"], name: "index_accounts_on_accountable_type_and_accountable_id"
     t.index ["user_id"], name: "index_accounts_on_user_id"
   end
@@ -87,6 +88,15 @@ ActiveRecord::Schema.define(version: 20170516154827) do
     t.string "eid"
     t.index ["account_id"], name: "index_directors_on_account_id"
     t.index ["camp_id"], name: "index_directors_on_camp_id"
+  end
+
+  create_table "emergency_contacts", id: false, force: :cascade do |t|
+    t.bigint "student_id"
+    t.string "name"
+    t.string "phone"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["student_id"], name: "index_emergency_contacts_on_student_id"
   end
 
   create_table "employee_forms", id: :serial, force: :cascade do |t|
@@ -236,6 +246,14 @@ ActiveRecord::Schema.define(version: 20170516154827) do
     t.string "file_location"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "filed"
+    t.boolean "treatment_consent"
+    t.boolean "off_campus_permission"
+    t.boolean "release_and_indemnification"
+    t.boolean "witness"
+    t.date "year"
+    t.string "allergies"
+    t.boolean "media_release"
     t.index ["student_id"], name: "index_student_forms_on_student_id"
   end
 
@@ -255,6 +273,10 @@ ActiveRecord::Schema.define(version: 20170516154827) do
     t.boolean "is_admitted"
     t.string "eid"
     t.integer "grade"
+    t.string "diet"
+    t.string "medicine_allergy"
+    t.boolean "commuter"
+    t.string "notes"
     t.index ["account_id"], name: "index_students_on_account_id"
     t.index ["camp_id"], name: "index_students_on_camp_id"
   end
@@ -282,6 +304,7 @@ ActiveRecord::Schema.define(version: 20170516154827) do
   add_foreign_key "coaches", "accounts"
   add_foreign_key "directors", "accounts"
   add_foreign_key "directors", "camps"
+  add_foreign_key "emergency_contacts", "students"
   add_foreign_key "employee_forms", "employees"
   add_foreign_key "employee_program_assignments", "employees"
   add_foreign_key "employee_program_assignments", "programs"

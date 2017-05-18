@@ -1,6 +1,6 @@
 # Things only administrators can do
 class Admin::CampsController < AdminController
-  before_action :set_camp, only: [:show, :edit, :update, :destroy, :sign_up]
+  before_action :set_camp, only: [:show, :edit, :update, :destroy, :sign_up, :students]
 
   respond_to :html, :js
 
@@ -23,6 +23,11 @@ class Admin::CampsController < AdminController
 
   def edit
   end
+
+  def students
+    @students = @camp.students
+  end
+    
 
 
 

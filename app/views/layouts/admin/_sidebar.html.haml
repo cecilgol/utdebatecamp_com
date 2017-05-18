@@ -1,0 +1,57 @@
+.col-sm-3.col-md-2.pt-5.sidebar.mh
+    = link_to admin_path do
+        %span.text-ribbon.text-ribbon-danger.text-black
+            %span WELCOME TO THE ADMIN SPACE
+        %br/
+        %br/
+        %span.text-ribbon.text-ribbon-transparent.text-white
+            %span From here you can do all kinds of damage, so please try to be careful!
+
+    .nav.flex-column.nav-sidebar.mt-2
+        %small.nav-header About You
+        .nav-item.active
+            =link_to "Admin Home", admin_path, {class:"nav-link active"}
+        .nav-item
+            =link_to "Email Dorm Staff", nil, {class:"nav-link"}
+        .nav-item
+            =link_to "Email All Staff",nil, {class:"nav-link"}
+        .nav-item
+            =link_to "Calendar",admin_events_path, {class:"nav-link"}
+
+    .nav.flex-column.nav-sidebar.mt-2
+        %small.nav-header Students
+        .nav-item
+            =link_to "List All Students", admin_students_path, {class:"nav-link"}
+        .nav-item
+            =link_to "Dorm Rooms",nil, {class:"nav-link"}
+
+    .nav.flex-column.nav-sidebar.mt-2
+        %small.nav-header Employees
+        .nav-item
+            =link_to "List All Employees", admin_employees_path, {class:"nav-link"}
+
+    .nav.flex-column.nav-sidebar.mt-2
+        %small.nav-header Camps
+        .nav-item
+            =link_to "List Camps", admin_camps_path, {class:"nav-link"}
+
+    .nav.flex-column.nav-sidebar.mt-2
+        %small.nav-header Programs
+        .nav-item
+            =link_to "List programs", admin_programs_path, {class:"nav-link"}
+            
+    .nav.flex-column.nav-sidebar.mt-2
+        %small.nav-header Labs
+        .nav-item
+            =link_to "List Labs", admin_labs_path, {class:"nav-link"}
+            
+    .nav.flex-column.nav-sidebar.mt-2
+        %small.nav-header Website Stuff
+        .nav-item
+            =link_to "Blog Posts", admin_news_posts_path, {class:"nav-link"}
+        .nav-item
+            =link_to "Faqs", admin_faqs_path, {class:"nav-link"}
+
+
+    
+
